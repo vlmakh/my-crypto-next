@@ -1,1 +1,1 @@
-# my-crypto-next
+# My Crypto
