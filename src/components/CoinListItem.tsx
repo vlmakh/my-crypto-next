@@ -16,11 +16,11 @@ export const CoinListItem = ({ coin }: { coin: ICoin }) => {
           <p>{coin.name}</p>
         </div>
 
-        <p className="font-bold">{formatPrice(coin.price)}</p>
+        <p className="font-bold w-20 text-right">{formatPrice(coin.price)}</p>
 
-        <p>{(+coin.priceChange1d).toFixed(1)}%</p>
+        <p className="w-16 text-right">{(+coin.priceChange1d).toFixed(1)}%</p>
 
-        <p className="text-sm">{coin.rank}</p>
+        <p className="text-sm w-11 text-right">{coin.rank}</p>
       </Link>
     </li>
   );
