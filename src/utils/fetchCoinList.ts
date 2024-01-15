@@ -1,0 +1,23 @@
+const MAIN_URL = process.env.MAIN_URL;
+const options = {
+  method: "GET",
+  headers: {
+    accept: "application/json",
+    "X-API-KEY": "r9FNSR3h4KySY93Gz9AJaYZMII+7fsxA7b1mvlPVQhY=",
+  },
+};
+
+export async function fetchCoinList(page = 2) {
+  const response = await fetch(`${MAIN_URL}/coins/?page=${page}`, options);
+
+  // console.log(`${MAIN_URL}/coins/?page=${page}`)
+
+  // if (!response.ok) {
+  //   // This will activate the closest `error.js` Error Boundary
+  //   throw new Error("Failed to fetch data");
+  // }
+
+  // console.log(response);
+
+  return response.json();
+}
