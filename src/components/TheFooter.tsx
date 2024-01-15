@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export const TheFooter = () => {
   return (
-    <footer className="flex gap-4 justify-center items-center border-t-2">
+    <footer className="flex gap-4 justify-center items-center">
       <p> VM</p>
 
       <div className="flex justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
