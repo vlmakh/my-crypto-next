@@ -3,7 +3,7 @@ const nextConfig = {
   async headers() {
     return [
       {
-        source: "/:path*",
+        source: "/(.*)",
         headers: [
           {
             key: "X-API-KEY",
@@ -12,6 +12,16 @@ const nextConfig = {
         ],
       },
     ];
+  },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "static.coinstats.app",
+        port: "",
+        // pathname: "/account123/**",
+      },
+    ],
   },
 };
 
