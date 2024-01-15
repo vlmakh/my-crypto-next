@@ -1,4 +1,5 @@
 const MAIN_URL = process.env.MAIN_URL;
+
 const options = {
   method: "GET",
   headers: {
@@ -10,14 +11,9 @@ const options = {
 export async function fetchCoinList(page = 2) {
   const response = await fetch(`${MAIN_URL}/coins/?page=${page}`, options);
 
-  // console.log(`${MAIN_URL}/coins/?page=${page}`)
-
-  // if (!response.ok) {
-  //   // This will activate the closest `error.js` Error Boundary
-  //   throw new Error("Failed to fetch data");
-  // }
-
-  // console.log(response);
+  if (!response.ok) {
+    throw new Error("Failed to fetch data");
+  }
 
   return response.json();
 }
