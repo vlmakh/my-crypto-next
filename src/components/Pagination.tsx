@@ -1,7 +1,30 @@
-// import ReactPaginate from 'react-paginate';
+"use client";
+import ReactPaginate from "react-paginate";
+import { useState } from "react";
 
-export const Pagination = () => {
+type Props = {
+  coinList: {
+    meta: {
+      pageCount: number;
+    };
+  };
+};
+
+export const Pagination = ({ coinList }: Props) => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages] = useState(coinList.meta.pageCount);
+
   return (
-    <div>Pagination</div>
-  )
-}
+    <ReactPaginate
+      breakLabel="..."
+      nextLabel=">"
+      // onPageChange={handlePageClick}
+      pageRangeDisplayed={5}
+      pageCount={totalPages}
+      previousLabel="<"
+      disabledLinkClassName="disabled"
+      activeClassName="activePage"
+      forcePage={currentPage - 1}
+    />
+  );
+};
