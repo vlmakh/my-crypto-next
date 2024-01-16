@@ -8,7 +8,7 @@ const options = {
   },
 };
 
-export async function fetchCoinList(page = 2) {
+export async function fetchCoinList(page: number) {
   const response = await fetch(`${MAIN_URL}/coins/?page=${page}`, options);
 
   if (!response.ok) {

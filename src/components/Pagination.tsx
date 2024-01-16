@@ -1,6 +1,6 @@
 "use client";
 import ReactPaginate from "react-paginate";
-import { useState } from "react";
+import { SetStateAction, useState } from "react";
 
 type Props = {
   coinList: {
@@ -14,11 +14,15 @@ export const Pagination = ({ coinList }: Props) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages] = useState(coinList.meta.pageCount);
 
+  const handlePageClick = (e: { selected: SetStateAction<number>; }) => {
+    setCurrentPage(e.selected)
+  }
+
   return (
     <ReactPaginate
       breakLabel="..."
       nextLabel=">"
-      // onPageChange={handlePageClick}
+      onPageChange={handlePageClick}
       pageRangeDisplayed={5}
       pageCount={totalPages}
       previousLabel="<"

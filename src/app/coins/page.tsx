@@ -1,9 +1,10 @@
 import { CoinListItem } from "@/components/CoinListItem";
 import { fetchCoinList } from "@/utils/fetchCoinList";
 // import ReactPaginate from "react-paginate";
+import { ICoin } from "@/types";
 
 export default async function CoinsPage() {
-  const coinList = await fetchCoinList();
+  const coinList = await fetchCoinList(1);
 
   // async const handlePageClick = () => {
   // coinList = await fetchCoinList();
@@ -13,10 +14,8 @@ export default async function CoinsPage() {
     <>
       <ul>
         {coinList.result &&
-          coinList.result
-            .sort((a: { rank: number }, b: { rank: number }) => a.rank - b.rank)
-            .map(
-              (coin: any) => coin && <CoinListItem key={coin.id} coin={coin} />
+          coinList.result.map(
+              (coin: ICoin) => coin && <CoinListItem key={coin.id} coin={coin} />
             )}
       </ul>
 
