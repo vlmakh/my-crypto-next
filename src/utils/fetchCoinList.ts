@@ -17,3 +17,13 @@ export async function fetchCoinList(page = 2) {
 
   return response.json();
 }
+
+export async function fetchCoinItem(id: string) {
+  const response = await fetch(`${MAIN_URL}/coins/${id}`, options);
+
+  if (!response.ok) {
+    throw new Error("Failed to fetch data");
+  }
+
+  return response.json();
+}
