@@ -20,8 +20,8 @@ export default async function CoinPage({ params: { id } }: Props) {
   const coin = await fetchCoinItem(id);
 
   return (
-    <div>
-      <Image src={coin.icon} alt={coin.id} width={48} height={48} />
+    <div className="text-center pt-5">
+      <Image src={coin.icon} alt={coin.id} width={48} height={48} className="mx-auto"/>
       <div>{coin.name}</div>
     </div>
   );
