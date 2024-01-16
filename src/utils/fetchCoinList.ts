@@ -27,3 +27,10 @@ export async function fetchCoinItem(id: string) {
 
   return response.json();
 }
+
+export async function historicalChart (id: string, period = '1y') {
+  const response = await fetch(
+    `${MAIN_URL}/coins/${id}/charts?period=${period}`
+  );
+  return response.json();
+};
