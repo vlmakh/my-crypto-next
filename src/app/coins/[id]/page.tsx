@@ -25,7 +25,7 @@ export default async function CoinPage({ params: { id } }: Props) {
   return (
     <div className="text-center pt-5 sm:px-4 lg:w-1/2 mx-auto lg:px-0">
       <div className="flex gap-4 justify-center">
-        <Image src={coin.icon} alt={coin.id} width={60} height={60} />
+        <Image src={coin.icon} alt={coin.id} width={60} height={60} priority/>
         <div>
           <p className="font-bold text-3xl">{coin.symbol}</p>
           <p>{coin.name}</p>
