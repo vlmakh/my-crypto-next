@@ -30,7 +30,12 @@ export async function fetchCoinItem(id: string) {
 
 export async function historicalChart (id: string, period = '1y') {
   const response = await fetch(
-    `${MAIN_URL}/coins/${id}/charts?period=${period}`
+    `${MAIN_URL}/coins/${id}/charts?period=${period}`, options
   );
+
+  if (!response.ok) {
+    throw new Error("Failed to fetch data");
+  }
+  
   return response.json();
 };
