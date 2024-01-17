@@ -1,7 +1,5 @@
-import Image from "next/image";
-import { NextResponse } from "next/server";
-import { formatPrice } from "@/utils/formatPrice";
-import Link from "next/link";
+import { CoinListItem } from "./CoinListItem";
+import { ICoin } from "@/types";
 
 const MAIN_URL = process.env.NEXT_APP_MAIN_URL;
 
@@ -22,26 +20,9 @@ export default async function CoinList() {
   return (
     <ul>
       {coinList
-        .sort((a: {rank: number}, b: {rank: number}) => a.rank - b.rank)
+        .sort((a: { rank: number }, b: { rank: number }) => a.rank - b.rank)
         .map(
-          (coin: any) =>
-            coin && (
-              <li key={coin.id}>
-                {" "}
-                <Link href={`/${coin.id}`}>
-                  <Image src={coin.icon} alt={coin.id} width="48" />
-                  <div className="ml-2 text-left">
-                    <p>{coin.symbol}</p>
-                    <p>{coin.name}</p>
-                  </div>
-                  <p>{formatPrice(coin.price)}</p>
-                  <p>
-                    {(+coin.priceChange1d).toFixed(1)}%
-                  </p>
-                  <p>{coin.rank}</p>{" "}
-                </Link>
-              </li>
-            )
+          (coin: ICoin) => coin && <CoinListItem key={coin.id} coin={coin} />
         )}
     </ul>
   );

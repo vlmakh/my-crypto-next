@@ -16,11 +16,11 @@ export const CoinListItem = ({ coin }: { coin: ICoin }) => {
           <p>{coin.name}</p>
         </div>
 
-        <p className="font-bold w-20 text-right">{formatPrice(coin.price)}</p>
+        <p className={`font-bold w-32 text-right ${coin.priceChange1d >= 0 ? 'text-green-500' : 'text-red-500'}`}>{formatPrice(coin.price)}</p>
 
-        <p className="w-16 text-right">{(+coin.priceChange1d).toFixed(1)}%</p>
+        <p className="w-24 text-right text-sm">{(+coin.priceChange1d).toFixed(1)}% <span className="text-opacity-50">1D</span></p>
 
-        <p className="text-sm w-11 text-right">{coin.rank}</p>
+        {/* <p className="text-sm w-11 text-right">{coin.rank}</p> */}
       </Link>
     </li>
   );
