@@ -1,6 +1,7 @@
 // import { Metadata } from "next";
 import Image from "next/image";
-import { fetchCoinItem } from "@/utils/fetchCoinList";
+import { fetchCoinItem, historicalChart } from "@/utils/fetchCoinList";
+import { CoinChart } from "@/components/CoinChart";
 
 type Props = {
   params: {
@@ -23,6 +24,8 @@ export default async function CoinPage({ params: { id } }: Props) {
     <div className="text-center pt-5">
       <Image src={coin.icon} alt={coin.id} width={48} height={48} className="mx-auto"/>
       <div>{coin.name}</div>
+
+      {/* <CoinChart id={coin.id} /> */}
     </div>
   );
 }
