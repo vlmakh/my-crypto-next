@@ -3,8 +3,13 @@ import { fetchCoinList } from "@/utils/fetchCoinList";
 // import { Pagination } from "@/components/Pagination";
 import { ICoin } from "@/types";
 
-export default async function CoinsPage() {
-  const coinList = await fetchCoinList(1);
+export default async function CoinsPage({
+  searchParams,
+}: {
+  searchParams: { page: number };
+}) {
+  const page = searchParams["page"] ?? "1";
+  const coinList = await fetchCoinList(page);
 
   // async const handlePageClick = () => {
   // coinList = await fetchCoinList();
@@ -15,8 +20,8 @@ export default async function CoinsPage() {
       <ul>
         {coinList.result &&
           coinList.result.map(
-              (coin: ICoin) => coin && <CoinListItem key={coin.id} coin={coin} />
-            )}
+            (coin: ICoin) => coin && <CoinListItem key={coin.id} coin={coin} />
+          )}
       </ul>
 
       {/* <Pagination coinList={ coinList} /> */}
