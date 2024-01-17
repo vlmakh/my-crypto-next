@@ -11,10 +11,10 @@ type Props = {
   };
 };
 
-// async function generateMetadata({
+// export async function generateMetadata({
 //   params: { id },
 // }: Props): Promise<Metadata> {
-//   const product = await getData(id);
+//   const product = await fetchCoinItem(id);
 
 //   return { title: product.title };
 // }
@@ -45,6 +45,7 @@ export default async function CoinPage({ params: { id } }: Props) {
           <p>{coin.priceChange1w.toFixed(1)}% 1W</p>
         </div>
       </div>
+      
       {/* <CoinChart id={coin.id} /> */}
 
       <div>
