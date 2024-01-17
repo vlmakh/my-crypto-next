@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { fetchCoinItem } from "@/utils/fetchCoinList";
 import { formatPrice } from "@/utils/formatPrice";
-// import { CoinChart } from "@/components/CoinChart";
+import { CoinChart } from "@/components/CoinChart";
 import { ICoin } from "@/types";
 
 type Props = {
@@ -42,7 +42,7 @@ export default async function CoinPage({ params: { id } }: Props) {
         </div>
       </div>
 
-      {/* <CoinChart id={coin.id} /> */}
+      <CoinChart id={coin.id} />
 
       <div className="pt-5">
         <p className="border-b-2 flex justify-between py-2">
