@@ -7,5 +7,12 @@ export interface ICoin {
   symbol: string;
   rank: number;
   price: number;
+  priceChange1h: number;
   priceChange1d: number;
+  priceChange1w: number;
+  marketCap: number;
+  volume: number;
+  totalSupply: number;
+  availableSupply: number;
+  websiteUrl?: string;
 }
