@@ -1,6 +1,6 @@
 import { CoinListItem } from "@/components/CoinListItem";
 import { fetchCoinList } from "@/utils/fetchCoinList";
-// import ReactPaginate from "react-paginate";
+// import { Pagination } from "@/components/Pagination";
 import { ICoin } from "@/types";
 
 export default async function CoinsPage() {
@@ -19,7 +19,7 @@ export default async function CoinsPage() {
             )}
       </ul>
 
-      
+      {/* <Pagination coinList={ coinList} /> */}
     </>
   );
 }
