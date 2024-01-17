@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, SetStateAction } from 'react';
+import { useState, useEffect } from 'react';
 import { historicalChart } from '@/utils/fetchCoinList';
 import {
   LineChart,
