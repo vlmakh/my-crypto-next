@@ -1,10 +1,10 @@
-const MAIN_URL = process.env.MAIN_URL;
+const MAIN_URL = process.env.NEXT_PUBLIC_MAIN_URL;
 
 const options = {
   method: "GET",
   headers: {
     accept: "application/json",
-    "X-API-KEY": "r9FNSR3h4KySY93Gz9AJaYZMII+7fsxA7b1mvlPVQhY=",
+    "X-API-KEY": `${process.env.NEXT_PUBLIC_MAIN_KEY}`,
   },
 };
 
@@ -28,7 +28,7 @@ export async function fetchCoinItem(id: string) {
   return response.json();
 }
 
-export async function historicalChart (id: string, period = '1y') {
+export const historicalChart = async (id: string, period: string) => {
   const response = await fetch(
     `${MAIN_URL}/coins/${id}/charts?period=${period}`, options
   );
