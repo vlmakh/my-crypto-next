@@ -16,3 +16,9 @@ export interface ICoin {
   availableSupply: number;
   websiteUrl?: string;
 }
+
+export interface INavLink {
+  id: string,
+  label: string;
+  href: string;
+};
