@@ -1,4 +1,4 @@
-// import { Metadata } from "next";
+import { Metadata } from "next";
 import Image from "next/image";
 import { fetchCoinItem } from "@/utils/fetchCoinList";
 import { formatPrice } from "@/utils/formatPrice";
@@ -11,13 +11,15 @@ type Props = {
   };
 };
 
-// export async function generateMetadata({
-//   params: { id },
-// }: Props): Promise<Metadata> {
-//   const product = await fetchCoinItem(id);
+export async function generateMetadata({
+  params: { id },
+}: Props): Promise<Metadata> {
+  const post = await fetchCoinItem(id);
 
-//   return { title: product.title };
-// }
+  return {
+    title: post.name,
+  };
+}
 
 export default async function CoinPage({ params: { id } }: Props) {
   const coin: ICoin = await fetchCoinItem(id);
