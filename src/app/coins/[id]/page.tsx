@@ -17,7 +17,7 @@ export async function generateMetadata({
   const coin = await fetchCoinItem(id);
 
   return {
-    title: coin.name + ' | My Crypto',
+    title: coin.name + " | My Crypto",
   };
 }
 
@@ -27,7 +27,7 @@ export default async function CoinPage({ params: { id } }: Props) {
   return (
     <div className="text-center pt-5 sm:px-4 lg:w-1/2 mx-auto lg:px-0">
       <div className="flex gap-4 justify-center">
-        <Image src={coin.icon} alt={coin.id} width={60} height={60} priority/>
+        <Image src={coin.icon} alt={coin.id} width={60} height={60} priority />
         <div>
           <p className="font-bold text-3xl">{coin.symbol}</p>
           <p>{coin.name}</p>
@@ -70,7 +70,13 @@ export default async function CoinPage({ params: { id } }: Props) {
         </p>
         <p className="border-b-2 flex justify-between py-2">
           <span className="font-bold">homepage: </span>
-          <span>{coin.websiteUrl}</span>
+          <a
+            href={coin.websiteUrl}
+            target="_blank"
+            className="hover:text-orange-500 transition-colors"
+          >
+            {coin.websiteUrl}
+          </a>
         </p>
       </div>
     </div>

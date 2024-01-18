@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 // import { historicalChart } from '@/utils/fetchCoinList';
-import {
+import { ResponsiveContainer,
   LineChart,
   Line,
   CartesianGrid,
@@ -10,7 +10,7 @@ import {
   YAxis,
   Tooltip,
 } from "recharts";
-// import { ICoin } from '@/types';
+import { formatAxisDate } from "@/utils/formatDate";
 
 // const TooltipContent = (props: { active: any; payload: { payload: any; }[]; }) => {
 //   if (!props.active || !props.payload || !props.payload.payload) {
@@ -65,7 +65,7 @@ export const CoinChart = ({ id }: Props) => {
       .then((coinPrices) => {
         for (let i = 0; i < coinPrices.length; i++) {
           newCoinData.push({
-            time: coinPrices[i][0],
+            time: formatAxisDate(coinPrices[i][0]),
             price: coinPrices[i][1],
           });
         }
@@ -78,8 +78,8 @@ export const CoinChart = ({ id }: Props) => {
   }, [id, period]);
 
   return (
-    <div className="">
-      <LineChart data={coinData} width={768} height={400}>
+    <ResponsiveContainer width='100%' height={400} className="py-2">
+      <LineChart data={coinData} >
         <Line
           dot={false}
           stroke="orange"
@@ -88,11 +88,11 @@ export const CoinChart = ({ id }: Props) => {
           isAnimationActive={false}
         />
         <CartesianGrid stroke="grey" strokeDasharray="5 5" />
-        <XAxis dataKey={"time"} />
-        <YAxis unit="$" />
+        <XAxis dataKey={"time"} className="text-sm"/>
+        <YAxis unit="$" className="text-sm font-bold"/>
 
         {/* <Tooltip isAnimationActive={false} content={<TooltipContent />} /> */}
       </LineChart>
-    </div>
+    </ResponsiveContainer>
   );
 };
