@@ -14,10 +14,10 @@ type Props = {
 export async function generateMetadata({
   params: { id },
 }: Props): Promise<Metadata> {
-  const post = await fetchCoinItem(id);
+  const coin = await fetchCoinItem(id);
 
   return {
-    title: post.name,
+    title: coin.name + ' | My Crypto',
   };
 }
 
