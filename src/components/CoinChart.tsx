@@ -85,7 +85,7 @@ export const CoinChart = ({ id }: Props) => {
       <Formik
         onSubmit={handleSubmit}
         initialValues={{
-          period: "24h",
+          period,
         }}
       >
         <Form onChange={handleRadio} className="flex gap-3 justify-center">
