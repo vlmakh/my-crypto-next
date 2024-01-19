@@ -21,7 +21,7 @@ export const Pagination = ({ metaInfo }: Props) => {
 
   // const page = searchParams.get('page') ?? '1'
   const [currentPage, setCurrentPage] = useState(
-    Number(searchParams.get("page")) ?? 1
+    Number(searchParams.get("page")) === 0 ? 1 : Number(searchParams.get("page"))
   );
 
   const handlePageClick = (e: { selected: number }) => {
@@ -39,9 +39,9 @@ export const Pagination = ({ metaInfo }: Props) => {
       pageCount={metaInfo.pageCount}
       previousLabel="<"
       disabledLinkClassName="disabled"
-      activeClassName="text-red-500"
+      activeClassName="text-orange-500"
       forcePage={currentPage - 1}
-      className="flex gap-2 justify-center flex-wrap py-5"
+      className="flex gap-2 justify-center flex-wrap py-5 font-bold"
     />
   );
 };

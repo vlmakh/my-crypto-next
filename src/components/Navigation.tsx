@@ -14,7 +14,7 @@ export const Navigation = () => {
   const pathname = usePathname();
   const session = useSession();
 
-  // console.log(session);
+  // console.log(pathname);
 
   return (
     <div className="flex gap-2 justify-center">
@@ -29,12 +29,12 @@ export const Navigation = () => {
               isActive ? "text-orange-500" : ""
             }`}
           >
-            <h2 className={`mb-3 text-2xl font-semibold`}>
+            <p className="text-xl font-semibold">
               {link.label}
               <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none group-hover:text-orange-500">
                 -&gt;
               </span>
-            </h2>
+            </p>
           </Link>
         );
       })}
@@ -46,12 +46,12 @@ export const Navigation = () => {
             pathname === "/watchlist" ? "text-orange-500" : ""
           }`}
         >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
+          <p className="text-xl font-semibold">
             Watchlist
             <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none group-hover:text-orange-500">
               -&gt;
             </span>
-          </h2>
+          </p>
         </Link>
       )}
 
@@ -61,24 +61,24 @@ export const Navigation = () => {
           className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
           onClick={() => signOut({ callbackUrl: "/" })}
         >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
+          <p className="text-xl font-semibold">
             Sign Out
             <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none group-hover:text-orange-500">
               -&gt;
             </span>
-          </h2>
+          </p>
         </Link>
       ) : (
         <Link
           href="/api/auth/signin"
           className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
         >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
+          <p className="text-xl font-semibold">
             SignIn
             <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none group-hover:text-orange-500">
               -&gt;
             </span>
-          </h2>
+          </p>
         </Link>
       )}
     </div>

@@ -2,7 +2,7 @@
 
 export const TheFooter = () => {
   return (
-    <footer className="flex gap-4 justify-center items-center">
+    <footer className="flex gap-4 justify-center items-center py-2">
       <p>2024</p>
 
       <div className="flex justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">

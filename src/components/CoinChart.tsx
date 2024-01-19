@@ -90,7 +90,7 @@ export const CoinChart = ({ id }: Props) => {
       >
         <Form onChange={handleRadio} className="flex gap-3 justify-center">
           {choose.periods.map((p) => (
-            <label key={p}>
+            <label key={p} className="hover:cursor-pointer">
               <Field type="radio" name="period" value={p} />
               {p}
             </label>
