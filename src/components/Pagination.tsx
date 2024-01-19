@@ -1,23 +1,34 @@
 "use client";
+
 import ReactPaginate from "react-paginate";
 import { useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 
 type Props = {
-  coinList: {
-    meta: {
-      pageCount: number;
-    };
+  metaInfo: {
+    page: number;
+    limit: number;
+    itemCount: number;
+    pageCount: number;
+    hasPreviousPage: boolean;
+    hasNextPage: boolean;
   };
 };
 
-export const Pagination = ({ coinList }: Props) => {
-  const [currentPage, setCurrentPage] = useState(1);
-  // const [totalPages] = useState(coinList.meta.pageCount);
+export const Pagination = ({ metaInfo }: Props) => {
+  const searchParams = useSearchParams();
+  const router = useRouter();
 
-  const handlePageClick = (e: { selected: number; }) => {
-    // setCurrentPage(e.selected)
-    console.log(e.selected)
-  }
+  // const page = searchParams.get('page') ?? '1'
+  const [currentPage, setCurrentPage] = useState(
+    Number(searchParams.get("page")) ?? 1
+  );
+
+  const handlePageClick = (e: { selected: number }) => {
+    setCurrentPage(e.selected + 1);
+
+    router.push(`/coins/?page=${Number(e.selected) + 1}`);
+  };
 
   return (
     <ReactPaginate
@@ -25,12 +36,12 @@ export const Pagination = ({ coinList }: Props) => {
       nextLabel=">"
       onPageChange={handlePageClick}
       pageRangeDisplayed={5}
-      pageCount={coinList.meta.pageCount}
+      pageCount={metaInfo.pageCount}
       previousLabel="<"
       disabledLinkClassName="disabled"
-      activeClassName="activePage"
+      activeClassName="text-red-500"
       forcePage={currentPage - 1}
-      className="flex gap-1 justify-center flex-wrap py-5"
+      className="flex gap-2 justify-center flex-wrap py-5"
     />
   );
 };
