@@ -5,7 +5,7 @@ import { CoinListItem } from "./CoinListItem";
 import { ICoin } from "@/types";
 import { userWatchList } from "@/utils/fetchCoinList";
 
-const query = ["bitcoin", "karlsen"];
+const query: string[] = ['bitcoin', 'karlsen', 'huobi-token'];
 
 export const WatchList = () => {
   const [userList, setUserList] = useState<ICoin[] | never[]>([]);
@@ -13,11 +13,12 @@ export const WatchList = () => {
   useEffect(() => {
     const controller = new AbortController();
 
-    userWatchList(query)
+    userWatchList(query, controller.signal)
       .then((data) => {
         setUserList(data);
       })
       .catch((error) => console.log("Network error"));
+    
     return () => {
       controller.abort();
     };
@@ -25,7 +26,7 @@ export const WatchList = () => {
 
   return (
     <ul>
-      {userList &&
+      {userList.length > 0 &&
         userList
           .sort((a: { rank: number }, b: { rank: number }) => a.rank - b.rank)
           .map(

@@ -30,23 +30,30 @@ export async function fetchCoinItem(id: string) {
 
 export const historicalChart = async (id: string, period: string) => {
   const response = await fetch(
-    `${MAIN_URL}/coins/${id}/charts?period=${period}`, options
+    `${MAIN_URL}/coins/${id}/charts?period=${period}`,
+    options
   );
 
   if (!response.ok) {
     throw new Error("Failed to fetch data");
   }
-  
+
   return response.json();
 };
 
-export const userWatchList = async (array: string[]) => {
-  const arrayOfCoins = array.map(async coinId => {
-    return await fetch(`${MAIN_URL}/coins/${coinId}`, options)
-      .then(response => {
+export const userWatchList = async (
+  array: string[],
+  abortSignal: AbortSignal
+) => {
+  const arrayOfCoins = array.map(async (coinId) => {
+    return await fetch(`${MAIN_URL}/coins/${coinId}`, {
+      ...options,
+      signal: abortSignal,
+    })
+      .then((response) => {
         return response.json();
       })
-      .catch(error => {});
+      .catch((error) => {});
   });
 
   const response = await Promise.all(arrayOfCoins);
