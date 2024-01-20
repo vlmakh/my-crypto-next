@@ -1,7 +1,7 @@
 import { CoinListItem } from "@/components/CoinListItem";
 import { fetchCoinList } from "@/utils/fetchCoinList";
 import { Pagination } from "@/components/Pagination";
-import { ICoin } from "@/types";
+import type { ICoin } from "@/types";
 
 export default async function CoinsPage({
   searchParams,
