@@ -4,7 +4,7 @@ import { fetchCoinItem } from "@/utils/fetchCoinList";
 import { formatPrice } from "@/utils/formatPrice";
 import { CoinChart } from "@/components/CoinChart";
 import { ICoin } from "@/types";
-import { BackLink } from "@/components/BackLink";
+import { BackLink } from "@/components/ui/BackLink";
 
 type Props = {
   params: {

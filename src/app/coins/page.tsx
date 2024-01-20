@@ -1,5 +1,5 @@
 import { fetchCoinList } from "@/utils/fetchCoinList";
-import { Pagination } from "@/components/Pagination";
+import { Pagination } from "@/components/ui/Pagination";
 import { CoinList } from "@/components/CoinList";
 
 export default async function CoinsPage({
