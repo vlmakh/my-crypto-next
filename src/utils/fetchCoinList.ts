@@ -39,3 +39,16 @@ export const historicalChart = async (id: string, period: string) => {
   
   return response.json();
 };
+
+export const userWatchList = async (array: string[]) => {
+  const arrayOfCoins = array.map(async coinId => {
+    return await fetch(`${MAIN_URL}/coins/${coinId}`, options)
+      .then(response => {
+        return response.json();
+      })
+      .catch(error => {});
+  });
+
+  const response = await Promise.all(arrayOfCoins);
+  return response;
+};
