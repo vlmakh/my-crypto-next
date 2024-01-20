@@ -13,9 +13,9 @@ export const authConfig: AuthOptions = {
   ],
   adapter: FirestoreAdapter({
     credential: cert({
-      projectId: process.env.FIREBASE_PROJECT_ID,
-      clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
-      privateKey: process.env.FIREBASE_PRIVATE_KEY!.replace(/\\n/g, '\n'),
+      projectId: process.env.NEXT_PUBLIC_FB_PROJECT_ID,
+      clientEmail: process.env.NEXT_PUBLIC_FB_CLIENT_EMAIL,
+      privateKey: process.env.NEXT_PUBLIC_FB_PRIVATE_KEY!.replace(/\\n/g, '\n'),
     }),
   }) as Adapter,
   pages: {
