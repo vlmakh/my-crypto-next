@@ -1,0 +1,1 @@
+export const queryWatchList = ["bitcoin", "karlsen", "huobi-token", 'aave']

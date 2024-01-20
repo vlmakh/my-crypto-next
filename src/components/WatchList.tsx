@@ -5,15 +5,17 @@ import { CoinListItem } from "./CoinListItem";
 import { ICoin } from "@/types";
 import { userWatchList } from "@/utils/fetchCoinList";
 
-const query: string[] = ["bitcoin", "karlsen", "huobi-token"];
+type Props = {
+  queryWatchList: string[];
+};
 
-export const WatchList = () => {
+export const WatchList = ({ queryWatchList }: Props) => {
   const [userList, setUserList] = useState<ICoin[] | never[]>([]);
 
   useEffect(() => {
     const controller = new AbortController();
 
-    userWatchList(query, controller.signal)
+    userWatchList(queryWatchList, controller.signal)
       .then((data) => {
         setUserList(data);
       })
@@ -22,7 +24,7 @@ export const WatchList = () => {
     return () => {
       controller.abort();
     };
-  }, []);
+  }, [queryWatchList]);
 
   return (
     <>
