@@ -4,6 +4,7 @@ import { fetchCoinItem } from "@/utils/fetchCoinList";
 import { formatPrice } from "@/utils/formatPrice";
 import { CoinChart } from "@/components/CoinChart";
 import { ICoin } from "@/types";
+import { BackLink } from "@/components/BackLink";
 
 type Props = {
   params: {
@@ -26,15 +27,21 @@ export default async function CoinPage({ params: { id } }: Props) {
 
   return (
     <div className="text-center pt-5 sm:px-4 lg:w-1/2 mx-auto lg:px-0">
-      <div className="flex gap-4 justify-center">
-        <Image src={coin.icon} alt={coin.id} width={60} height={60} priority />
-        <div>
-          <h2 className="font-bold text-3xl text-left">{coin.symbol}</h2>
-          <p>{coin.name}</p>
+      <div className="flex justify-between">
+        <BackLink />
+
+        <div className="flex gap-4">
+          <Image src={coin.icon} alt={coin.id} width={60} height={60} priority />
+          <div>
+            <h2 className="font-bold text-3xl text-left">{coin.symbol}</h2>
+            <p>{coin.name}</p>
+          </div>
         </div>
+
+        <div className="text-xl font-semibold py-5 px-4">&#x2606;</div>
       </div>
 
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between items-center py-5">
         <p className="font-bold text-2xl">{formatPrice(coin.price)}$</p>
 
         <div className="text-right">
