@@ -38,7 +38,7 @@ export default async function CoinPage({ params: { id } }: Props) {
           </div>
         </div>
 
-        <div className="text-xl font-semibold py-5 px-4">&#x2606;</div>
+        <div className="text-xl font-semibold py-3 px-5">&#x2606;</div>
       </div>
 
       <div className="flex justify-between items-center py-5">
