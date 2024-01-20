@@ -3,11 +3,16 @@ import { authConfig } from "@/configs/auth";
 import { queryWatchList } from "@/data/queryWatchList";
 import { userWatchList } from "@/utils/fetchCoinList";
 import { CoinList } from "@/components/CoinList";
+// import { db } from "@/configs/firebase";
+// import { doc } from 'firebase/firestore';
 
 export default async function WatchlistPage() {
   const session = await getServerSession(authConfig);
 
   const controller = new AbortController();
+
+  // const coinRef = doc(db, 'watchlist', 'XTnfEzpKfFUTNRWJLElzfabS0so1');
+  // console.log(coinRef)
 
   const userCoinList = await userWatchList(queryWatchList, controller.signal);
 

@@ -8,7 +8,10 @@ export const BtnSigninGoogle = () => {
   const callbackUrl = searchParams.get("callbackUrl") || "/watchlist";
 
   return (
-    <button className="py-2 w-64 rounded-md bg-gray-50 text-black text-xl font-bold hover:bg-yellow-500 transition-colors" onClick={() => signIn("google", { callbackUrl })}>
+    <button
+      className="py-2 w-64 rounded-md bg-gray-50 text-black text-xl font-bold hover:bg-yellow-500 transition-colors"
+      onClick={() => signIn("google", { callbackUrl })}
+    >
       Sign in with Google
     </button>
   );
