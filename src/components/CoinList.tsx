@@ -5,9 +5,7 @@ type Props = {
   coinList: ICoin[]
 }
 
-export default async function CoinList({coinList}: Props) {
-  
-
+export const CoinList = ({coinList}: Props) => {
   return (
     <ul>
       {coinList

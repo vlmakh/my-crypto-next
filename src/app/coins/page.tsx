@@ -1,7 +1,6 @@
-import { CoinListItem } from "@/components/CoinListItem";
 import { fetchCoinList } from "@/utils/fetchCoinList";
 import { Pagination } from "@/components/Pagination";
-import type { ICoin } from "@/types";
+import { CoinList } from "@/components/CoinList";
 
 export default async function CoinsPage({
   searchParams,
@@ -9,18 +8,14 @@ export default async function CoinsPage({
   searchParams: { page: number };
 }) {
   const page = searchParams["page"] ?? "1";
-  const coinList = await fetchCoinList(page);  
+
+  const totalCoinList = await fetchCoinList(page);
 
   return (
     <>
-      <ul>
-        {coinList.result &&
-          coinList.result.map(
-            (coin: ICoin) => coin && <CoinListItem key={coin.id} coin={coin} />
-          )}
-      </ul>
+      <CoinList coinList={totalCoinList.result} />
 
-      <Pagination metaInfo={coinList.meta} />
+      <Pagination metaInfo={totalCoinList.meta} />
     </>
   );
 }
