@@ -5,6 +5,8 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { auth } from "@/configs/firebase";
 
+
+
 export const SignupEmailForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -13,9 +15,14 @@ export const SignupEmailForm = () => {
 
   const signup = () => {
     createUserWithEmailAndPassword(auth, email, password)
-      .then((data) => {
-        console.log(data.user);
-        router.push("/signin");
+      .then((data: any) => {
+        const { email, accessToken, uid } = data.user;
+
+        const userInfo = { email, token: accessToken, uid };
+
+        localStorage.setItem('mycrypto-vm', JSON.stringify(userInfo));
+
+        router.push("/coins");
       })
       .catch((e) => console.log(e));
   };

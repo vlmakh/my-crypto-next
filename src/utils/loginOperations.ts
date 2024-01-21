@@ -15,9 +15,9 @@ export const register = async (credentials: ICredentials) => {
       auth,
       credentials.email,
       credentials.password
-    ).then((userCredential) => {
-      const { email, uid } = userCredential.user;
-      return { email, uid };
+    ).then((userCredential: any) => {
+      const { email, accessToken, uid } = userCredential.user;
+      return { email, accessToken, uid };
     });
   } catch (error: any) {
     console.log(error.code, error.message);
