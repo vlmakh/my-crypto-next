@@ -1,12 +1,12 @@
 import { SigninGoogleBtn } from "@/components/ui/SigninGoogleBtn";
 import { SigninEmailForm } from "@/components/ui/SigninEmailForm";
-import { getServerSession } from "next-auth";
-import { authConfig } from "@/configs/auth";
+// import { getServerSession } from "next-auth";
+// import { authConfig } from "@/configs/auth";
 
 export default async function SigninPage() {
-  const session = await getServerSession(authConfig);
+  // const session = await getServerSession(authConfig);
 
-  console.log(session)
+  // console.log(session)
 
   return (
     <div className="text-center">
