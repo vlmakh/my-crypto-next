@@ -1,6 +1,6 @@
 "use client";
 
-import { doc, setDoc, getDoc } from "firebase/firestore";
+import { doc, setDoc } from "firebase/firestore";
 import { db } from "@/configs/firebase";
 
 type Props = {
