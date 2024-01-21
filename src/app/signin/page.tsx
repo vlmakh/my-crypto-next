@@ -1,4 +1,4 @@
-import { BtnSigninGoogle } from "@/components/ui/BtnSigninGoogle";
+import { SigninGoogleBtn } from "@/components/ui/SigninGoogleBtn";
 import { SigninEmailForm } from "@/components/ui/SigninEmailForm";
 import { getServerSession } from "next-auth";
 import { authConfig } from "@/configs/auth";
@@ -12,7 +12,7 @@ export default async function SigninPage() {
     <div className="text-center">
       <h1 className="py-5">Sign In</h1>
 
-      <BtnSigninGoogle />
+      <SigninGoogleBtn />
 
       <p>or</p>
 

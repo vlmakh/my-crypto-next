@@ -5,6 +5,10 @@ import { formatPrice } from "@/utils/formatPrice";
 import { CoinChart } from "@/components/CoinChart";
 import { ICoin } from "@/types";
 import { BackLink } from "@/components/ui/BackLink";
+import { AddRemoveButton } from "@/components/ui/AddRemoveButton";
+// import { doc, getDoc } from "firebase/firestore";
+// import { db } from "@/configs/firebase";
+import { queryWatchList } from "@/data/queryWatchList";
 
 type Props = {
   params: {
@@ -25,20 +29,41 @@ export async function generateMetadata({
 export default async function CoinPage({ params: { id } }: Props) {
   const coin: ICoin = await fetchCoinItem(id);
 
+  const uid = "HhdJFQ6innD3Q4uPhgQL";
+  // const coinRef = doc(db, "watchlist", uid);
+  // const docSnap = await getDoc(coinRef);
+
+  // if (docSnap.exists()) {
+  //   console.log("Document data:", docSnap.data());
+  // } else {
+  //   // docSnap.data() will be undefined in this case
+  //   console.log("No such document!");
+  // }
+
   return (
     <div className="text-center pt-5 sm:px-4 lg:w-1/2 mx-auto lg:px-0">
       <div className="flex justify-between">
         <BackLink />
 
         <div className="flex gap-4">
-          <Image src={coin.icon} alt={coin.id} width={60} height={60} priority />
+          <Image
+            src={coin.icon}
+            alt={coin.id}
+            width={60}
+            height={60}
+            priority
+          />
           <div>
             <h2 className="font-bold text-3xl text-left">{coin.symbol}</h2>
             <p>{coin.name}</p>
           </div>
         </div>
 
-        <div className="text-xl font-semibold py-3 px-5">&#x2606;</div>
+        <AddRemoveButton
+          coinId={coin.id}
+          uid={uid}
+          watchlist={queryWatchList}
+        />
       </div>
 
       <div className="flex justify-between items-center py-5">
