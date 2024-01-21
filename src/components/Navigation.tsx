@@ -2,13 +2,8 @@
 
 import Link from "next/link";
 import { navlinks } from "@/data/navlinks";
-import { INavLink } from "@/types";
 import { useSession, signOut } from "next-auth/react";
 import { usePathname } from "next/navigation";
-
-type Props = {
-  navLinks: INavLink[];
-};
 
 export const Navigation = () => {
   const pathname = usePathname();
