@@ -44,11 +44,11 @@ export const loginGoogle = async () => {
     const provider = new GoogleAuthProvider();
 
     const response = await signInWithPopup(auth, provider);
-    const { email, uid } = response.user;
+    const user = response.user;
     const credential = GoogleAuthProvider.credentialFromResult(response);
     const token = credential?.accessToken;
 
-    return { email, uid, token };
+    return { user, token };
   } catch (error: any) {
     console.log(error.code, error.message);
   }
