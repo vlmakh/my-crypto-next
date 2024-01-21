@@ -13,9 +13,12 @@ export default async function WatchlistPage() {
 
   const userCoinList = await userWatchList(queryWatchList, controller.signal);
 
-  // const value = doc(db, 'watchlist', 'XTnfEzpKfFUTNRWJLElzfabS0so1');
-  // const docSnap = await getDoc(value);
-  // console.log(docSnap);
+//   const value = doc(db, 'watchlist', 'XTnfEzpKfFUTNRWJLElzfabS0so1');
+//   const docSnap = await getDoc(value);
+
+//   if (docSnap.exists()) {
+//   console.log("Document data:", docSnap.data());
+// }
 
   return (
     <>
