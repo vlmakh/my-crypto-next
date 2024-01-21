@@ -53,11 +53,11 @@ export const AddRemoveButton = ({ coinId, uid, watchlist }: Props) => {
   return (
     <button
       onClick={inWatchlist ? handleremove : handleadd}
-      className="px-5 py-3 transition-colors text-xl font-semibold"
+      className="py-3 transition-colors text-xl font-semibold"
     >
       <span className="inline-block hover:text-yellow-500 hover:scale-150 transition-all">
         {/* {inWatchlist ? decode('&#x2605;') : decode('&#x2606;')} */}
-        &#x2605;
+        &#x2606;
       </span>
     </button>
   );
