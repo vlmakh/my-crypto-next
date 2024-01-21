@@ -18,7 +18,18 @@ export interface ICoin {
 }
 
 export interface INavLink {
-  id: string,
+  id: string;
   label: string;
   href: string;
-};
+}
+
+export interface ICredentials {
+  email: string;
+  password: string;
+}
+
+export interface IUser {
+  email: string;
+  accessToken: string;
+  uid: string;
+}
