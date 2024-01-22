@@ -12,12 +12,11 @@ export default async function SigninPage() {
   }
 
   return (
-    <div className="text-center">
-      <h1 className="py-5">Sign In</h1>
+    <div className="text-center pt-8">
 
       <SigninGoogleBtn />
 
-      <p>or</p>
+      <p className="mt-5">or</p>
 
       <SigninEmailForm />
     </div>
