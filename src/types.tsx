@@ -30,6 +30,8 @@ export interface ICredentials {
 
 export interface IUser {
   email: string;
-  accessToken: string;
+  name: string;
   uid: string;
+  accessToken?: string;
+  isLoading?: boolean;
 }
