@@ -30,7 +30,7 @@ export const useUserStore = create<IUserState>()(devtools(set => ({
   },
 
   signout() {
-    // set({ isLoading: true });
+    set({ isLoading: true });
 
     operSignOut()
       .then(() => {
@@ -39,6 +39,7 @@ export const useUserStore = create<IUserState>()(devtools(set => ({
       .catch(e => console.log(e))
       .finally(() => {
         set(initialUserState);
+        set({ isLoading: false });
       });
   },
      
