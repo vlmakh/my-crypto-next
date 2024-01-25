@@ -2,12 +2,15 @@
 
 import Link from "next/link";
 import { navlinks } from "@/data/navlinks";
-import { useSession, signOut } from "next-auth/react";
+// import { useSession, signOut } from "next-auth/react";
 import { usePathname } from "next/navigation";
+import { useUserStore } from "@/configs/store";
 
 export const Navigation = () => {
   const pathname = usePathname();
-  const session = useSession();
+  // const session = useSession();
+  const uid = useUserStore((state) => state.uid);
+  const signout = useUserStore(state => state.signout)
 
   // console.log(session);
 
@@ -34,7 +37,7 @@ export const Navigation = () => {
         );
       })}
 
-      {session?.data && (
+      {uid && (
         <Link
           href="/watchlist"
           className={`group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30 ${
@@ -50,11 +53,12 @@ export const Navigation = () => {
         </Link>
       )}
 
-      {session?.data ? (
+      {uid ? (
         <Link
           href="#"
           className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          onClick={() => signOut({ callbackUrl: "/" })}
+          // onClick={() => signOut({ callbackUrl: "/" })}
+          onClick={() => signout()}
         >
           <p className="text-xl font-semibold">
             Sign Out

@@ -39,7 +39,7 @@ export const loginEmail = async (credentials: ICredentials) => {
   }
 };
 
-export const loginGoogle = async () => {
+export const operSigninGoogle = async () => {
   try {
     const provider = new GoogleAuthProvider();
 
@@ -77,7 +77,7 @@ export const loginPhone = async () => {
   }
 };
 
-export const logout = async () => {
+export const operSignOut = async () => {
   try {
     await auth.signOut();
   } catch (error: any) {
