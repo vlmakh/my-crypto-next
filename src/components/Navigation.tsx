@@ -9,7 +9,7 @@ export const Navigation = () => {
   const pathname = usePathname();
   const session = useSession();
 
-  // console.log(session);
+  console.log(session);
 
   return (
     <div className="flex gap-2 justify-center">
