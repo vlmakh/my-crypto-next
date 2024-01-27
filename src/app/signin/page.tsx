@@ -3,15 +3,10 @@
 import { SigninGoogleBtn } from "@/components/ui/SigninGoogleBtn";
 // import { SigninEmailForm } from "@/components/ui/SigninEmailForm";
 import { redirect } from "next/navigation";
-// import { getServerSession } from "next-auth";
-// import { authConfig } from "@/configs/auth";
 import { useUserStore } from "@/configs/store";
 
 export default function SigninPage() {
   const uid = useUserStore((state) => state.uid);
-  // const session = await getServerSession(authConfig);
-
-  // console.log(session)
 
   {
     uid && redirect(`/watchlist`);
