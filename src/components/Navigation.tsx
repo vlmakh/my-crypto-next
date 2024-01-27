@@ -16,7 +16,7 @@ export const Navigation = () => {
   const spanClass =
     "inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none group-hover:text-yellow-500";
 
-  // console.log(session);
+  console.log(session);
 
   return (
     <div className="flex gap-2 justify-center">
