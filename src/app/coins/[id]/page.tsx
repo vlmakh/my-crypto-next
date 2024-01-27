@@ -6,11 +6,6 @@ import { CoinChart } from "@/components/CoinChart";
 import { ICoin } from "@/types";
 import { BackLink } from "@/components/ui/BackLink";
 import { AddRemoveButton } from "@/components/ui/AddRemoveButton";
-// import { doc, getDoc } from "firebase/firestore";
-// import { db } from "@/configs/firebase";
-import { queryWatchList } from "@/data/queryWatchList";
-import { getServerSession } from "next-auth";
-import { authConfig } from "@/configs/auth";
 
 type Props = {
   params: {
@@ -30,18 +25,6 @@ export async function generateMetadata({
 
 export default async function CoinPage({ params: { id } }: Props) {
   const coin: ICoin = await fetchCoinItem(id);
-  const session = await getServerSession(authConfig);
-
-  const uid = "HhdJFQ6innD3Q4uPhgQL";
-  // const coinRef = doc(db, "watchlist", uid);
-  // const docSnap = await getDoc(coinRef);
-
-  // if (docSnap.exists()) {
-  //   console.log("Document data:", docSnap.data());
-  // } else {
-  //   // docSnap.data() will be undefined in this case
-  //   console.log("No such document!");
-  // }
 
   return (
     <div className="text-center pt-5 sm:px-4 lg:w-1/2 mx-auto lg:px-0">
@@ -63,13 +46,7 @@ export default async function CoinPage({ params: { id } }: Props) {
         </div>
 
         <div className="px-5">
-          {session?.user && (
-            <AddRemoveButton
-              coinId={coin.id}
-              uid={uid}
-              watchlist={queryWatchList}
-            />
-          )}
+          <AddRemoveButton coinId={coin.id} />
         </div>
       </div>
 

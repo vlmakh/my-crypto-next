@@ -35,3 +35,18 @@ export interface IUser {
   accessToken?: string;
   isLoading?: boolean;
 }
+
+export interface IUserState {
+  email: string;
+  name: string;
+  uid: string;
+  accessToken: string,
+  watchlist: string[],
+  signinGoogle: () => void;
+  // loginUser: (regData: ICredentials, resetForm: () => void) => void;
+  // checkUser: () => void;
+  // updateName: (values: { name: string }, resetForm: () => void) => void;
+  // updatePass: (values: { password: string }, resetForm: () => void) => void;
+  signout: () => void;
+  updateWatchListState: (x: string[]) => void; 
+}

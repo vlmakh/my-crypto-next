@@ -1,4 +1,4 @@
-// import Image from "next/image";
+import Image from "next/image";
 
 export const TheFooter = () => {
   return (
@@ -12,7 +12,8 @@ export const TheFooter = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          By VM
+          By
+          <Image src="/vm_logo.svg" alt="VM" width={40} height={21} />
         </a>
       </div>
     </footer>
