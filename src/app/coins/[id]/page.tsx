@@ -66,7 +66,6 @@ export default async function CoinPage({ params: { id } }: Props) {
           
             <AddRemoveButton
               coinId={coin.id}
-              uid={uid}
               watchlist={queryWatchList}
             />
           

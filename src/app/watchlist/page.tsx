@@ -12,6 +12,7 @@ import { CoinList } from "@/components/CoinList";
 export default async function WatchlistPage() {
   // const session = await getServerSession(authConfig);
   // const [watchList, setWatchList] = useState([]);
+  // const [userCoinList, setUserCoinList] = useState([]);
 
   const controller = new AbortController();
   // const uid = useUserStore((state) => state.uid);
@@ -20,19 +21,22 @@ export default async function WatchlistPage() {
   // {
   //   !uid && redirect(`/`);
   // }
+  const userCoinList = await fetchInfoByUserWatchList(queryWatchList, controller.signal)
 
   // useEffect(() => {
-  //   // localStorage.setItem('mycrypto', JSON.stringify(user));
-
-  //   const watchlistRef = doc(db, "watchlist", uid);
-  //   const unsubscribe = onSnapshot(watchlistRef, (coin) => {
-  //     if (coin.exists()) {
-  //       setWatchList(coin.data().coins);
-  //       console.log(coin.data().coins);
-  //     } else {
-  //       console.log("No Items in Watchlist");
-  //     }
-  //   });
+    //   // localStorage.setItem('mycrypto', JSON.stringify(user));
+    // fetchInfoByUserWatchList(queryWatchList, controller.signal).then(
+    //   (data: any) => setUserCoinList(data)
+    // );
+    //   const watchlistRef = doc(db, "watchlist", uid);
+    //   const unsubscribe = onSnapshot(watchlistRef, (coin) => {
+    //     if (coin.exists()) {
+    //       setWatchList(coin.data().coins);
+    //       console.log(coin.data().coins);
+    //     } else {
+    //       console.log("No Items in Watchlist");
+    //     }
+  // }, []);
 
   //   return () => {
   //     unsubscribe();
@@ -45,8 +49,6 @@ export default async function WatchlistPage() {
   //   if (docSnap.exists()) {
   //   console.log("Document data:", docSnap.data());
   // }
-
-    const userCoinList = await fetchInfoByUserWatchList(queryWatchList, controller.signal);
 
   return (
     <>

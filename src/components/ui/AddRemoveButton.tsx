@@ -6,12 +6,11 @@ import { useUserStore } from "@/configs/store";
 
 type Props = {
   coinId: string;
-  uid: string;
   watchlist: string[];
 };
 
-export const AddRemoveButton = ({ coinId, uid, watchlist }: Props) => {
-  const uidUser = useUserStore((state) => state.uid);
+export const AddRemoveButton = ({ coinId, watchlist }: Props) => {
+  const uid = useUserStore((state) => state.uid);
   const inWatchlist = watchlist.includes(coinId);
 
   const coinRef = doc(db, "watchlist", uid);
@@ -40,23 +39,23 @@ export const AddRemoveButton = ({ coinId, uid, watchlist }: Props) => {
     }
   };
 
-  const handleadd = () => {
-    addToWatchlist()
-      .then(() => console.log("added"))
-      .catch((e) => console.log(e));
-  };
+  // const handleadd = () => {
+  //   addToWatchlist()
+  //     .then(() => console.log("added"))
+  //     .catch((e) => console.log(e));
+  // };
 
-  const handleremove = () => {
-    removeFromWatchlist()
-      .then(() => console.log("removed"))
-      .catch((e) => console.log(e));
-  };
+  // const handleremove = () => {
+  //   removeFromWatchlist()
+  //     .then(() => console.log("removed"))
+  //     .catch((e) => console.log(e));
+  // };
 
   return (
     <>
-      {uidUser && (
+      {uid && (
         <button
-          onClick={inWatchlist ? handleremove : handleadd}
+          onClick={inWatchlist ? removeFromWatchlist : addToWatchlist}
           className="py-3 transition-colors text-xl font-semibold"
         >
           <span className="inline-block hover:text-yellow-500 hover:scale-150 transition-all">
