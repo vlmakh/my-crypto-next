@@ -41,11 +41,12 @@ export interface IUserState {
   name: string;
   uid: string;
   accessToken: string,
-  isLoading: boolean,
+  watchlist: string[],
   signinGoogle: () => void;
   // loginUser: (regData: ICredentials, resetForm: () => void) => void;
   // checkUser: () => void;
   // updateName: (values: { name: string }, resetForm: () => void) => void;
   // updatePass: (values: { password: string }, resetForm: () => void) => void;
   signout: () => void;
+  updateWatchListState: (x: string[]) => void; 
 }

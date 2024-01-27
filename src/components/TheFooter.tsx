@@ -1,4 +1,4 @@
-// import Image from "next/image";
+import Image from "next/image";
 
 export const TheFooter = () => {
   return (
@@ -7,12 +7,13 @@ export const TheFooter = () => {
 
       <div className="flex justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
         <a
-          className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
+          className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0 bg-white hover:text-yellow-500"
           href="https://vlad-makhnenko.netlify.app/"
           target="_blank"
           rel="noopener noreferrer"
         >
-          By VM
+          By
+          <Image src="/vm_logo.svg" alt="VM" width={40} height={40} />
         </a>
       </div>
     </footer>

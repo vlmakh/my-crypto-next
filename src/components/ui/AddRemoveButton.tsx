@@ -6,11 +6,11 @@ import { useUserStore } from "@/configs/store";
 
 type Props = {
   coinId: string;
-  watchlist: string[];
 };
 
-export const AddRemoveButton = ({ coinId, watchlist }: Props) => {
+export const AddRemoveButton = ({ coinId }: Props) => {
   const uid = useUserStore((state) => state.uid);
+  const watchlist = useUserStore((state) => state.watchlist);
   const inWatchlist = watchlist.includes(coinId);
 
   const coinRef = doc(db, "watchlist", uid);
@@ -47,7 +47,7 @@ export const AddRemoveButton = ({ coinId, watchlist }: Props) => {
           className="py-3 transition-colors text-xl font-semibold"
         >
           <span className="inline-block hover:text-yellow-500 hover:scale-150 transition-all">
-            {inWatchlist ? '\u2605' : '\u2606'}
+            {inWatchlist ? "\u2605" : "\u2606"}
           </span>
         </button>
       )}

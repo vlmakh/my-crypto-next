@@ -8,30 +8,23 @@ const initialUserState = {
   name: "",
   uid: "",
   accessToken: "",
-  isLoading: false,
+  watchlist: [],
 };
 
 export const useUserStore = create<IUserState>()(devtools(set => ({
     ...initialUserState,
   
   signinGoogle() {
-    set({ isLoading: true });
-
     operSigninGoogle()
       .then((data: any) => {
         localStorage.setItem('my-crypto-vm', JSON.stringify(data?.token));
 
         set({ email: data.user.email, name: data.user.displayName, uid: data.user.uid, });
       })
-      .catch((error: any) => console.log(error))
-      .finally(() => {
-        set({ isLoading: false });
-      });
+      .catch((error: any) => console.log(error))     
   },
 
   signout() {
-    set({ isLoading: true });
-
     operSignOut()
       .then(() => {
         localStorage.removeItem('my-crypto-vm');
@@ -39,8 +32,11 @@ export const useUserStore = create<IUserState>()(devtools(set => ({
       .catch(e => console.log(e))
       .finally(() => {
         set(initialUserState);
-        set({ isLoading: false });
       });
+  },
+
+  updateWatchListState(list: string[]) {
+    set({watchlist: list})
   },
      
 })));
