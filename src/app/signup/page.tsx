@@ -1,9 +1,9 @@
-import { getServerSession } from "next-auth";
-import { authConfig } from "@/configs/auth";
+// import { getServerSession } from "next-auth";
+// import { authConfig } from "@/configs/auth";
 import { SignupEmailForm } from "@/components/ui/SignupEmailForm";
 
 export default async function SignupPage() {
-  const session = await getServerSession(authConfig);
+  // const session = await getServerSession(authConfig);
 
 //   console.log(session);
 
