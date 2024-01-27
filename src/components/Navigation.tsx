@@ -2,13 +2,11 @@
 
 import Link from "next/link";
 import { navlinks } from "@/data/navlinks";
-// import { useSession, signOut } from "next-auth/react";
 import { usePathname } from "next/navigation";
 import { useUserStore } from "@/configs/store";
 
 export const Navigation = () => {
   const pathname = usePathname();
-  // const session = useSession();
   const uid = useUserStore((state) => state.uid);
   const signout = useUserStore((state) => state.signout);
   const linkClass =
@@ -16,7 +14,6 @@ export const Navigation = () => {
   const spanClass =
     "inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none group-hover:text-yellow-500";
 
-  console.log(session);
 
   return (
     <div className="flex gap-2 justify-center">
@@ -57,7 +54,6 @@ export const Navigation = () => {
         <Link
           href="#"
           className={linkClass}
-          // onClick={() => signOut({ callbackUrl: "/" })}
           onClick={() => signout()}
         >
           <p className="text-xl font-semibold">
