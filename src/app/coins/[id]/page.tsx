@@ -9,8 +9,8 @@ import { AddRemoveButton } from "@/components/ui/AddRemoveButton";
 // import { doc, getDoc } from "firebase/firestore";
 // import { db } from "@/configs/firebase";
 import { queryWatchList } from "@/data/queryWatchList";
-import { getServerSession } from "next-auth";
-import { authConfig } from "@/configs/auth";
+// import { getServerSession } from "next-auth";
+// import { authConfig } from "@/configs/auth";
 
 type Props = {
   params: {
@@ -30,7 +30,7 @@ export async function generateMetadata({
 
 export default async function CoinPage({ params: { id } }: Props) {
   const coin: ICoin = await fetchCoinItem(id);
-  const session = await getServerSession(authConfig);
+  // const session = await getServerSession(authConfig);
 
   const uid = "HhdJFQ6innD3Q4uPhgQL";
   // const coinRef = doc(db, "watchlist", uid);
@@ -63,13 +63,13 @@ export default async function CoinPage({ params: { id } }: Props) {
         </div>
 
         <div className="px-5">
-          {session?.user && (
+          
             <AddRemoveButton
               coinId={coin.id}
               uid={uid}
               watchlist={queryWatchList}
             />
-          )}
+          
         </div>
       </div>
 

@@ -1,28 +1,56 @@
-import { getServerSession } from "next-auth";
-import { authConfig } from "@/configs/auth";
+// import { getServerSession } from "next-auth";
+// import { authConfig } from "@/configs/auth";
+// import { redirect } from "next/navigation";
 import { queryWatchList } from "@/data/queryWatchList";
-import { userWatchList } from "@/utils/fetchCoinList";
+import { fetchInfoByUserWatchList } from "@/utils/fetchCoinList";
 import { CoinList } from "@/components/CoinList";
-// import { db } from '@/configs/firebase';
-// import { doc, getDoc } from 'firebase/firestore';
+// import { useUserStore } from "@/configs/store";
+// import { db } from "@/configs/firebase";
+// import { doc, getDoc, onSnapshot } from "firebase/firestore";
+// import { useState, useEffect } from "react";
 
 export default async function WatchlistPage() {
-  const session = await getServerSession(authConfig);
+  // const session = await getServerSession(authConfig);
+  // const [watchList, setWatchList] = useState([]);
 
   const controller = new AbortController();
+  // const uid = useUserStore((state) => state.uid);
+  // const name = useUserStore((state) => state.name);
 
-  const userCoinList = await userWatchList(queryWatchList, controller.signal);
+  // {
+  //   !uid && redirect(`/`);
+  // }
 
-//   const value = doc(db, 'watchlist', 'XTnfEzpKfFUTNRWJLElzfabS0so1');
-//   const docSnap = await getDoc(value);
+  // useEffect(() => {
+  //   // localStorage.setItem('mycrypto', JSON.stringify(user));
 
-//   if (docSnap.exists()) {
-//   console.log("Document data:", docSnap.data());
-// }
+  //   const watchlistRef = doc(db, "watchlist", uid);
+  //   const unsubscribe = onSnapshot(watchlistRef, (coin) => {
+  //     if (coin.exists()) {
+  //       setWatchList(coin.data().coins);
+  //       console.log(coin.data().coins);
+  //     } else {
+  //       console.log("No Items in Watchlist");
+  //     }
+  //   });
+
+  //   return () => {
+  //     unsubscribe();
+  //   };
+  // }, [uid]);
+
+  //   const value = doc(db, 'watchlist', uid);
+  //   const docSnap = await getDoc(value);
+
+  //   if (docSnap.exists()) {
+  //   console.log("Document data:", docSnap.data());
+  // }
+
+    const userCoinList = await fetchInfoByUserWatchList(queryWatchList, controller.signal);
 
   return (
     <>
-      <h1 className="text-center py-5">{session?.user?.name}</h1>
+      {/* <h1 className="text-center py-5">{name}</h1> */}
 
       {userCoinList.length > 0 ? (
         <CoinList coinList={userCoinList} />

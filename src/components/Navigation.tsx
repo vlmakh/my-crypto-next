@@ -10,7 +10,11 @@ export const Navigation = () => {
   const pathname = usePathname();
   // const session = useSession();
   const uid = useUserStore((state) => state.uid);
-  const signout = useUserStore(state => state.signout)
+  const signout = useUserStore((state) => state.signout);
+  const linkClass =
+    "group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30";
+  const spanClass =
+    "inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none group-hover:text-yellow-500";
 
   // console.log(session);
 
@@ -23,9 +27,7 @@ export const Navigation = () => {
           <Link
             key={link.id}
             href={link.href}
-            className={`group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30 ${
-              isActive ? "text-yellow-500" : ""
-            }`}
+            className={`${linkClass} ${isActive ? "text-yellow-500" : ""}`}
           >
             <p className="text-xl font-semibold">
               {link.label}
@@ -40,15 +42,13 @@ export const Navigation = () => {
       {uid && (
         <Link
           href="/watchlist"
-          className={`group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30 ${
+          className={`${linkClass} ${
             pathname === "/watchlist" ? "text-yellow-500" : ""
           }`}
         >
           <p className="text-xl font-semibold">
             Watchlist
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none group-hover:text-yellow-500">
-              -&gt;
-            </span>
+            <span className={spanClass}>-&gt;</span>
           </p>
         </Link>
       )}
@@ -56,29 +56,25 @@ export const Navigation = () => {
       {uid ? (
         <Link
           href="#"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
+          className={linkClass}
           // onClick={() => signOut({ callbackUrl: "/" })}
           onClick={() => signout()}
         >
           <p className="text-xl font-semibold">
             Sign Out
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none group-hover:text-yellow-500">
-              -&gt;
-            </span>
+            <span className={spanClass}>-&gt;</span>
           </p>
         </Link>
       ) : (
         <Link
           href="/signin"
-          className={`group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30 ${
+          className={`${linkClass} ${
             pathname === "/signin" ? "text-yellow-500" : ""
           }`}
         >
           <p className="text-xl font-semibold">
             SignIn
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none group-hover:text-yellow-500">
-              -&gt;
-            </span>
+            <span className={spanClass}>-&gt;</span>
           </p>
         </Link>
       )}

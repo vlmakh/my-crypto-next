@@ -41,7 +41,7 @@ export const historicalChart = async (id: string, period: string) => {
   return response.json();
 };
 
-export const userWatchList = async (
+export const fetchInfoByUserWatchList = async (
   array: string[],
   abortSignal: AbortSignal
 ) => {

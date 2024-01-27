@@ -2,6 +2,7 @@
 
 import { doc, setDoc } from "firebase/firestore";
 import { db } from "@/configs/firebase";
+import { useUserStore } from "@/configs/store";
 
 type Props = {
   coinId: string;
@@ -10,6 +11,7 @@ type Props = {
 };
 
 export const AddRemoveButton = ({ coinId, uid, watchlist }: Props) => {
+  const uidUser = useUserStore((state) => state.uid);
   const inWatchlist = watchlist.includes(coinId);
 
   const coinRef = doc(db, "watchlist", uid);
@@ -51,14 +53,18 @@ export const AddRemoveButton = ({ coinId, uid, watchlist }: Props) => {
   };
 
   return (
-    <button
-      onClick={inWatchlist ? handleremove : handleadd}
-      className="py-3 transition-colors text-xl font-semibold"
-    >
-      <span className="inline-block hover:text-yellow-500 hover:scale-150 transition-all">
-        {/* {inWatchlist ? decode('&#x2605;') : decode('&#x2606;')} */}
-        &#x2606;
-      </span>
-    </button>
+    <>
+      {uidUser && (
+        <button
+          onClick={inWatchlist ? handleremove : handleadd}
+          className="py-3 transition-colors text-xl font-semibold"
+        >
+          <span className="inline-block hover:text-yellow-500 hover:scale-150 transition-all">
+            {/* {inWatchlist ? decode('&#x2605;') : decode('&#x2606;')} */}
+            &#x2606;
+          </span>
+        </button>
+      )}
+    </>
   );
 };

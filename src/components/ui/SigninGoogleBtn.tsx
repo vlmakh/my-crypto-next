@@ -13,7 +13,7 @@ export const SigninGoogleBtn = () => {
 
   const handleSigninGoogle = () => {
     signinGoogle();
-    router.push("/watchlist");
+    // router.push("/watchlist");
   };
 
   return (
