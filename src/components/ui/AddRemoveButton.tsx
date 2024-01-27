@@ -39,18 +39,6 @@ export const AddRemoveButton = ({ coinId, watchlist }: Props) => {
     }
   };
 
-  // const handleadd = () => {
-  //   addToWatchlist()
-  //     .then(() => console.log("added"))
-  //     .catch((e) => console.log(e));
-  // };
-
-  // const handleremove = () => {
-  //   removeFromWatchlist()
-  //     .then(() => console.log("removed"))
-  //     .catch((e) => console.log(e));
-  // };
-
   return (
     <>
       {uid && (
@@ -59,8 +47,7 @@ export const AddRemoveButton = ({ coinId, watchlist }: Props) => {
           className="py-3 transition-colors text-xl font-semibold"
         >
           <span className="inline-block hover:text-yellow-500 hover:scale-150 transition-all">
-            {/* {inWatchlist ? decode('&#x2605;') : decode('&#x2606;')} */}
-            &#x2606;
+            {inWatchlist ? '\u2605' : '\u2606'}
           </span>
         </button>
       )}
