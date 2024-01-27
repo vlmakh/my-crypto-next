@@ -4,6 +4,7 @@ import { SigninGoogleBtn } from "@/components/ui/SigninGoogleBtn";
 // import { SigninEmailForm } from "@/components/ui/SigninEmailForm";
 import { redirect } from "next/navigation";
 import { useUserStore } from "@/configs/store";
+import { Container } from "@/components/Container";
 
 export default function SigninPage() {
   const uid = useUserStore((state) => state.uid);
@@ -13,13 +14,13 @@ export default function SigninPage() {
   }
 
   return (
-    <div className="text-center pt-12">
+    <Container>
 
       <SigninGoogleBtn />
 
       {/* <p className="mt-5">or</p> */}
 
       {/* <SigninEmailForm /> */}
-    </div>
+    </Container>
   );
 }

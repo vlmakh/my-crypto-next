@@ -1,16 +1,17 @@
 import Image from "next/image";
+import { Container } from "@/components/Container";
 
 export default async function HomePage() {
   return (
-    <div className="text-center pt-5">
+    <Container>
       <Image
         src="/logo512.webp"
         alt=""
         width={300}
         height={300}
-        className="mx-auto"
+        className="mx-auto mt-12"
         priority
       />
-    </div>
+    </Container>
   );
 }

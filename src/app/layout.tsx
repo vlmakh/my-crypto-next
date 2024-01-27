@@ -19,11 +19,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} flex flex-col h-screen`}>
-          <TheHeader />
+        <TheHeader />
 
-          <main className="mb-auto">{children}</main>
+        <main className="mb-auto">{children}</main>
 
-          <TheFooter />
+        <TheFooter />
       </body>
     </html>
   );
