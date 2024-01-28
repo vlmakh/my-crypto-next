@@ -7,13 +7,13 @@ import { ICoin } from "@/types";
 export const CoinListItem = ({ coin }: { coin: ICoin }) => {
   return (
     <li className="mx-auto max-w-min border-b-2">
-      <Link href={`/coins/${coin.id}`} className="flex gap-4 py-1 px-2 items-center">
+      <Link href={`/coins/${coin.id}`} className="group flex gap-4 py-1 px-2 items-center">
         <Image src={coin.icon} alt={coin.id} width={48} height={48} />
 
         <div className="text-left w-44">
-          <p className="font-bold text-xl">{coin.symbol}</p>
+          <p className="font-bold text-xl group-hover:text-yellow-500 transition-colors">{coin.symbol}</p>
 
-          <p>{coin.name}</p>
+          <p className="group-hover:text-yellow-500 transition-colors">{coin.name}</p>
         </div>
 
         <p className={`font-bold w-32 text-right ${coin.priceChange1d >= 0 ? 'text-green-500' : 'text-red-500'}`}>{formatPrice(coin.price)}</p>
