@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { devtools } from "zustand/middleware";
+import { devtools, persist } from "zustand/middleware";
 import type { IUserState, IWatchlistState, ICredentials } from "@/types";
 import {
   operSigninGoogle,
@@ -12,67 +12,79 @@ const initialUserState = {
   name: "",
   uid: "",
   accessToken: "",
-  watchlist: [],
 };
 
 export const useUserStore = create<IUserState>()(
-  devtools((set) => ({
-    ...initialUserState,
+  devtools(
+    persist(
+      (set) => ({
+        ...initialUserState,
 
-    signinGoogle() {
-      operSigninGoogle()
-        .then((data: any) => {
-          localStorage.setItem("my-crypto-vm", JSON.stringify(data?.token));
+        signinGoogle: () => {
+          operSigninGoogle()
+            .then((data: any) => {
+              // localStorage.setItem(
+              //   "mycrypto-token",
+              //   JSON.stringify(data?.token)
+              // );              
 
-          set({
-            email: data.user.email,
-            name: data.user.displayName,
-            uid: data.user.uid,
-          });
-        })
-        .catch((error: any) => console.log(error));
-    },
+              set({
+                email: data.user.email,
+                name: data.user.displayName,
+                uid: data.user.uid,
+                accessToken: data.token,
+              });
+            })
+            .catch((error: any) => console.log(error));
+        },
 
-    signupEmail(regData: ICredentials) {
-      operSignupEmail(regData)
-        .then((data: any) => {
-          localStorage.setItem("my-crypto-vm", JSON.stringify(data?.token));
+        signupEmail: (regData: ICredentials) => {
+          operSignupEmail(regData)
+            .then((data: any) => {
+              // localStorage.setItem(
+              //   "mycrypto-token",
+              //   JSON.stringify(data?.token)
+              // );
 
-          set({
-            email: data.user.email,
-            name: "",
-            uid: data.user.uid,
-          });
-        })
-        .catch((e) => console.log(e));
-    },
+              set({
+                email: data.user.email,
+                name: "",
+                uid: data.user.uid,
+                accessToken: data.token,
+              });
+            })
+            .catch((e) => console.log(e));
+        },
 
-    signout() {
-      operSignOut()
-        .then(() => {
-          localStorage.removeItem("my-crypto-vm");
-        })
-        .catch((e) => console.log(e))
-        .finally(() => {
-          set(initialUserState);
-        });
-    },
-  }))
+        signout: () => {
+          operSignOut()
+            .then(() => {
+              // localStorage.removeItem("mycrypto-token");
+            })
+            .catch((e) => console.log(e))
+            .finally(() => {
+              set(initialUserState);
+            });
+        },
+      }),
+      { name: "mycrypto" }
+    )
+  )
 );
 
 export const useWatchListStore = create<IWatchlistState>()((set, get) => ({
   watchlist: [],
 
-  setWatchlistState(list) {
+  setWatchlistState: (list) => {
     set({ watchlist: list });
   },
 
-  addCoinToWatchlistState(coinId) {
+  addCoinToWatchlistState: (coinId) => {
     const watchlist = [...get().watchlist, coinId];
     set({ watchlist });
   },
 
-  removeCoinToWatchlistState(coinId) {
+  removeCoinToWatchlistState: (coinId) => {
     const watchlist = get().watchlist.filter((id) => id !== coinId);
     set({ watchlist });
   },
