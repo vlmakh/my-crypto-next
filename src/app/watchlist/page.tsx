@@ -3,7 +3,7 @@
 import { redirect } from "next/navigation";
 import { fetchInfoByUserWatchList } from "@/utils/fetchCoinList";
 import { CoinList } from "@/components/CoinList";
-import { useUserStore } from "@/configs/store";
+import { useUserStore, useWatchListStore } from "@/configs/store";
 import { db } from "@/configs/firebase";
 import { doc, onSnapshot } from "firebase/firestore";
 import { useState, useEffect } from "react";
@@ -11,8 +11,8 @@ import { useState, useEffect } from "react";
 export default function WatchlistPage() {
   const uid = useUserStore((state) => state.uid);
   const name = useUserStore((state) => state.name);
-  const updateWatchListState = useUserStore(
-    (state) => state.updateWatchListState
+  const setWatchlistState = useWatchListStore(
+    (state) => state.setWatchlistState
   );
 
   {
@@ -29,7 +29,7 @@ export default function WatchlistPage() {
     const unsubscribe = onSnapshot(watchlistRef, (coin) => {
       if (coin.exists()) {
         setWatchList(coin.data().coins);
-        updateWatchListState(coin.data().coins);
+        setWatchlistState(coin.data().coins);
       } else {
         console.log("No Items in Watchlist");
       }

@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import type { IUserState } from "@/types";
+import type { IUserState, IWatchlistState } from "@/types";
 import { devtools } from "zustand/middleware";
 import { operSigninGoogle, operSignOut } from "@/utils/loginOperations";
 
@@ -39,9 +39,23 @@ export const useUserStore = create<IUserState>()(
           set(initialUserState);
         });
     },
-
-    updateWatchListState(list) {
-      set({ watchlist: list });
-    },
   }))
 );
+
+export const useWatchListStore = create<IWatchlistState>()((set, get) => ({
+  watchlist: [],
+
+  setWatchlistState(list) {
+    set({ watchlist: list });
+  },
+
+  addCoinToWatchlistState(coinId) {
+    const watchlist = [...get().watchlist, coinId];
+    set({ watchlist });
+  },
+
+  removeCoinToWatchlistState(coinId) {
+    const watchlist = get().watchlist.filter((id) => id !== coinId);
+    set({ watchlist });
+  },
+}));

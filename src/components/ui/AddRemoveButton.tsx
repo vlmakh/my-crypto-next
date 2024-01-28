@@ -2,7 +2,7 @@
 
 import { doc, setDoc } from "firebase/firestore";
 import { db } from "@/configs/firebase";
-import { useUserStore } from "@/configs/store";
+import { useUserStore, useWatchListStore } from "@/configs/store";
 
 type Props = {
   coinId: string;
@@ -10,12 +10,18 @@ type Props = {
 
 export const AddRemoveButton = ({ coinId }: Props) => {
   const uid = useUserStore((state) => state.uid);
-  const watchlist = useUserStore((state) => state.watchlist);
+  const watchlist = useWatchListStore((state) => state.watchlist);
+  const addCoinToWatchlistState = useWatchListStore(
+    (state) => state.addCoinToWatchlistState
+  );
+  const removeCoinToWatchlistState = useWatchListStore(
+    (state) => state.removeCoinToWatchlistState
+  );
   const inWatchlist = watchlist.includes(coinId);
 
-  const coinRef = doc(db, "watchlist", uid);
-
   const addToWatchlist = async () => {
+    const coinRef = doc(db, "watchlist", uid);
+
     try {
       await setDoc(
         coinRef,
@@ -24,10 +30,14 @@ export const AddRemoveButton = ({ coinId }: Props) => {
       );
     } catch (error) {
       console.log(error);
+    } finally {
+      addCoinToWatchlistState(coinId);
     }
   };
 
   const removeFromWatchlist = async () => {
+    const coinRef = doc(db, "watchlist", uid);
+
     try {
       await setDoc(
         coinRef,
@@ -36,6 +46,8 @@ export const AddRemoveButton = ({ coinId }: Props) => {
       );
     } catch (error) {
       console.log(error);
+    } finally {
+      removeCoinToWatchlistState(coinId);
     }
   };
 

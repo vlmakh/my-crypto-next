@@ -48,5 +48,11 @@ export interface IUserState {
   // updateName: (values: { name: string }, resetForm: () => void) => void;
   // updatePass: (values: { password: string }, resetForm: () => void) => void;
   signout: () => void;
-  updateWatchListState: (x: string[]) => void; 
+}
+
+export interface IWatchlistState {
+  watchlist: string[],
+  setWatchlistState: (x: string[]) => void; 
+  addCoinToWatchlistState: (x: string) => void; 
+  removeCoinToWatchlistState: (x: string) => void;
 }
