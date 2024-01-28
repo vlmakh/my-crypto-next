@@ -26,7 +26,7 @@ export default function WatchlistPage() {
 
   useEffect(() => {
     const watchlistRef = doc(db, "watchlist", uid);
-    const unsubscribe = onSnapshot(watchlistRef, (coin) => {
+    const loadWatchlistFromFirebase = onSnapshot(watchlistRef, (coin) => {
       if (coin.exists()) {
         setWatchList(coin.data().coins);
         setWatchlistState(coin.data().coins);
@@ -36,7 +36,7 @@ export default function WatchlistPage() {
     });
 
     return () => {
-      unsubscribe();
+      loadWatchlistFromFirebase();
     };
   }, []);
 
