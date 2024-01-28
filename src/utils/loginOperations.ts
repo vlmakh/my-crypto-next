@@ -26,14 +26,14 @@ export const operSignupEmail = async (credentials: ICredentials) => {
 
 export const operSigninEmail = async (credentials: ICredentials) => {
   try {
-    const response = await signInWithEmailAndPassword(
+    signInWithEmailAndPassword(
       auth,
       credentials.email,
       credentials.password
-    );
-
-    const { email, uid } = response.user;
-    return { email, uid };
+    ).then((userCredential: any) => {
+      const { email, accessToken, uid } = userCredential.user;
+      return { email, accessToken, uid };
+    });
   } catch (error: any) {
     console.log(error.code, error.message);
   }

@@ -1,29 +1,17 @@
 "use client";
 
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { auth } from "@/configs/firebase";
+import { useUserStore } from "@/configs/store";
 import { Container } from "../Container";
 
 export const SignupEmailForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
-  const router = useRouter();
+  const signupEmail = useUserStore((state) => state.signupEmail);
 
-  const signup = () => {
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((data: any) => {
-        const { email, accessToken, uid } = data.user;
-
-        const userInfo = { email, token: accessToken, uid };
-
-        localStorage.setItem("mycrypto-vm", JSON.stringify(userInfo));
-
-        router.push("/coins");
-      })
-      .catch((e) => console.log(e));
+  const handleSubmit = (values: any) => {
+    signupEmail(values);
   };
 
   return (
@@ -100,7 +88,7 @@ export const SignupEmailForm = () => {
               !passwordConfirm ||
               password !== passwordConfirm
             }
-            onClick={() => signup()}
+            onClick={handleSubmit}
             className="disabled:opacity-40 flex w-full justify-center rounded-md bg-indigo-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
           >
             Sign Up

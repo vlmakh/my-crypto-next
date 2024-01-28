@@ -1,7 +1,11 @@
 import { create } from "zustand";
-import type { IUserState, IWatchlistState } from "@/types";
 import { devtools } from "zustand/middleware";
-import { operSigninGoogle, operSignOut } from "@/utils/loginOperations";
+import type { IUserState, IWatchlistState, ICredentials } from "@/types";
+import {
+  operSigninGoogle,
+  operSignupEmail,
+  operSignOut,
+} from "@/utils/loginOperations";
 
 const initialUserState = {
   email: "",
@@ -27,6 +31,20 @@ export const useUserStore = create<IUserState>()(
           });
         })
         .catch((error: any) => console.log(error));
+    },
+
+    signupEmail(regData: ICredentials) {
+      operSignupEmail(regData)
+        .then((data: any) => {
+          localStorage.setItem("my-crypto-vm", JSON.stringify(data?.token));
+
+          set({
+            email: data.user.email,
+            name: "",
+            uid: data.user.uid,
+          });
+        })
+        .catch((e) => console.log(e));
     },
 
     signout() {

@@ -43,10 +43,9 @@ export interface IUserState {
   accessToken: string,
   watchlist: string[],
   signinGoogle: () => void;
+  signupEmail: (regData: ICredentials) => void;
   // loginUser: (regData: ICredentials, resetForm: () => void) => void;
   // checkUser: () => void;
-  // updateName: (values: { name: string }, resetForm: () => void) => void;
-  // updatePass: (values: { password: string }, resetForm: () => void) => void;
   signout: () => void;
 }
 
