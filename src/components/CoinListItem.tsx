@@ -8,7 +8,7 @@ export const CoinListItem = ({ coin }: { coin: ICoin }) => {
   return (
     <li className="mx-auto max-w-min border-b-2">
       <Link href={`/coins/${coin.id}`} className="group flex gap-4 py-1 px-2 items-center">
-        <Image src={coin.icon} alt={coin.id} width={48} height={48} />
+        <Image src={coin.icon} alt={coin.id} width={48} height={48} className="transition-transform group-hover:scale-110"/>
 
         <div className="text-left w-44">
           <p className="font-bold text-xl group-hover:text-yellow-500 transition-colors">{coin.symbol}</p>
