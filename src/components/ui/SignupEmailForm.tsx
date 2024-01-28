@@ -1,100 +1,99 @@
 "use client";
 
-import { useState } from "react";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as yup from "yup";
 import { useUserStore } from "@/configs/store";
-import { Container } from "../Container";
+import { ICredentials, IResetForm } from "@/types";
+
+let schema = yup.object().shape({
+  email: yup.string().email().required(),
+  password: yup.string().required(),
+  passwordConfirm: yup
+    .string()
+    .oneOf([yup.ref("password"), undefined], "passwords must match"),
+});
 
 export const SignupEmailForm = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [passwordConfirm, setPasswordConfirm] = useState("");
   const signupEmail = useUserStore((state) => state.signupEmail);
 
-  const handleSubmit = (values: any) => {
-    signupEmail(values);
+  const handleSubmit = ({ email, password }: ICredentials, { resetForm }: IResetForm) => {
+    const regData = { email, password };
+
+    signupEmail(regData);
+    resetForm();
   };
 
   return (
-    <Container>
-      <div className="space-y-6">
-        <div>
-          <label
-            htmlFor="email"
-            className="block text-sm font-medium leading-6 text-white"
-          >
-            Email address
-          </label>
-          <div className="mt-2">
-            <input
-              id="email"
-              name="email"
-              type="email"
-              autoComplete="email"
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              className="block w-full rounded-md border-0 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
-            />
-          </div>
-        </div>
+    <Formik
+      onSubmit={handleSubmit}
+      initialValues={{
+        email: "",
+        password: "",
+        passwordConfirm: "",
+      }}
+      validationSchema={schema}
+    >
+      <Form className="space-y-6 mt-6">
+        <label
+          htmlFor="email"
+          className="relative block text-sm font-medium leading-6 text-white"
+        >
+          <Field
+            name="email"
+            type="text"
+            placeholder="email"
+            className="block w-full rounded-md border-0 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-yellow-500 sm:text-sm sm:leading-6"
+          />
+          <ErrorMessage
+            component="div"
+            name="email"
+            className="absolute bottom-0 right-2 text-sm"
+          />
+        </label>
 
-        <div>
-          <div className="flex items-center justify-between">
-            <label
-              htmlFor="password"
-              className="block text-sm font-medium leading-6 text-white"
-            >
-              Password
-            </label>
-          </div>
-          <div className="mt-2">
-            <input
-              id="password"
-              name="password"
-              type="password"
-              autoComplete="current-password"
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              className="block w-full rounded-md border-0 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
-            />
-          </div>
-        </div>
-        <div>
-          <div className="flex items-center justify-between">
-            <label
-              htmlFor="password"
-              className="block text-sm font-medium leading-6 text-white"
-            >
-              Password Again
-            </label>
-          </div>
-          <div className="mt-2">
-            <input
-              id="passwordAgain"
-              name="passwordAgain"
-              type="password"
-              autoComplete="current-password"
-              onChange={(e) => setPasswordConfirm(e.target.value)}
-              required
-              className="block w-full rounded-md border-0 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
-            />
-          </div>
-        </div>
+        <label
+          htmlFor="password"
+          className="relative block text-sm font-medium leading-6 text-white"
+        >
+          <Field
+            name="password"
+            type="password"
+            placeholder="password"
+            autoComplete="off"
+            className="block w-full rounded-md border-0 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-yellow-500 sm:text-sm sm:leading-6"
+          />
+          <ErrorMessage
+            component="div"
+            name="password"
+            className="absolute bottom-0 right-2 text-xs"
+          />
+        </label>
 
-        <div>
-          <button
-            disabled={
-              !email ||
-              !password ||
-              !passwordConfirm ||
-              password !== passwordConfirm
-            }
-            onClick={handleSubmit}
-            className="disabled:opacity-40 flex w-full justify-center rounded-md bg-indigo-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
-          >
-            Sign Up
-          </button>
-        </div>
-      </div>
-    </Container>
+        <label
+          htmlFor="passwordConfirm"
+          className="relative block text-sm font-medium leading-6 text-white"
+        >
+          <Field
+            name="passwordConfirm"
+            type="password"
+            placeholder="re-password"
+            autoComplete="off"
+            className="block w-full rounded-md border-0 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-yellow-500 sm:text-sm sm:leading-6"
+          />
+          <ErrorMessage
+            component="div"
+            name="passwordConfirm"
+            className="absolute bottom-0 right-2 text-xs"
+          />
+        </label>
+
+        <button
+          type="submit"
+          className="disabled:opacity-40 bg-yellow-500 mt-12 py-2 w-full rounded-md text-black text-xl font-bold hover:bg-yellow-300 transition-colors"
+        >
+          Sign Up
+        </button>
+      </Form>
+    </Formik>
   );
 };

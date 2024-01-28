@@ -37,10 +37,9 @@ export const useUserStore = create<IUserState>()(
           operSignupEmail(regData)
             .then((data: any) => {
               set({
-                email: data.user.email,
-                name: "",
-                uid: data.user.uid,
-                accessToken: data.token,
+                email: data.email,
+                uid: data.uid,
+                accessToken: data.accessToken,
               });
             })
             .catch((e) => console.log(e));
