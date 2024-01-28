@@ -3,7 +3,7 @@ import { devtools, persist } from "zustand/middleware";
 import type { IUserState, IWatchlistState, ICredentials } from "@/types";
 import {
   operSigninGoogle,
-  operSignupEmail,
+  operSignupEmail, operSigninEmail,
   operSignOut,
 } from "@/utils/loginOperations";
 
@@ -23,11 +23,6 @@ export const useUserStore = create<IUserState>()(
         signinGoogle: () => {
           operSigninGoogle()
             .then((data: any) => {
-              // localStorage.setItem(
-              //   "mycrypto-token",
-              //   JSON.stringify(data?.token)
-              // );              
-
               set({
                 email: data.user.email,
                 name: data.user.displayName,
@@ -41,16 +36,23 @@ export const useUserStore = create<IUserState>()(
         signupEmail: (regData: ICredentials) => {
           operSignupEmail(regData)
             .then((data: any) => {
-              // localStorage.setItem(
-              //   "mycrypto-token",
-              //   JSON.stringify(data?.token)
-              // );
-
               set({
                 email: data.user.email,
                 name: "",
                 uid: data.user.uid,
                 accessToken: data.token,
+              });
+            })
+            .catch((e) => console.log(e));
+        },
+
+        signinEmail: (regData: ICredentials) => {
+          operSigninEmail(regData)
+            .then((data: any) => {
+              set({
+                email: data.email,
+                uid: data.uid,
+                accessToken: data.accessToken,
               });
             })
             .catch((e) => console.log(e));

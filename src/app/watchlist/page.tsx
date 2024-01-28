@@ -11,6 +11,7 @@ import { useState, useEffect } from "react";
 export default function WatchlistPage() {
   const uid = useUserStore((state) => state.uid);
   const name = useUserStore((state) => state.name);
+  const email = useUserStore((state) => state.email);
   const setWatchlistState = useWatchListStore(
     (state) => state.setWatchlistState
   );
@@ -48,7 +49,7 @@ export default function WatchlistPage() {
 
   return (
     <>
-      <h1 className="text-center py-5">{name}</h1>
+      <h1 className="text-center py-5">{name ? name : email}</h1>
 
       {userCoinList.length > 0 ? (
         <CoinList coinList={userCoinList} />

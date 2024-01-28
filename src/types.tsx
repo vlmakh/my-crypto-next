@@ -28,6 +28,10 @@ export interface ICredentials {
   password: string;
 }
 
+export interface IResetForm {
+  resetForm: () => void;
+}
+
 export interface IUser {
   email: string;
   name: string;
@@ -43,8 +47,7 @@ export interface IUserState {
   accessToken: string,
   signinGoogle: () => void;
   signupEmail: (regData: ICredentials) => void;
-  // loginUser: (regData: ICredentials, resetForm: () => void) => void;
-  // checkUser: () => void;
+  signinEmail: (regData: ICredentials) => void;
   signout: () => void;
 }
 

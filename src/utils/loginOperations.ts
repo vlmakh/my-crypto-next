@@ -4,21 +4,21 @@ import {
   GoogleAuthProvider,
   FacebookAuthProvider,
   signInWithPopup,
-} from 'firebase/auth';
-import { auth } from '@/configs/firebase';
+} from "firebase/auth";
+import { auth } from "@/configs/firebase";
 
-import type { ICredentials } from '@/types';
+import type { ICredentials } from "@/types";
 
 export const operSignupEmail = async (credentials: ICredentials) => {
   try {
-    createUserWithEmailAndPassword(
+    const userResponse = await createUserWithEmailAndPassword(
       auth,
       credentials.email,
       credentials.password
-    ).then((userCredential: any) => {
-      const { email, accessToken, uid } = userCredential.user;
-      return { email, accessToken, uid };
-    });
+    )
+      // const { email, accessToken, uid } = userCredential.user;
+      return userResponse.user;
+    
   } catch (error: any) {
     console.log(error.code, error.message);
   }
@@ -26,14 +26,13 @@ export const operSignupEmail = async (credentials: ICredentials) => {
 
 export const operSigninEmail = async (credentials: ICredentials) => {
   try {
-    signInWithEmailAndPassword(
+    const userResponse = await signInWithEmailAndPassword(
       auth,
       credentials.email,
       credentials.password
-    ).then((userCredential: any) => {
-      const { email, accessToken, uid } = userCredential.user;
-      return { email, accessToken, uid };
-    });
+    );
+
+    return userResponse.user;
   } catch (error: any) {
     console.log(error.code, error.message);
   }
@@ -71,7 +70,7 @@ export const operSigninFacebook = async () => {
 
 export const operSigninPhone = async () => {
   try {
-    console.log('Login phone');
+    console.log("Login phone");
   } catch (error: any) {
     console.log(error.code, error.message);
   }
