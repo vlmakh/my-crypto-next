@@ -6,7 +6,7 @@ export const TheFooter = () => {
       <p>2024</p>
       <span>By</span>
       <a
-        className="pointer-events-none lg:pointer-events-auto lg:p-0 transition-colors hover:text-yellow-500"
+        className="pointer-events-none lg:pointer-events-auto lg:p-0 transition-colors hover:text-yellow-500 dark:invert-0"
         href="https://vlad-makhnenko.netlify.app/"
         target="_blank"
         rel="noopener noreferrer"
