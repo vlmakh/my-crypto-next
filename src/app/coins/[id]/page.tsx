@@ -89,7 +89,7 @@ export default async function CoinPage({ params: { id } }: Props) {
           <a
             href={coin.websiteUrl}
             target="_blank"
-            className="hover:text-orange-500 transition-colors"
+            className="hover:text-yellow-500 transition-colors"
           >
             {coin.websiteUrl}
           </a>
