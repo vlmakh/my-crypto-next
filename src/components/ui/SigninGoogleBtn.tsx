@@ -1,11 +1,9 @@
 "use client";
 
 import { useUserStore } from "@/configs/store";
-import { useRouter } from "next/navigation";
 
 export const SigninGoogleBtn = () => {
   const signinGoogle = useUserStore((state) => state.signinGoogle);
-  const router = useRouter();
 
   const handleSigninGoogle = () => {
     signinGoogle();
