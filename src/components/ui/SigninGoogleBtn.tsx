@@ -12,10 +12,10 @@ export const SigninGoogleBtn = () => {
 
   return (
     <button
-      className="mt-12 py-2 w-full rounded-md bg-yellow-500 text-black text-xl font-bold hover:bg-yellow-300 transition-colors"
+      className="flex items-center justify-center gap-6 mt-12 py-2 w-full rounded-md bg-yellow-500 text-black text-xl font-bold hover:bg-yellow-300 transition-colors"
       onClick={handleSigninGoogle}
     >
-      <IconGoogle className="inline mr-6"/>
+      <IconGoogle />
 
       Sign in with Google
     </button>
