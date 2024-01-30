@@ -27,9 +27,12 @@ export const SearchCoinsForm = () => {
   }, [query]);
 
   const handleInput = (e: { target: { value: string } }) => {
-    // console.log(e.target.value)
-
     setQuery(e.target.value);
+  };
+
+  const isImageURL = (urlString: string) => {
+    if (urlString.split(':')[0] !== 'https') return false;
+    else return true;
   };
 
   function handleSubmit(data: FormData) {
@@ -78,23 +81,23 @@ export const SearchCoinsForm = () => {
         </label>
       </form>
 
-      <ul>
+      <ul className="flex flex-wrap justify-center gap-4 py-4 ">
         {searchResultList.length > 0 &&
           searchResultList.map((coin: ICoinFound) => (
-            <li className="mx-auto max-w-min border-b-2" key={coin.id}>
-              <Link
-                href={`/coins/${coin.id}`}
-                className="group flex items-center gap-4 px-2 py-1"
-              >
-                <Image
-                  src={coin.large}
-                  alt={coin.id}
-                  width={48}
-                  height={48}
-                  className="transition-transform group-hover:scale-110"
-                />
-
-                <div className="w-44 text-left">
+            <li className="w-40 rounded-md border-2" key={coin.id}>
+              <Link href={`/coins/${coin.id}`} className="group px-2 py-1">
+                <div className="mx-auto min-h-24  w-24">
+                  {isImageURL(coin.large) && (
+                    <Image
+                      src={coin.large}
+                      alt={coin.id}
+                      width={100}
+                      height={100}
+                      className="transition-transform group-hover:scale-105"
+                    />
+                  )}
+                </div>
+                <div className="pt-2 text-center">
                   <p className="text-xl font-bold transition-colors group-hover:text-yellow-500">
                     {coin.symbol}
                   </p>
@@ -104,9 +107,9 @@ export const SearchCoinsForm = () => {
                   </p>
                 </div>
 
-                <p className="w-11 text-right text-sm">
+                {/* <p className="w-11 text-right text-sm">
                   {coin.market_cap_rank}
-                </p>
+                </p> */}
               </Link>
             </li>
           ))}

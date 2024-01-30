@@ -23,7 +23,8 @@ export async function fetchCoinItem(id: string) {
   const response = await fetch(`${MAIN_URL}/coins/${id}`, options);
 
   if (!response.ok) {
-    throw new Error("Failed to fetch data");
+    // throw new Error("Failed to fetch data");
+    return null;
   }
 
   return response.json();

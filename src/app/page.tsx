@@ -6,7 +6,7 @@ export default async function HomePage() {
   
 
   return (
-    <Container>
+    <div className="text-center mx-auto max-w-7xl">
       <Image
         src="/logo512.webp"
         alt=""
@@ -17,6 +17,6 @@ export default async function HomePage() {
       />
 
       <SearchCoinsForm />
-    </Container>
+    </div>
   );
 }
