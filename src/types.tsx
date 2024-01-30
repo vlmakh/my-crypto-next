@@ -46,6 +46,7 @@ export interface IUserState {
   uid: string;
   accessToken: string,
   signinGoogle: () => void;
+  signinFacebook: () => void;
   signupEmail: (regData: ICredentials) => void;
   signinEmail: (regData: ICredentials) => void;
   signout: () => void;

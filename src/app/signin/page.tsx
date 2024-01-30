@@ -1,6 +1,7 @@
 'use client';
 
 import { SigninGoogleBtn } from "@/components/ui/SigninGoogleBtn";
+import { SigninFacebookBtn } from "@/components/ui/SigninFacebookBtn";
 import { SigninEmailForm } from "@/components/ui/SigninEmailForm";
 import { redirect } from "next/navigation";
 import { useUserStore } from "@/configs/store";
@@ -17,6 +18,8 @@ export default function SigninPage() {
     <Container>
 
       <SigninGoogleBtn />
+
+      <SigninFacebookBtn />
 
       <p className="mt-5">or</p>
 

@@ -3,7 +3,9 @@ import { devtools, persist } from "zustand/middleware";
 import type { IUserState, IWatchlistState, ICredentials } from "@/types";
 import {
   operSigninGoogle,
-  operSignupEmail, operSigninEmail,
+  operSigninFacebook,
+  operSignupEmail,
+  operSigninEmail,
   operSignOut,
 } from "@/utils/loginOperations";
 
@@ -22,6 +24,19 @@ export const useUserStore = create<IUserState>()(
 
         signinGoogle: () => {
           operSigninGoogle()
+            .then((data: any) => {
+              set({
+                email: data.user.email,
+                name: data.user.displayName,
+                uid: data.user.uid,
+                accessToken: data.token,
+              });
+            })
+            .catch((error: any) => console.log(error));
+        },
+
+        signinFacebook: () => {
+          operSigninFacebook()
             .then((data: any) => {
               set({
                 email: data.user.email,
