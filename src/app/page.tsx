@@ -10,9 +10,9 @@ export default async function HomePage() {
       <Image
         src="/logo512.webp"
         alt=""
-        width={300}
-        height={300}
-        className="mx-auto mt-12"
+        width={100}
+        height={100}
+        className="mx-auto mt-6"
         priority
       />
 

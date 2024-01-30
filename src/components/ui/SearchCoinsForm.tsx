@@ -17,7 +17,6 @@ type ICoinFound = {
 
 export const SearchCoinsForm = () => {
   const [searchResultList, setSearchResultList] = useState([]);
-  // let resultArray: never[] | III[] = [];
   const [query, setQuery] = useState('');
 
   useEffect(() => {
@@ -53,30 +52,32 @@ export const SearchCoinsForm = () => {
 
   return (
     <>
-      <form className="mt-6">
-        <button
+      <form className="mt-6 mx-auto max-w-96">
+        {/* <button
           type="submit"
           className="rounded-md bg-yellow-500 px-2 text-xl font-bold text-black transition-colors hover:bg-yellow-300 disabled:opacity-40"
         >
           Search
-        </button>
+        </button> */}
 
-        <label>
+        <label className='relative group'>
           <input
             onChange={handleInput}
             placeholder="by coin name or symbol"
             name="query"
             value={query}
-            className="rounded-md border-0 bg-white/5 px-2 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-yellow-500 sm:text-sm sm:leading-6"
+            autoComplete="off"
+            className="rounded-md w-full border-0 bg-white/5 px-2 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-yellow-500 sm:text-sm sm:leading-6"
           />
 
           <button
             type="button"
+            className='absolute right-2 py-1 px-2 text-transparent group-hover:text-gray-500 transition-colors'
             onClick={() => {
               setQuery('');
             }}
           >
-            X
+            &#x2716;
           </button>
         </label>
       </form>
@@ -106,10 +107,6 @@ export const SearchCoinsForm = () => {
                     {coin.name}
                   </p>
                 </div>
-
-                {/* <p className="w-11 text-right text-sm">
-                  {coin.market_cap_rank}
-                </p> */}
               </Link>
             </li>
           ))}
