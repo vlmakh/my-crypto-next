@@ -1,4 +1,5 @@
 const MAIN_URL = process.env.NEXT_PUBLIC_MAIN_URL;
+const SEARCH_URL = process.env.NEXT_PUBLIC_SEARCH_URL;
 
 const options = {
   method: "GET",
@@ -58,4 +59,10 @@ export const fetchInfoByUserWatchList = async (
 
   const response = await Promise.all(arrayOfCoins);
   return response;
+};
+
+export const searchCoin = async (query: string) => {
+  const response = await fetch(`${SEARCH_URL}/search/?query=${query}`);
+  
+  return response.json();
 };

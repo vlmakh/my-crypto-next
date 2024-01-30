@@ -1,7 +1,10 @@
 import Image from "next/image";
 import { Container } from "@/components/Container";
+import { SearchCoinsForm } from "@/components/ui/SearchCoinsForm";
 
 export default async function HomePage() {
+  
+
   return (
     <Container>
       <Image
@@ -12,6 +15,8 @@ export default async function HomePage() {
         className="mx-auto mt-12"
         priority
       />
+
+      <SearchCoinsForm />
     </Container>
   );
 }

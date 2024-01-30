@@ -1,19 +1,24 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  webpack: (config) => {
+  webpack: config => {
     config.module.rules.push({
       test: /\.svg$/,
-      use: ["@svgr/webpack"],
+      use: ['@svgr/webpack'],
     });
     return config;
   },
   images: {
     remotePatterns: [
       {
-        protocol: "https",
-        hostname: "static.coinstats.app",
-        port: "",
+        protocol: 'https',
+        hostname: 'static.coinstats.app',
+        port: '',
         // pathname: "/account123/**",
+      },
+      {
+        protocol: 'https',
+        hostname: 'assets.coingecko.com',
+        port: '',
       },
     ],
   },
