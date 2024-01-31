@@ -1,4 +1,4 @@
-import { LogoVM } from "./ui/LogoVM";
+import LogoVM from "../../public/vm_logo.svg";
 
 export const TheFooter = () => {
   return (
