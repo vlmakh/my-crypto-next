@@ -4,11 +4,11 @@ import {
   GoogleAuthProvider,
   FacebookAuthProvider,
   signInWithPopup,
-} from "firebase/auth";
-import { auth } from "@/configs/firebase";
+} from 'firebase/auth';
+import { auth } from '@/configs/firebase';
 import toast from 'react-hot-toast';
 
-import type { ICredentials } from "@/types";
+import type { ICredentials } from '@/types';
 
 export const operSignupEmail = async (credentials: ICredentials) => {
   try {
@@ -16,10 +16,9 @@ export const operSignupEmail = async (credentials: ICredentials) => {
       auth,
       credentials.email,
       credentials.password
-    )
-      // const { email, accessToken, uid } = userCredential.user;
-      return userResponse.user;
-    
+    );
+
+    return userResponse.user;
   } catch (error: any) {
     toast.error(error.message);
   }
@@ -71,7 +70,7 @@ export const operSigninFacebook = async () => {
 
 export const operSigninPhone = async () => {
   try {
-    console.log("Login phone");
+    console.log('Login phone');
   } catch (error: any) {
     toast.error(error.message);
   }
