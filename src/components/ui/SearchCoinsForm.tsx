@@ -2,18 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import { searchCoin } from '@/utils/fetchCoinList';
-import Image from 'next/image';
-import Link from 'next/link';
-
-type ICoinFound = {
-  id: string;
-  name: string;
-  api_symbol: string;
-  symbol: string;
-  market_cap_rank: number;
-  thumb: string;
-  large: string;
-};
+import type { ICoinFound } from '@/types';
+import { SearchResultListItem } from './SearchResultListItem';
 
 export const SearchCoinsForm = () => {
   const [searchResultList, setSearchResultList] = useState([]);
@@ -27,11 +17,6 @@ export const SearchCoinsForm = () => {
 
   const handleInput = (e: { target: { value: string } }) => {
     setQuery(e.target.value);
-  };
-
-  const isImageURL = (urlString: string) => {
-    if (urlString.split(':')[0] !== 'https') return false;
-    else return true;
   };
 
   function handleSubmit(data: FormData) {
@@ -52,7 +37,7 @@ export const SearchCoinsForm = () => {
 
   return (
     <>
-      <form className="mt-6 mx-auto max-w-96">
+      <form className="mx-auto mt-6 max-w-96">
         {/* <button
           type="submit"
           className="rounded-md bg-yellow-500 px-2 text-xl font-bold text-black transition-colors hover:bg-yellow-300 disabled:opacity-40"
@@ -60,19 +45,19 @@ export const SearchCoinsForm = () => {
           Search
         </button> */}
 
-        <label className='relative group'>
+        <label className="group relative">
           <input
             onChange={handleInput}
             placeholder="by coin name or symbol"
             name="query"
             value={query}
             autoComplete="off"
-            className="rounded-md w-full border-0 bg-white/5 px-2 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-yellow-500 sm:text-sm sm:leading-6"
+            className="w-full rounded-md border-0 bg-white/5 px-2 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-yellow-500 sm:text-sm sm:leading-6"
           />
 
           <button
             type="button"
-            className='absolute right-2 py-1 px-2 text-transparent group-hover:text-gray-500 transition-colors'
+            className="absolute right-2 px-2 py-1 text-transparent transition-colors group-hover:text-gray-500"
             onClick={() => {
               setQuery('');
             }}
@@ -85,30 +70,7 @@ export const SearchCoinsForm = () => {
       <ul className="flex flex-wrap justify-center gap-4 py-4 ">
         {searchResultList.length > 0 &&
           searchResultList.map((coin: ICoinFound) => (
-            <li className="w-40 rounded-md border-2" key={coin.id}>
-              <Link href={`/coins/${coin.id}`} className="group px-2 py-1">
-                <div className="mx-auto min-h-24  w-24">
-                  {isImageURL(coin.large) && (
-                    <Image
-                      src={coin.large}
-                      alt={coin.id}
-                      width={100}
-                      height={100}
-                      className="transition-transform group-hover:scale-105"
-                    />
-                  )}
-                </div>
-                <div className="pt-2 text-center">
-                  <p className="text-xl font-bold transition-colors group-hover:text-yellow-500">
-                    {coin.symbol}
-                  </p>
-
-                  <p className="transition-colors group-hover:text-yellow-500">
-                    {coin.name}
-                  </p>
-                </div>
-              </Link>
-            </li>
+            <SearchResultListItem key={coin.id} coin={coin} />
           ))}
       </ul>
     </>

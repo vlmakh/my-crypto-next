@@ -17,6 +17,16 @@ export interface ICoin {
   websiteUrl?: string;
 }
 
+export interface ICoinFound {
+  id: string;
+  name: string;
+  api_symbol: string;
+  symbol: string;
+  market_cap_rank: number;
+  thumb: string;
+  large: string;
+}
+
 export interface INavLink {
   id: string;
   label: string;
@@ -44,7 +54,7 @@ export interface IUserState {
   email: string;
   name: string;
   uid: string;
-  accessToken: string,
+  accessToken: string;
   signinGoogle: () => void;
   signinFacebook: () => void;
   signupEmail: (regData: ICredentials) => void;
@@ -53,8 +63,8 @@ export interface IUserState {
 }
 
 export interface IWatchlistState {
-  watchlist: string[],
-  setWatchlistState: (x: string[]) => void; 
-  addCoinToWatchlistState: (x: string) => void; 
+  watchlist: string[];
+  setWatchlistState: (x: string[]) => void;
+  addCoinToWatchlistState: (x: string) => void;
   removeCoinToWatchlistState: (x: string) => void;
 }

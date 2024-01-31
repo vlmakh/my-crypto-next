@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { formatPrice } from "@/utils/formatPrice";
 
-import { ICoin } from "@/types";
+import type { ICoin } from "@/types";
 
 export const CoinListItem = ({ coin }: { coin: ICoin }) => {
   return (
