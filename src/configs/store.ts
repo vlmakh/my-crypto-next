@@ -1,34 +1,34 @@
-import { create } from "zustand";
-import { devtools, persist } from "zustand/middleware";
-import type { IUserState, IWatchlistState, ICredentials } from "@/types";
+import { create } from 'zustand';
+import { devtools, persist } from 'zustand/middleware';
+import type { IUserState, IWatchlistState, ICredentials } from '@/types';
 import {
   operSigninGoogle,
   operSigninFacebook,
   operSignupEmail,
   operSigninEmail,
   operSignOut,
-} from "@/utils/loginOperations";
+} from '@/utils/loginOperations';
 
 const initialUserState = {
-  email: "",
-  name: "",
-  uid: "",
-  accessToken: "",
-  phoneNumber: "",
+  email: '',
+  name: '',
+  uid: '',
+  accessToken: '',
+  phoneNumber: '',
 };
 
 export const useUserStore = create<IUserState>()(
   devtools(
     persist(
-      (set) => ({
+      set => ({
         ...initialUserState,
 
         setUserbyPhone: (user: any) => {
           set({
-                uid: user.uid,
-                phoneNumber: user.phoneNumber,
-                accessToken: user.accessToken,
-              });
+            uid: user.uid,
+            phoneNumber: user.phoneNumber,
+            accessToken: user.accessToken,
+          });
         },
 
         signinGoogle: () => {
@@ -66,7 +66,7 @@ export const useUserStore = create<IUserState>()(
                 accessToken: data.accessToken,
               });
             })
-            .catch((e) => console.log(e));
+            .catch(e => console.log(e));
         },
 
         signinEmail: (regData: ICredentials) => {
@@ -78,7 +78,7 @@ export const useUserStore = create<IUserState>()(
                 accessToken: data.accessToken,
               });
             })
-            .catch((e) => console.log(e));
+            .catch(e => console.log(e));
         },
 
         signout: () => {
@@ -86,13 +86,13 @@ export const useUserStore = create<IUserState>()(
             .then(() => {
               // localStorage.removeItem("mycrypto-token");
             })
-            .catch((e) => console.log(e))
+            .catch(e => console.log(e))
             .finally(() => {
               set(initialUserState);
             });
         },
       }),
-      { name: "mycrypto" }
+      { name: 'mycrypto' }
     )
   )
 );
@@ -100,17 +100,17 @@ export const useUserStore = create<IUserState>()(
 export const useWatchListStore = create<IWatchlistState>()((set, get) => ({
   watchlist: [],
 
-  setWatchlistState: (list) => {
+  setWatchlistState: list => {
     set({ watchlist: list });
   },
 
-  addCoinToWatchlistState: (coinId) => {
+  addCoinToWatchlistState: coinId => {
     const watchlist = [...get().watchlist, coinId];
     set({ watchlist });
   },
 
-  removeCoinToWatchlistState: (coinId) => {
-    const watchlist = get().watchlist.filter((id) => id !== coinId);
+  removeCoinToWatchlistState: coinId => {
+    const watchlist = get().watchlist.filter(id => id !== coinId);
     set({ watchlist });
   },
 }));

@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { auth } from '@/configs/firebase';
 import { RecaptchaVerifier, signInWithPhoneNumber } from 'firebase/auth';
 import type { IResetForm } from '@/types';
-import { useUserStore } from "@/configs/store";
+import { useUserStore } from '@/configs/store';
 
 type Phone = {
   phone: string;
@@ -29,9 +29,7 @@ declare global {
 
 export const SigninPhoneForm = () => {
   const [OTP, setOTP] = useState('');
-  const setUserbyPhone = useUserStore((state) => state.setUserbyPhone);
-
-  const handleLoginPhone = () => {};
+  const setUserbyPhone = useUserStore(state => state.setUserbyPhone);
 
   const generateRecapcha = () => {
     window.recaptchaVerifier = new RecaptchaVerifier(auth, 'sign-in-button', {
@@ -82,22 +80,30 @@ export const SigninPhoneForm = () => {
           phone: '',
         }}
       >
-        <Form>
-          <button type="button" onClick={handleLoginPhone}>
-            Back
-          </button>
-
-          <label htmlFor="email">
+        <Form className="mt-6 space-y-6">
+          <label
+            htmlFor="email"
+            className="relative block text-sm font-medium leading-6"
+          >
             <Field
               name="phone"
               type="text"
-              placeholder="+380 XX XXX-XXXX"
+              placeholder="+380 XX XXX XXXX"
               autoComplete="off"
+              className="block w-full rounded-md border-0 bg-white/5 px-2 py-1.5 text-black dark:invert shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-yellow-500 sm:text-sm sm:leading-6"
             ></Field>
-            <ErrorMessage component="div" name="phone" />
+            <ErrorMessage
+              component="div"
+              name="phone"
+              className="absolute bottom-0 right-2 text-sm"
+            />
           </label>
 
-          <button type="submit" id="sign-in-button">
+          <button
+            type="submit"
+            id="sign-in-button"
+            className="mt-12 w-full rounded-md bg-yellow-500 py-2 text-xl font-bold text-black transition-colors hover:bg-yellow-300 disabled:opacity-40"
+          >
             Send code
           </button>
         </Form>
@@ -110,18 +116,31 @@ export const SigninPhoneForm = () => {
         }}
         validationSchema={schema}
       >
-        <Form>
-          <label htmlFor="otp">
+        <Form className="mt-6 space-y-6">
+          <label
+            htmlFor="otp"
+            className="relative block text-sm font-medium leading-6"
+          >
             <Field
               name="otp"
               type="text"
               placeholder="XXXXXX"
               autoComplete="off"
+              className="block w-full rounded-md border-0 bg-white/5 px-2 py-1.5 text-black dark:invert shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-yellow-500 sm:text-sm sm:leading-6"
             ></Field>
-            <ErrorMessage component="div" name="otp" />
+            <ErrorMessage
+              component="div"
+              name="otp"
+              className="absolute bottom-0 right-2 text-sm"
+            />
           </label>
 
-          <button type="submit">Login</button>
+          <button
+            type="submit"
+            className="mt-12 w-full rounded-md bg-yellow-500 py-2 text-xl font-bold text-black transition-colors hover:bg-yellow-300 disabled:opacity-40"
+          >
+            Login
+          </button>
         </Form>
       </Formik>
     </div>
