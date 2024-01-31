@@ -7,6 +7,7 @@ import { auth } from '@/configs/firebase';
 import { RecaptchaVerifier, signInWithPhoneNumber } from 'firebase/auth';
 import type { IResetForm } from '@/types';
 import { useUserStore } from '@/configs/store';
+import toast from 'react-hot-toast';
 
 type Phone = {
   phone: string;
@@ -47,9 +48,11 @@ export const SigninPhoneForm = () => {
     signInWithPhoneNumber(auth, phoneNumber, appVerifier)
       .then(confirmationResult => {
         window.confirmationResult = confirmationResult;
+
+        toast.success('SMS sent successfully');
       })
       .catch(error => {
-        console.log('SMS not sent', error.message);
+        toast.error('SMS not sent', error.message);
       });
   };
 
@@ -65,7 +68,7 @@ export const SigninPhoneForm = () => {
         setUserbyPhone(user);
       })
       .catch((error: any) => {
-        console.log(error.message);
+        toast.error(error.message);
       })
       .finally(() => {
         resetForm();
