@@ -1,6 +1,6 @@
 'use client';
 
-import { SigninEmailForm } from '@/components/ui/SigninEmailForm';
+import { SigninPhoneForm } from '@/components/ui/SigninPhoneForm';
 import { useUserStore } from '@/configs/store';
 import { redirect } from 'next/navigation';
 import { Container } from '@/components/Container';
@@ -14,7 +14,7 @@ export default function SigninEmailPage() {
 
   return (
     <Container>
-      <SigninEmailForm />
+      <SigninPhoneForm />
     </Container>
   );
 }

@@ -14,6 +14,7 @@ const initialUserState = {
   name: "",
   uid: "",
   accessToken: "",
+  phoneNumber: "",
 };
 
 export const useUserStore = create<IUserState>()(
@@ -21,6 +22,14 @@ export const useUserStore = create<IUserState>()(
     persist(
       (set) => ({
         ...initialUserState,
+
+        setUserbyPhone: (user: any) => {
+          set({
+                uid: user.uid,
+                phoneNumber: user.phoneNumber,
+                accessToken: user.accessToken,
+              });
+        },
 
         signinGoogle: () => {
           operSigninGoogle()

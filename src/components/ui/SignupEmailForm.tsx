@@ -3,7 +3,7 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as yup from "yup";
 import { useUserStore } from "@/configs/store";
-import { ICredentials, IResetForm } from "@/types";
+import type { ICredentials, IResetForm } from "@/types";
 
 let schema = yup.object().shape({
   email: yup.string().email().required(),

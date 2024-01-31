@@ -48,6 +48,7 @@ export interface IUser {
   uid: string;
   accessToken?: string;
   isLoading?: boolean;
+  phoneNumber?: string,
 }
 
 export interface IUserState {
@@ -55,6 +56,8 @@ export interface IUserState {
   name: string;
   uid: string;
   accessToken: string;
+  phoneNumber?: string,
+  setUserbyPhone: (u: IUser) => void;
   signinGoogle: () => void;
   signinFacebook: () => void;
   signupEmail: (regData: ICredentials) => void;
