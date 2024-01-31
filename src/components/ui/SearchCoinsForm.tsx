@@ -19,22 +19,6 @@ export const SearchCoinsForm = () => {
     }
   };
 
-  function handleSubmit(data: FormData) {
-    // 'use server';
-
-    const { query } = Object.fromEntries(data);
-
-    // const response = await fetch(
-    //   `https://api.coingecko.com/api/v3/search/?query=${query}`
-    // );
-
-    // const result = await response.json();
-
-    // resultArray = result.coins;
-
-    // console.log(resultArray.coins);
-  }
-
   return (
     <>
       <form className="mx-auto mt-6 max-w-96"> 
