@@ -1,22 +1,22 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { searchCoin } from '@/utils/fetchCoinList';
 import type { ICoinFound } from '@/types';
 import { SearchResultListItem } from './SearchResultListItem';
 
 export const SearchCoinsForm = () => {
-  const [searchResultList, setSearchResultList] = useState([]);
   const [query, setQuery] = useState('');
+  const [searchResultList, setSearchResultList] = useState([]);
 
-  useEffect(() => {
-    if (query.length > 2 || !query.length) {
-      searchCoin(query).then((data: any) => setSearchResultList(data.coins));
-    }
-  }, [query]);
-
-  const handleInput = (e: { target: { value: string } }) => {
+  const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value);
+
+    if (e.target.value.length > 2) {
+      searchCoin(e.target.value).then((data: any) => setSearchResultList(data.coins));
+    } else {
+      setSearchResultList([]);
+    }
   };
 
   function handleSubmit(data: FormData) {
@@ -37,14 +37,7 @@ export const SearchCoinsForm = () => {
 
   return (
     <>
-      <form className="mx-auto mt-6 max-w-96">
-        {/* <button
-          type="submit"
-          className="rounded-md bg-yellow-500 px-2 text-xl font-bold text-black transition-colors hover:bg-yellow-300 disabled:opacity-40"
-        >
-          Search
-        </button> */}
-
+      <form className="mx-auto mt-6 max-w-96"> 
         <label className="group relative">
           <input
             onChange={handleInput}
@@ -60,6 +53,7 @@ export const SearchCoinsForm = () => {
             className="absolute right-2 px-2 py-1 text-transparent transition-colors group-hover:text-gray-500"
             onClick={() => {
               setQuery('');
+              setSearchResultList([]);
             }}
           >
             &#x2716;
