@@ -7,13 +7,17 @@ export default async function HomePage({
   searchParams,
 }: {
   searchParams: { [key: string]: string | string[] | undefined };
-  }) {
-  
+}) {
   const query = (searchParams?.query || '') as string;
 
-  const result = await searchCoin(query);
-  const searchResultList = result.coins;
-  
+  let searchResultList = [];
+
+  if (query.trim().length > 2) {
+    const result = await searchCoin(query);
+
+    searchResultList = result.coins;
+  }
+
   return (
     <div className="mx-auto max-w-7xl text-center">
       <Image
@@ -27,7 +31,7 @@ export default async function HomePage({
 
       <SearchCoinsForm />
 
-      <SearchResultList searchResultList={ searchResultList} />
+      <SearchResultList searchResultList={searchResultList} />
     </div>
   );
 }
