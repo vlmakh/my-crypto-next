@@ -97,20 +97,25 @@ export const useUserStore = create<IUserState>()(
   )
 );
 
-export const useWatchListStore = create<IWatchlistState>()((set, get) => ({
-  watchlist: [],
+export const useWatchListStore = create<IWatchlistState>()(
+  persist(
+    (set, get) => ({
+      watchlist: [],
 
-  setWatchlistState: list => {
-    set({ watchlist: list });
-  },
+      setWatchlistState: list => {
+        set({ watchlist: list });
+      },
 
-  addCoinToWatchlistState: coinId => {
-    const watchlist = [...get().watchlist, coinId];
-    set({ watchlist });
-  },
+      addCoinToWatchlistState: coinId => {
+        const watchlist = [...get().watchlist, coinId];
+        set({ watchlist });
+      },
 
-  removeCoinToWatchlistState: coinId => {
-    const watchlist = get().watchlist.filter(id => id !== coinId);
-    set({ watchlist });
-  },
-}));
+      removeCoinToWatchlistState: coinId => {
+        const watchlist = get().watchlist.filter(id => id !== coinId);
+        set({ watchlist });
+      },
+    }),
+    { name: 'watchlist' }
+  )
+);

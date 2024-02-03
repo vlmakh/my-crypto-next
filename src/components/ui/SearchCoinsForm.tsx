@@ -1,56 +1,53 @@
 'use client';
 
 import { useState } from 'react';
-import { searchCoin } from '@/utils/fetchCoinList';
-import type { ICoinFound } from '@/types';
-import { SearchResultListItem } from './SearchResultListItem';
+import { useSearchParams, usePathname, useRouter } from 'next/navigation';
 
 export const SearchCoinsForm = () => {
-  const [query, setQuery] = useState('');
-  const [searchResultList, setSearchResultList] = useState([]);
+  const searchParams = useSearchParams();
+  const [valueQuery, setValueQuery] = useState(searchParams.get('query')?.toString() ?? '');
+  const pathname = usePathname();
+  const { replace } = useRouter();
+
+  const params = new URLSearchParams(searchParams);
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setQuery(e.target.value);
+    const query = e.target.value;
+    setValueQuery(query);
 
-    if (e.target.value.length > 2) {
-      searchCoin(e.target.value).then((data: any) => setSearchResultList(data.coins));
+    if (query) {
+      params.set('query', query);
     } else {
-      setSearchResultList([]);
+      params.delete('query');
     }
+    replace(`${pathname}?${params.toString()}`);
+  };
+
+  const handleDelete = () => {
+    params.delete('query');
+    replace(`${pathname}?${params.toString()}`);
+    setValueQuery('');
   };
 
   return (
-    <>
-      <form className="mx-auto mt-6 max-w-96"> 
-        <label className="group relative">
-          <input
-            onChange={handleInput}
-            placeholder="by coin name or symbol"
-            name="query"
-            value={query}
-            autoComplete="off"
-            className="w-full rounded-md border-0 bg-white/5 px-2 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-yellow-500 sm:text-sm sm:leading-6"
-          />
+    <form className="mx-auto mt-6 max-w-96">
+      <label className="group relative">
+        <input
+          onChange={handleInput}
+          placeholder="by coin name or symbol"
+          value={valueQuery}
+          autoComplete="off"
+          className="w-full rounded-md border-0 bg-white/5 px-2 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-yellow-500 sm:text-sm sm:leading-6"
+        />
 
-          <button
-            type="button"
-            className="absolute right-2 px-2 py-1 text-transparent transition-colors group-hover:text-gray-500"
-            onClick={() => {
-              setQuery('');
-              setSearchResultList([]);
-            }}
-          >
-            &#x2716;
-          </button>
-        </label>
-      </form>
-
-      <ul className="flex flex-wrap justify-center gap-4 py-4 ">
-        {searchResultList.length > 0 &&
-          searchResultList.map((coin: ICoinFound) => (
-            <SearchResultListItem key={coin.id} coin={coin} />
-          ))}
-      </ul>
-    </>
+        <button
+          type="button"
+          className="absolute right-2 px-2 py-1 text-transparent transition-colors group-hover:text-gray-500"
+          onClick={handleDelete}
+        >
+          &#x2716;
+        </button>
+      </label>
+    </form>
   );
 };

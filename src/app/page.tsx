@@ -1,11 +1,21 @@
-import Image from "next/image";
-import { SearchCoinsForm } from "@/components/ui/SearchCoinsForm";
+import Image from 'next/image';
+import { SearchCoinsForm } from '@/components/ui/SearchCoinsForm';
+import { searchCoin } from '@/utils/fetchCoinList';
+import { SearchResultList } from '@/components/ui/SearchResultList';
 
-export default async function HomePage() {
+export default async function HomePage({
+  searchParams,
+}: {
+  searchParams: { [key: string]: string | string[] | undefined };
+  }) {
   
+  const query = (searchParams?.query || '') as string;
 
+  const result = await searchCoin(query);
+  const searchResultList = result.coins;
+  
   return (
-    <div className="text-center mx-auto max-w-7xl">
+    <div className="mx-auto max-w-7xl text-center">
       <Image
         src="/logo512.webp"
         alt=""
@@ -16,6 +26,8 @@ export default async function HomePage() {
       />
 
       <SearchCoinsForm />
+
+      <SearchResultList searchResultList={ searchResultList} />
     </div>
   );
 }
