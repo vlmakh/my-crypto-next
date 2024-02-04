@@ -8,14 +8,6 @@ import type { IResetForm } from '@/types';
 import { useUserStore } from '@/configs/store';
 import toast from 'react-hot-toast';
 
-type Phone = {
-  phone: string;
-};
-
-type Otp = {
-  otp: string;
-};
-
 let schema = yup.object().shape({
   otp: yup.string().length(6),
 });
@@ -37,7 +29,7 @@ export const SigninPhoneForm = () => {
     });
   };
 
-  const requestOTP = (values: Phone) => {
+  const requestOTP = (values: { phone: string }) => {
     generateRecapcha();
 
     const phoneNumber = values.phone;
@@ -54,7 +46,12 @@ export const SigninPhoneForm = () => {
       });
   };
 
-  const confirmOTP = (values: Otp, { resetForm }: IResetForm) => {
+  const confirmOTP = (
+    values: {
+      otp: string;
+    },
+    { resetForm }: IResetForm
+  ) => {
     const confirmationResult = window.confirmationResult;
     confirmationResult
       .confirm(values.otp)
