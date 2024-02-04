@@ -51,7 +51,7 @@ export default async function CoinPage({ params: { id } }: Props) {
           </div>
         </div>
 
-        <div className="">
+        <div>
           <AddRemoveButton coinId={coin.id} />
         </div>
       </div>
