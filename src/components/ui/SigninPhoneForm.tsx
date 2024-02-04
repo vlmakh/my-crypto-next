@@ -2,7 +2,6 @@
 
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
-import { useState } from 'react';
 import { auth } from '@/configs/firebase';
 import { RecaptchaVerifier, signInWithPhoneNumber } from 'firebase/auth';
 import type { IResetForm } from '@/types';
@@ -29,7 +28,6 @@ declare global {
 }
 
 export const SigninPhoneForm = () => {
-  const [OTP, setOTP] = useState('');
   const setUserbyPhone = useUserStore(state => state.setUserbyPhone);
 
   const generateRecapcha = () => {
@@ -57,11 +55,9 @@ export const SigninPhoneForm = () => {
   };
 
   const confirmOTP = (values: Otp, { resetForm }: IResetForm) => {
-    setOTP(values.otp);
-
     const confirmationResult = window.confirmationResult;
     confirmationResult
-      .confirm(OTP)
+      .confirm(values.otp)
       .then((result: any) => {
         const user = result.user;
 
@@ -93,7 +89,7 @@ export const SigninPhoneForm = () => {
               type="text"
               placeholder="+380 XX XXX XXXX"
               autoComplete="off"
-              className="block w-full rounded-md border-0 bg-white/5 px-2 py-1.5 text-black dark:invert shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-yellow-500 sm:text-sm sm:leading-6"
+              className="block w-full rounded-md border-0 bg-white/5 px-2 py-1.5 text-black shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-yellow-500 sm:text-sm sm:leading-6 dark:invert"
             ></Field>
             <ErrorMessage
               component="div"
@@ -129,7 +125,7 @@ export const SigninPhoneForm = () => {
               type="text"
               placeholder="XXXXXX"
               autoComplete="off"
-              className="block w-full rounded-md border-0 bg-white/5 px-2 py-1.5 text-black dark:invert shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-yellow-500 sm:text-sm sm:leading-6"
+              className="block w-full rounded-md border-0 bg-white/5 px-2 py-1.5 text-black shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-yellow-500 sm:text-sm sm:leading-6 dark:invert"
             ></Field>
             <ErrorMessage
               component="div"
