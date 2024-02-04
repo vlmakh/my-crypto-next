@@ -43,7 +43,7 @@ export const SigninEmailForm = () => {
           <ErrorMessage
             component="div"
             name="email"
-            className="absolute bottom-0 right-2 text-sm"
+            className="absolute bottom-0 right-2 text-xs"
           />
         </label>
 

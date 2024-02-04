@@ -18,7 +18,7 @@ type Otp = {
 };
 
 let schema = yup.object().shape({
-  otp: yup.string().length(6).required(),
+  otp: yup.string().length(6),
 });
 
 declare global {
@@ -134,7 +134,7 @@ export const SigninPhoneForm = () => {
             <ErrorMessage
               component="div"
               name="otp"
-              className="absolute bottom-0 right-2 text-sm"
+              className="absolute bottom-0 right-2 text-xs"
             />
           </label>
 
