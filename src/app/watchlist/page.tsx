@@ -7,6 +7,7 @@ import { useUserStore, useWatchListStore } from '@/configs/store';
 import { db } from '@/configs/firebase';
 import { doc, onSnapshot } from 'firebase/firestore';
 import { useState, useEffect } from 'react';
+import { LoaderSpinner } from '@/components/ui/LoaderSpinner';
 
 export default function WatchlistPage() {
   const uid = useUserStore(state => state.uid);
@@ -20,6 +21,7 @@ export default function WatchlistPage() {
   }
 
   const [userCoinList, setUserCoinList] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const controller = new AbortController();
 
@@ -41,12 +43,14 @@ export default function WatchlistPage() {
   useEffect(() => {
     fetchInfoByUserWatchList(watchlist, controller.signal).then((data: any) =>
       setUserCoinList(data)
-    );
+    ).finally(() => setIsLoading(false));
   }, [watchlist]);
 
   return (
     <>
       <h1 className="py-5 text-center">{email ? email : phoneNumber}</h1>
+
+      {isLoading && <LoaderSpinner />}
 
       {userCoinList.length > 0 && <CoinList coinList={userCoinList} />}
     </>

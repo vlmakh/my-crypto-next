@@ -19,6 +19,7 @@ import {
   ValueType,
   NameType,
 } from 'recharts/types/component/DefaultTooltipContent';
+import { LoaderSpinner } from './ui/LoaderSpinner';
 
 const CustomTooltip = ({
   active,
@@ -43,6 +44,7 @@ type CoinData = { time: string | undefined; price: number };
 export const CoinChart = ({ id }: { id: string }) => {
   const [coinData, setCoinData] = useState<CoinData[]>([]);
   const [period, setPeriod] = useState('1y');
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const newCoinData: CoinData[] = [];
@@ -58,7 +60,8 @@ export const CoinChart = ({ id }: { id: string }) => {
 
         setCoinData(newCoinData);
       })
-      .catch(error => console.log(error.message));
+      .catch(error => console.log(error.message))
+      .finally(() => setIsLoading(false));
   }, [id, period]);
 
   const handleRadio = (e: any) => {
@@ -70,23 +73,27 @@ export const CoinChart = ({ id }: { id: string }) => {
   return (
     <>
       <ResponsiveContainer width="100%" height={400} className="py-2">
-        <LineChart data={coinData}>
-          <Line
-            dot={false}
-            stroke="orange"
-            strokeWidth={2}
-            dataKey={'price'}
-            isAnimationActive={false}
-          />
-          <CartesianGrid stroke="grey" strokeDasharray="5 5" />
-          <XAxis dataKey={'time'} className="text-sm" />
-          <YAxis unit="$" className="text-sm font-bold" />
+        {isLoading ? (
+          <LoaderSpinner />
+        ) : (
+          <LineChart data={coinData}>
+            <Line
+              dot={false}
+              stroke="orange"
+              strokeWidth={2}
+              dataKey={'price'}
+              isAnimationActive={false}
+            />
+            <CartesianGrid stroke="grey" strokeDasharray="5 5" />
+            <XAxis dataKey={'time'} className="text-sm" />
+            <YAxis unit="$" className="text-sm font-bold" />
 
-          <Tooltip
-            isAnimationActive={false}
-            content={<CustomTooltip active={false} payload={[]} />}
-          />
-        </LineChart>
+            <Tooltip
+              isAnimationActive={false}
+              content={<CustomTooltip active={false} payload={[]} />}
+            />
+          </LineChart>
+        )}
       </ResponsiveContainer>
 
       <Formik
