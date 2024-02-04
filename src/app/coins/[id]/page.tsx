@@ -24,7 +24,7 @@ export async function generateMetadata({
   }
 
   return {
-    title: coin.name + ' | My Crypto',
+    title: coin.symbol + ' | My Crypto',
   };
 }
 
