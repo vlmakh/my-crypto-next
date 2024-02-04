@@ -83,9 +83,7 @@ export const useUserStore = create<IUserState>()(
 
         signout: () => {
           operSignOut()
-            .then(() => {
-              // localStorage.removeItem("mycrypto-token");
-            })
+            .then(() => { })
             .catch(e => console.log(e))
             .finally(() => {
               set(initialUserState);

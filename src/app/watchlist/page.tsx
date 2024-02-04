@@ -13,12 +13,12 @@ export default function WatchlistPage() {
   const name = useUserStore(state => state.name);
   const email = useUserStore(state => state.email);
   const setWatchlistState = useWatchListStore(state => state.setWatchlistState);
+  const watchlist = useWatchListStore(state => state.watchlist);
 
   {
     !uid && redirect(`/signin`);
   }
 
-  const [watchList, setWatchList] = useState([]);
   const [userCoinList, setUserCoinList] = useState([]);
 
   const controller = new AbortController();
@@ -27,7 +27,6 @@ export default function WatchlistPage() {
     const watchlistRef = doc(db, 'watchlist', uid);
     const loadWatchlistFromFirebase = onSnapshot(watchlistRef, coin => {
       if (coin.exists()) {
-        setWatchList(coin.data().coins);
         setWatchlistState(coin.data().coins);
       } else {
         console.log('No Items in Watchlist');
@@ -40,10 +39,10 @@ export default function WatchlistPage() {
   }, []);
 
   useEffect(() => {
-    fetchInfoByUserWatchList(watchList, controller.signal).then((data: any) =>
+    fetchInfoByUserWatchList(watchlist, controller.signal).then((data: any) =>
       setUserCoinList(data)
     );
-  }, [watchList]);
+  }, [watchlist]);
 
   return (
     <>
