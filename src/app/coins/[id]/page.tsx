@@ -6,7 +6,6 @@ import { CoinChart } from '@/components/CoinChart';
 import { ICoin } from '@/types';
 import { BackLink } from '@/components/ui/BackLink';
 import { AddRemoveButton } from '@/components/ui/AddRemoveButton';
-import { redirect } from 'next/navigation';
 import { notFound } from 'next/navigation';
 
 type Props = {
