@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { navlinks } from '@/data/navlinks';
 import { usePathname } from 'next/navigation';
 import { useUserStore } from '@/configs/store';
@@ -15,7 +16,7 @@ export const Navigation = () => {
     'inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none group-hover:text-yellow-500';
 
   return (
-    <div className="flex justify-center gap-2">
+    <div className="flex justify-center gap-2 w-full">
       {navlinks.map(link => {
         const isActive = pathname === link.href;
 
@@ -27,9 +28,7 @@ export const Navigation = () => {
           >
             <p>
               {link.label}
-              <span className="inline-block transition-transform group-hover:translate-x-1 group-hover:text-yellow-500 motion-reduce:transform-none">
-                -&gt;
-              </span>
+              <span className={spanClass}>-&gt;</span>
             </p>
           </Link>
         );
@@ -50,7 +49,7 @@ export const Navigation = () => {
       )}
 
       {uid ? (
-        <Link href="#" className={linkClass} onClick={() => signout()}>
+        <Link href="#" className={`${linkClass} ml-auto`} onClick={() => signout()}>
           <p>
             Sign Out
             <span className={spanClass}>-&gt;</span>
@@ -59,7 +58,7 @@ export const Navigation = () => {
       ) : (
         <Link
           href="/signin"
-          className={`${linkClass} ${
+          className={`${linkClass} ml-auto ${
             pathname === '/signin' ? 'text-yellow-500' : ''
           }`}
         >
