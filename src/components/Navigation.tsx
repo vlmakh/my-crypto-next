@@ -1,7 +1,6 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
 import { navlinks } from '@/data/navlinks';
 import { usePathname } from 'next/navigation';
 import { useUserStore } from '@/configs/store';

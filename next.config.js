@@ -20,21 +20,6 @@ const nextConfig = {
         hostname: 'assets.coingecko.com',
         port: '',
       },
-      {
-        protocol: 'https',
-        hostname: 'captainaltcoin.com',
-        port: '',
-      },
-      {
-        protocol: 'https',
-        hostname: 'image.coinpedia.org',
-        port: '',
-      },
-      {
-        protocol: 'https',
-        hostname: 'coin-turk.com',
-        port: '',
-      },
     ],
   },
 };
