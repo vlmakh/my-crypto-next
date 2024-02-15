@@ -27,7 +27,12 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'en.coin-turk.com',
+        hostname: 'image.coinpedia.org',
+        port: '',
+      },
+      {
+        protocol: 'https',
+        hostname: 'coin-turk.com',
         port: '',
       },
     ],

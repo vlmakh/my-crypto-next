@@ -71,7 +71,7 @@ export const searchCoin = async (query: string) => {
 };
 
 export async function fetchNewsList(page: number) {
-  const response = await fetch(`${MAIN_URL}/news/?page=${page}&limit=5`, options);
+  const response = await fetch(`${MAIN_URL}/news/type/latest?page=${page}&limit=5`, options);
 
   if (!response.ok) {
     throw new Error('Failed to fetch data');

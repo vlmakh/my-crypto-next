@@ -87,4 +87,5 @@ export interface INewsItem {
   content: boolean;
   link: string;
   bigImg: boolean;
+  description: string;
 }
