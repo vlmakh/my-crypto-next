@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Navigation } from './Navigation';
+import { BurgerMenu } from './ui/BurgerMenu';
 
 export const TheHeader = () => {
   return (
@@ -15,6 +16,8 @@ export const TheHeader = () => {
           priority
         />
       </Link>
+      
+      <BurgerMenu />
 
       <Navigation />
     </header>
