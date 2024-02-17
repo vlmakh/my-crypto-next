@@ -42,11 +42,19 @@ export const BurgerMenu = () => {
           <nav className="mt-5 grid gap-5 text-xl font-bold">
             {!uid && (
               <div className="flex justify-between gap-4">
-                <Link href="/signin" onClick={() => setIsOpen(false)} className="rounded-lg bg-slate-400 py-2 w-full text-base text-white flex justify-center">
+                <Link
+                  href="/signin"
+                  onClick={() => setIsOpen(false)}
+                  className="flex w-full justify-center rounded-lg bg-slate-400 py-2 text-base text-white"
+                >
                   Signin
                 </Link>
 
-                <Link href="/signup" onClick={() => setIsOpen(false)} className="rounded-lg bg-yellow-500 py-2 w-full text-base flex justify-center">
+                <Link
+                  href="/signup"
+                  onClick={() => setIsOpen(false)}
+                  className="flex w-full justify-center rounded-lg bg-yellow-500 py-2 text-base"
+                >
                   Signup
                 </Link>
               </div>
