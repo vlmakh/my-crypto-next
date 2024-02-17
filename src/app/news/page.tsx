@@ -28,7 +28,7 @@ export default async function NewsPage() {
                 className="h-full w-full transform object-cover duration-200 ease-in group-hover:scale-105"
               />
 
-              <div className="absolute bottom-2 z-10 px-2 text-white">
+              <div className="absolute bottom-2 z-10 px-2 text-white duration-200 ease-in group-hover:-translate-y-2">
                 <p className="font-bold"> {item.title}</p>
 
                 <p className="text-justify text-sm">{item.description}</p>
