@@ -11,3 +11,9 @@ export const formatAxisDate = (seconds: number) => {
     return format(seconds * 1000, 'dd.MM.yyyy');
   }
 };
+
+export const formatMStoDate = (milliseconds: number) => {
+  if (milliseconds) {
+    return format(milliseconds, 'dd.MM.yyyy');
+  }
+};

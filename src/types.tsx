@@ -48,7 +48,7 @@ export interface IUser {
   uid: string;
   accessToken?: string;
   isLoading?: boolean;
-  phoneNumber?: string,
+  phoneNumber?: string;
 }
 
 export interface IUserState {
@@ -56,7 +56,7 @@ export interface IUserState {
   name: string;
   uid: string;
   accessToken: string;
-  phoneNumber?: string,
+  phoneNumber?: string;
   setUserbyPhone: (u: IUser) => void;
   signinGoogle: () => void;
   signinFacebook: () => void;
@@ -70,4 +70,22 @@ export interface IWatchlistState {
   setWatchlistState: (x: string[]) => void;
   addCoinToWatchlistState: (x: string) => void;
   removeCoinToWatchlistState: (x: string) => void;
+}
+
+export interface INewsItem {
+  id: string;
+  searchKeyWords: string[];
+  feedDate: number;
+  source: string;
+  title: string;
+  sourceLink: string;
+  isFeatured: boolean;
+  imgUrl: string;
+  reactionsCount: any;
+  reactions: string[];
+  relatedCoins: string[];
+  content: boolean;
+  link: string;
+  bigImg: boolean;
+  description: string;
 }
