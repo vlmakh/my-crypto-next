@@ -3,7 +3,14 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import { useUserStore } from '@/configs/store';
-import { Bars4Icon, XMarkIcon, NewspaperIcon, CircleStackIcon, ListBulletIcon, ArrowRightStartOnRectangleIcon } from '@heroicons/react/24/solid';
+import {
+  Bars4Icon,
+  XMarkIcon,
+  NewspaperIcon,
+  CircleStackIcon,
+  ListBulletIcon,
+  ArrowRightStartOnRectangleIcon,
+} from '@heroicons/react/24/solid';
 
 export const BurgerMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -32,20 +39,37 @@ export const BurgerMenu = () => {
             <XMarkIcon className="h-6 w-6 text-inherit" />
           </button>
 
-          <nav className="mt-5 grid gap-4 font-bold text-xl">
+          <nav className="mt-5 grid gap-5 text-xl font-bold">
+            {!uid && (
+              <div className="flex justify-between gap-4">
+                <Link href="/signin" onClick={() => setIsOpen(false)} className="rounded-lg bg-slate-400 py-2 w-full text-base text-white flex justify-center">
+                  Signin
+                </Link>
+
+                <Link href="/signup" onClick={() => setIsOpen(false)} className="rounded-lg bg-yellow-500 py-2 w-full text-base flex justify-center">
+                  Signup
+                </Link>
+              </div>
+            )}
+
             <Link href="/news" onClick={() => setIsOpen(false)}>
-              <NewspaperIcon className="h-6 w-6 inline mr-2"/>News
+              <NewspaperIcon className="mr-2 inline h-6 w-6" />
+              News
             </Link>
 
             <Link href="/coins" onClick={() => setIsOpen(false)}>
-              <CircleStackIcon className="h-6 w-6 inline mr-2"/>Coins
+              <CircleStackIcon className="mr-2 inline h-6 w-6" />
+              Coins
             </Link>
 
-            {uid && <Link href="/watchlist" onClick={() => setIsOpen(false)}>
-              <ListBulletIcon className="h-6 w-6 inline mr-2"/>Watchlist
-            </Link>}
+            {uid && (
+              <Link href="/watchlist" onClick={() => setIsOpen(false)}>
+                <ListBulletIcon className="mr-2 inline h-6 w-6" />
+                Watchlist
+              </Link>
+            )}
 
-            {uid ? (
+            {uid && (
               <Link
                 href="#"
                 onClick={() => {
@@ -53,11 +77,8 @@ export const BurgerMenu = () => {
                   setIsOpen(false);
                 }}
               >
-                <ArrowRightStartOnRectangleIcon className="h-6 w-6 inline mr-2"/> Signout
-              </Link>
-            ) : (
-              <Link href="/signin" onClick={() => setIsOpen(false)}>
-                Signin
+                <ArrowRightStartOnRectangleIcon className="mr-2 inline h-6 w-6" />{' '}
+                Signout
               </Link>
             )}
           </nav>
