@@ -32,7 +32,7 @@ export default async function CoinPage({ params: { id } }: Props) {
   const coin: ICoin = await fetchCoinItem(id);
 
   return (
-    <div className="mx-auto pt-5 text-center sm:px-4 lg:w-1/2 lg:px-0">
+    <div className="mx-auto px-2 pt-5 text-center sm:px-4 lg:w-1/2 lg:px-0">
       <div className="flex justify-between">
         <BackLink />
 
