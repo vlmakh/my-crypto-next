@@ -39,6 +39,7 @@ const nextConfig = {
       'cryptodaily.blob.core.windows.net',
       'coinedition.com',
       'bitcoinworld.co.in',
+      'cryptoslate.com',
     ],
   },
 };
