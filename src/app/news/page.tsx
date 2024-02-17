@@ -8,7 +8,7 @@ export default async function NewsPage() {
 
   return (
     <Container>
-      <ul className="px-4 sm:px-0">
+      <ul>
         {totalNewsList.map((item: INewsItem) => (
           <li key={item.id} className="group border-b-2 py-2">
             <a

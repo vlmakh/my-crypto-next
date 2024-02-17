@@ -1,7 +1,6 @@
 import { fetchCoinList } from "@/utils/fetchCoinList";
 import { Pagination } from "@/components/ui/Pagination";
 import { CoinList } from "@/components/CoinList";
-import { Container } from "@/components/Container";
 
 export default async function CoinsPage({
   searchParams,
@@ -13,10 +12,10 @@ export default async function CoinsPage({
   const totalCoinList = await fetchCoinList(page);
 
   return (
-    <Container>
+    <div className="w-full text-center sm:mx-auto sm:max-w-lg">
       <CoinList coinList={totalCoinList.result} />
 
       <Pagination metaInfo={totalCoinList.meta} />
-    </Container>
+    </div>
   );
 }
