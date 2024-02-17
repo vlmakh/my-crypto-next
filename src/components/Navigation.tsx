@@ -16,7 +16,7 @@ export const Navigation = () => {
     'inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none group-hover:text-yellow-500';
 
   return (
-    <div className="hidden w-full justify-center gap-2 sm:flex">
+    <div className="hidden w-full justify-center gap-2 md:flex">
       {navlinks.map(link => {
         const isActive = pathname === link.href;
 

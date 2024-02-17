@@ -21,7 +21,7 @@ export const BurgerMenu = () => {
   return (
     <div className="ml-auto">
       <button
-        className="p-2 sm:hidden"
+        className="p-2 md:hidden"
         onClick={() => setIsOpen(true)}
         aria-label="Menu open"
         type="button"
