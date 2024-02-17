@@ -11,6 +11,7 @@ import {
   ListBulletIcon,
   ArrowRightStartOnRectangleIcon,
 } from '@heroicons/react/24/solid';
+import { UserName } from './UserName';
 
 export const BurgerMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -38,6 +39,8 @@ export const BurgerMenu = () => {
           >
             <XMarkIcon className="h-6 w-6 text-inherit" />
           </button>
+
+          <UserName />
 
           <nav className="mt-5 grid gap-5 text-xl font-bold">
             {!uid && (
