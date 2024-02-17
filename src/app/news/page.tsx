@@ -1,19 +1,17 @@
 import { fetchNewsList } from '@/utils/fetchCoinList';
 import type { INewsItem } from '@/types';
-import { Container } from '@/components/Container';
 import { formatMStoDate } from '@/utils/formatDate';
 import Image from 'next/image';
 
 export default async function NewsPage() {
   const totalNewsList = await fetchNewsList(1);
 
-  return (
-    <Container>
-      <ul>
+  return (    
+      <ul className='w-full py-4 flex flex-col items-center gap-4 px-5 xl:flex-row xl:flex-wrap xl:justify-center '>
         {totalNewsList.map((item: INewsItem) => (
           <li
             key={item.id}
-            className="relative max-h-[324px] min-h-fit overflow-hidden border-b-2"
+            className="relative max-h-[324px] overflow-hidden sm:w-[600px]"
           >
             <a
               href={item.link}
@@ -42,7 +40,6 @@ export default async function NewsPage() {
             </a>
           </li>
         ))}
-      </ul>
-    </Container>
+      </ul>    
   );
 }

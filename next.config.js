@@ -40,6 +40,7 @@ const nextConfig = {
       'coinedition.com',
       'bitcoinworld.co.in',
       'cryptoslate.com',
+      'pbs.twimg.com',
     ],
   },
 };
