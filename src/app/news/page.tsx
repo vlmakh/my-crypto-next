@@ -11,7 +11,7 @@ export default async function NewsPage() {
         {totalNewsList.map((item: INewsItem) => (
           <li
             key={item.id}
-            className="relative max-h-[324px] overflow-hidden sm:w-[600px]"
+            className="relative w-full max-h-[324px] overflow-hidden sm:w-[600px] sm:h-[324px]"
           >
             <a
               href={item.link}
