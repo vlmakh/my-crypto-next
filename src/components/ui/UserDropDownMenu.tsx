@@ -10,15 +10,15 @@ import { useUserStore } from '@/configs/store';
 import { useEffect } from 'react';
 
 type Props = {
-  setIsOpen: any;
+  setShowDropDown: any;
 };
 
-export const UserDropDownMenu = ({ setIsOpen }: Props) => {
+export const UserDropDownMenu = ({ setShowDropDown }: Props) => {
   const signout = useUserStore(state => state.signout);
 
   const handleEscape = (event: KeyboardEvent) => {
     if (event.code === 'Escape') {
-      setIsOpen(false);
+      setShowDropDown(false);
     }
   };
 
@@ -39,7 +39,7 @@ export const UserDropDownMenu = ({ setIsOpen }: Props) => {
           className="border-t-2 p-4 font-bold transition-colors hover:text-yellow-500"
           href="/watchlist"
           onClick={() => {
-            setIsOpen(false);
+            setShowDropDown(false);
           }}
         >
           <ListBulletIcon className="mr-2 inline h-6 w-6" />
@@ -51,7 +51,7 @@ export const UserDropDownMenu = ({ setIsOpen }: Props) => {
           href="#"
           onClick={() => {
             signout();
-            setIsOpen(false);
+            setShowDropDown(false);
           }}
         >
           <ArrowRightStartOnRectangleIcon className="mr-2 inline h-6 w-6" />

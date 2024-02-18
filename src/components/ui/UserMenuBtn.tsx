@@ -7,7 +7,7 @@ import { UserCircleIcon } from '@heroicons/react/24/solid';
 import { UserDropDownMenu } from './UserDropDownMenu';
 
 export const UserMenuBtn = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [showDropDown, setShowDropDown] = useState(false);
   const uid = useUserStore(state => state.uid);
 
   return (
@@ -16,7 +16,7 @@ export const UserMenuBtn = () => {
         <div className="flex gap-4">
           <Link
             href="/signin"
-            onClick={() => setIsOpen(false)}
+            onClick={() => setShowDropDown(false)}
             className="rounded-lg bg-slate-400 px-8 py-2 text-base text-white"
           >
             Signin
@@ -24,7 +24,7 @@ export const UserMenuBtn = () => {
 
           <Link
             href="/signup"
-            onClick={() => setIsOpen(false)}
+            onClick={() => setShowDropDown(false)}
             className="rounded-lg bg-yellow-500 px-8 py-2 text-base"
           >
             Signup
@@ -32,8 +32,8 @@ export const UserMenuBtn = () => {
         </div>
       ) : (
         <button
-          className="p-2 group"
-          onClick={() => setIsOpen(!isOpen)}
+          className="group p-2"
+          onClick={() => setShowDropDown(!showDropDown)}
           aria-label="User menu open"
           type="button"
         >
@@ -41,7 +41,7 @@ export const UserMenuBtn = () => {
         </button>
       )}
 
-      {isOpen && <UserDropDownMenu setIsOpen={setIsOpen} />}
+      {showDropDown && <UserDropDownMenu setShowDropDown={setShowDropDown} />}
     </div>
   );
 };
