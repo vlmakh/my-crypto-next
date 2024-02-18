@@ -32,12 +32,12 @@ export const UserMenuBtn = () => {
         </div>
       ) : (
         <button
-          className="p-2"
+          className="p-2 group"
           onClick={() => setIsOpen(!isOpen)}
           aria-label="User menu open"
           type="button"
         >
-          <UserCircleIcon className="h-6 w-6 text-inherit" />
+          <UserCircleIcon className="h-6 w-6 text-inherit transition-transform group-hover:scale-110" />
         </button>
       )}
 

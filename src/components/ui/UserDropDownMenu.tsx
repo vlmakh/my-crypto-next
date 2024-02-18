@@ -31,7 +31,7 @@ export const UserDropDownMenu = ({ setIsOpen }: Props) => {
   });
 
   return (
-    <div className="absolute right-0 top-14 z-20 w-60">
+    <div className="absolute right-0 top-14 z-20 w-60 bg-white dark:bg-black">
       <div className="grid border-2">
         <UserName />
 
