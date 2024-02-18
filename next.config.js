@@ -41,6 +41,7 @@ const nextConfig = {
       'bitcoinworld.co.in',
       'cryptoslate.com',
       'pbs.twimg.com',
+      'www.cointribune.com',
     ],
   },
 };
