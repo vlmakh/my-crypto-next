@@ -42,6 +42,8 @@ const nextConfig = {
       'cryptoslate.com',
       'pbs.twimg.com',
       'www.cointribune.com',
+      'coinotag.b-cdn.net',
+      'i0.wp.com',
     ],
   },
 };
