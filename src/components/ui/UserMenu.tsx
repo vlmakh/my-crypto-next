@@ -21,7 +21,7 @@ export const UserMenu = () => {
           <Link
             href="/signin"
             onClick={() => setIsOpen(false)}
-            className="rounded-lg bg-slate-400 py-2 px-8 text-base text-white"
+            className="rounded-lg bg-slate-400 px-8 py-2 text-base text-white"
           >
             Signin
           </Link>
@@ -29,7 +29,7 @@ export const UserMenu = () => {
           <Link
             href="/signup"
             onClick={() => setIsOpen(false)}
-            className="rounded-lg bg-yellow-500 py-2 px-8 text-base"
+            className="rounded-lg bg-yellow-500 px-8 py-2 text-base"
           >
             Signup
           </Link>
@@ -47,10 +47,11 @@ export const UserMenu = () => {
 
       {isOpen && (
         <div className="absolute right-0 top-14 z-20 w-60 bg-white text-black dark:invert">
-          <div className="grid text-xl font-bold border-2">
+          <div className="grid border-2 text-xl font-bold">
             <UserName />
 
-            <Link className='p-4 border-t-2'
+            <Link
+              className="border-t-2 p-4"
               href="#"
               onClick={() => {
                 signout();
