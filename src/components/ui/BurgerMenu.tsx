@@ -42,7 +42,7 @@ export const BurgerMenu = () => {
 
           <UserName />
 
-          <nav className="mt-5 grid gap-5 text-xl font-bold">
+          <nav className="grid gap-5 text-xl font-bold">
             {!uid && (
               <div className="flex justify-between gap-4">
                 <Link

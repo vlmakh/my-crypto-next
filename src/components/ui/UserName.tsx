@@ -6,5 +6,5 @@ export const UserName = () => {
   const phoneNumber = useUserStore(state => state.phoneNumber);
   const email = useUserStore(state => state.email);
 
-  return <h1 className="py-5 text-center">{email ? email : phoneNumber}</h1>;
+  return <h2 className="p-4 text-center">{email ? email : phoneNumber}</h2>;
 };
