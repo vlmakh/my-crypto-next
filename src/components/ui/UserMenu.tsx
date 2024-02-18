@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useUserStore } from '@/configs/store';
 import Link from 'next/link';
 import {
@@ -13,6 +13,20 @@ export const UserMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
   const uid = useUserStore(state => state.uid);
   const signout = useUserStore(state => state.signout);
+  
+  useEffect(() => {
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.code === 'Escape') {
+        setIsOpen(false);
+      }
+    };
+
+    window.addEventListener('keydown', onKeyDown);
+
+    return () => {
+      window.removeEventListener('keydown', onKeyDown);
+    };
+  }, []);
 
   return (
     <div className="ml-auto">
