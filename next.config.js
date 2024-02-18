@@ -45,6 +45,7 @@ const nextConfig = {
       'coinotag.b-cdn.net',
       'i0.wp.com',
       'static.news.bitcoin.com',
+      'coinfomania.com',
     ],
   },
 };
