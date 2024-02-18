@@ -41,7 +41,7 @@ export const UserMenuBtn = () => {
         </button>
       )}
 
-      {showDropDown && <UserDropDownMenu setShowDropDown={setShowDropDown} />}
+      {showDropDown && <UserDropDownMenu setShowDropDown={setShowDropDown} showDropDown={showDropDown} />}
     </div>
   );
 };
