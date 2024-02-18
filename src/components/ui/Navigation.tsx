@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { navlinks } from '@/data/navlinks';
 import { usePathname } from 'next/navigation';
-import { UserMenuBtn } from './ui/UserMenuBtn';
+import { UserMenuBtn } from './UserMenuBtn';
 
 export const Navigation = () => {
   const pathname = usePathname();

@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { Navigation } from './Navigation';
+import { Navigation } from './ui/Navigation';
 import { BurgerMenu } from './ui/BurgerMenu';
 
 export const TheHeader = () => {
