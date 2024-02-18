@@ -17,7 +17,7 @@ export const UserMenuBtn = () => {
           <Link
             href="/signin"
             onClick={() => setShowDropDown(false)}
-            className="rounded-lg bg-slate-400 px-8 py-2 text-base text-white"
+            className="rounded-lg bg-slate-400 px-8 py-2 text-base text-white transition-colors hover:text-yellow-500"
           >
             Signin
           </Link>
@@ -25,7 +25,7 @@ export const UserMenuBtn = () => {
           <Link
             href="/signup"
             onClick={() => setShowDropDown(false)}
-            className="rounded-lg bg-yellow-500 px-8 py-2 text-base"
+            className="rounded-lg bg-yellow-500 px-8 py-2 text-base transition-colors hover:bg-yellow-400"
           >
             Signup
           </Link>
@@ -41,7 +41,12 @@ export const UserMenuBtn = () => {
         </button>
       )}
 
-      {showDropDown && <UserDropDownMenu setShowDropDown={setShowDropDown} showDropDown={showDropDown} />}
+      {showDropDown && (
+        <UserDropDownMenu
+          setShowDropDown={setShowDropDown}
+          showDropDown={showDropDown}
+        />
+      )}
     </div>
   );
 };
