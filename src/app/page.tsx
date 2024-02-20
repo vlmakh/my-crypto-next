@@ -1,27 +1,15 @@
-import { SearchCoinsForm } from '@/components/ui/SearchCoinsForm';
-import { searchCoin } from '@/utils/fetchCoinList';
-import { SearchResultList } from '@/components/ui/SearchResultList';
+import { fetchNewsList } from '@/utils/fetchCoinList';
+import type { INewsItem } from '@/types';
+import { NewsItem } from '@/components/NewsItem';
 
-export default async function HomePage({
-  searchParams,
-}: {
-  searchParams: { [key: string]: string | string[] | undefined };
-}) {
-  const query = (searchParams?.query || '') as string;
-
-  let searchResultList = [];
-
-  if (query.trim().length > 2) {
-    const result = await searchCoin(query);
-
-    searchResultList = result.coins;
-  }
+export default async function HomePage() {
+  const totalNewsList: INewsItem[] = await fetchNewsList(1);
 
   return (
-    <div className="mx-auto max-w-7xl text-center">
-      <SearchCoinsForm />
-
-      <SearchResultList searchResultList={searchResultList} />
-    </div>
+    <ul className="flex w-full flex-col items-center gap-4 px-5 py-4 xl:flex-row xl:flex-wrap xl:justify-center">
+      {totalNewsList.map(item => (
+        <NewsItem key={item.id} item={item} />
+      ))}
+    </ul>
   );
 }
