@@ -8,11 +8,13 @@ const options: RequestInit = {
     accept: 'application/json',
     'X-API-KEY': `${process.env.NEXT_PUBLIC_MAIN_KEY}`,
   },
-  cache: 'no-cache',
 };
 
 export async function fetchCoinList(page: number) {
-  const response = await fetch(`${MAIN_URL}/coins/?page=${page}`, options);
+  const response = await fetch(`${MAIN_URL}/coins/?page=${page}`, {
+    ...options,
+    cache: 'no-cache',
+  });
 
   if (!response.ok) {
     throw new Error('Failed to fetch data');
@@ -22,7 +24,10 @@ export async function fetchCoinList(page: number) {
 }
 
 export async function fetchCoinItem(id: string) {
-  const response = await fetch(`${MAIN_URL}/coins/${id}`, options);
+  const response = await fetch(`${MAIN_URL}/coins/${id}`, {
+    ...options,
+    cache: 'no-cache',
+  });
 
   if (!response.ok) {
     // throw new Error("Failed to fetch data");
@@ -35,7 +40,7 @@ export async function fetchCoinItem(id: string) {
 export const historicalChart = async (id: string, period: string) => {
   const response = await fetch(
     `${MAIN_URL}/coins/${id}/charts?period=${period}`,
-    options
+    { ...options, cache: 'no-cache' }
   );
 
   if (!response.ok) {
@@ -52,6 +57,7 @@ export const fetchInfoByUserWatchList = async (
   const arrayOfCoins = array.map(async coinId => {
     return await fetch(`${MAIN_URL}/coins/${coinId}`, {
       ...options,
+      cache: 'no-cache',
       signal: abortSignal,
     })
       .then(response => {
@@ -71,7 +77,20 @@ export const searchCoin = async (query: string) => {
 };
 
 export async function fetchNewsList(page: number) {
-  const response = await fetch(`${MAIN_URL}/news/type/latest?page=${page}&limit=6`, options);
+  const response = await fetch(
+    `${MAIN_URL}/news/type/latest?page=${page}&limit=6`,
+    options
+  );
+
+  if (!response.ok) {
+    throw new Error('Failed to fetch data');
+  }
+
+  return response.json();
+}
+
+export async function fetchExchanges() {
+  const response = await fetch(`${MAIN_URL}/tickers/exchanges/`, options);
 
   if (!response.ok) {
     throw new Error('Failed to fetch data');

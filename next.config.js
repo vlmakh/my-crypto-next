@@ -46,6 +46,9 @@ const nextConfig = {
       'i0.wp.com',
       'static.news.bitcoin.com',
       'coinfomania.com',
+      'dlnews-dlnews-prod.web.arc-cdn.net',
+      'app.chainwire.org',
+      'res.coinpaper.com',
     ],
   },
 };

@@ -6,12 +6,14 @@ import { useUserStore } from '@/configs/store';
 import {
   Bars4Icon,
   XMarkIcon,
-  NewspaperIcon,
+  MagnifyingGlassIcon,
   CircleStackIcon,
   ListBulletIcon,
   ArrowRightStartOnRectangleIcon,
+  ArrowPathIcon,
 } from '@heroicons/react/24/solid';
 import { UserName } from './UserName';
+// import { navlinks } from '@/data/navlinks';
 
 export const BurgerMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -63,15 +65,29 @@ export const BurgerMenu = () => {
               </div>
             )}
 
-            <Link href="/news" onClick={() => setIsOpen(false)}>
-              <NewspaperIcon className="mr-2 inline h-6 w-6" />
-              News
+            <Link href="/search" onClick={() => setIsOpen(false)}>
+              <MagnifyingGlassIcon className="mr-2 inline h-6 w-6" />
+              Search
             </Link>
 
             <Link href="/coins" onClick={() => setIsOpen(false)}>
               <CircleStackIcon className="mr-2 inline h-6 w-6" />
               Coins
             </Link>
+
+            <Link href="/exchanges" onClick={() => setIsOpen(false)}>
+              <ArrowPathIcon className="mr-2 inline h-6 w-6" />
+              Exchanges
+            </Link>
+
+            {/* {navlinks.map(item => {
+              const Icon = item.icon;
+
+              <Link href={item.href} onClick={() => setIsOpen(false)}>
+                <Icon className="mr-2 inline h-6 w-6" />
+                {item.label}
+              </Link>;
+            })} */}
 
             {uid && (
               <Link href="/watchlist" onClick={() => setIsOpen(false)}>
