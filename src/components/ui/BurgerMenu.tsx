@@ -6,14 +6,11 @@ import { useUserStore } from '@/configs/store';
 import {
   Bars4Icon,
   XMarkIcon,
-  MagnifyingGlassIcon,
-  CircleStackIcon,
   ListBulletIcon,
   ArrowRightStartOnRectangleIcon,
-  ArrowPathIcon,
 } from '@heroicons/react/24/solid';
 import { UserName } from './UserName';
-// import { navlinks } from '@/data/navlinks';
+import { navlinks } from '@/data/navlinks';
 
 export const BurgerMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -65,48 +62,41 @@ export const BurgerMenu = () => {
               </div>
             )}
 
-            <Link href="/search" onClick={() => setIsOpen(false)}>
-              <MagnifyingGlassIcon className="mr-2 inline h-6 w-6" />
-              Search
-            </Link>
+            <>
+              {navlinks.map(item => {
+                const Icon = item.icon;
 
-            <Link href="/coins" onClick={() => setIsOpen(false)}>
-              <CircleStackIcon className="mr-2 inline h-6 w-6" />
-              Coins
-            </Link>
-
-            <Link href="/exchanges" onClick={() => setIsOpen(false)}>
-              <ArrowPathIcon className="mr-2 inline h-6 w-6" />
-              Exchanges
-            </Link>
-
-            {/* {navlinks.map(item => {
-              const Icon = item.icon;
-
-              <Link href={item.href} onClick={() => setIsOpen(false)}>
-                <Icon className="mr-2 inline h-6 w-6" />
-                {item.label}
-              </Link>;
-            })} */}
+                return (
+                  <Link
+                    key={item.id}
+                    href={item.href}
+                    onClick={() => setIsOpen(false)}
+                  >
+                    <Icon className="mr-2 inline h-6 w-6" />
+                    {item.label}
+                  </Link>
+                );
+              })}
+            </>
 
             {uid && (
-              <Link href="/watchlist" onClick={() => setIsOpen(false)}>
-                <ListBulletIcon className="mr-2 inline h-6 w-6" />
-                Watchlist
-              </Link>
-            )}
+              <>
+                <Link href="/watchlist" onClick={() => setIsOpen(false)}>
+                  <ListBulletIcon className="mr-2 inline h-6 w-6" />
+                  Watchlist
+                </Link>
 
-            {uid && (
-              <Link
-                href="#"
-                onClick={() => {
-                  signout();
-                  setIsOpen(false);
-                }}
-              >
-                <ArrowRightStartOnRectangleIcon className="mr-2 inline h-6 w-6" />{' '}
-                Signout
-              </Link>
+                <Link
+                  href="#"
+                  onClick={() => {
+                    signout();
+                    setIsOpen(false);
+                  }}
+                >
+                  <ArrowRightStartOnRectangleIcon className="mr-2 inline h-6 w-6" />{' '}
+                  Signout
+                </Link>
+              </>
             )}
           </nav>
         </div>
