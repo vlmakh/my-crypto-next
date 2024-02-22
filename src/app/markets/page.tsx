@@ -27,7 +27,7 @@ export default async function MarketDataPage() {
         {/* <p>{result.marketCapChange.toFixed(1)}%</p> */}
       </div>
 
-      <div className="relative mx-auto mt-4 max-w-[568px] before:absolute before:left-0 before:top-0 before:z-10 before:h-full before:w-full before:bg-gradient-to-r before:from-transparent before:to-slate-700">
+      <div className="relative mx-auto mt-4 max-w-[568px] before:absolute before:left-0 before:top-0 before:z-10 before:h-full before:w-full before:bg-gradient-to-r before:from-transparent before:to-slate-900">
         <Image
           src="/images/bitcoin_dom.webp"
           alt=""
