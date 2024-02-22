@@ -7,7 +7,7 @@ export default async function ExchangesPage() {
   const exchangesList: IExchangeItem[] = await fetchExchanges();
 
   return (
-    <ul className="flex flex-wrap justify-center gap-4 p-4">
+    <ul className="flex flex-wrap justify-center gap-4 py-4">
       {exchangesList
         .sort((a: { rank: number }, b: { rank: number }) => a.rank - b.rank)
         .map(item => {

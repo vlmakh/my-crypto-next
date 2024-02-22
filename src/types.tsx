@@ -1,5 +1,3 @@
-// import { ReactNode } from "react";
-
 export interface ICoin {
   id: string;
   icon: string;
@@ -100,4 +98,13 @@ export interface IExchangeItem {
   volume1m: number;
   name: string;
   icon: string;
+}
+
+export interface IMarketData {
+  marketCap: number;
+  volume: number;
+  btcDominance: number;
+  marketCapChange: number;
+  volumeChange: number;
+  btcDominanceChange: number;
 }

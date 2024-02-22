@@ -98,3 +98,16 @@ export async function fetchExchanges() {
 
   return response.json();
 }
+
+export async function fetchMarkets() {
+  const response = await fetch(`${MAIN_URL}/markets`, {
+    ...options,
+    cache: 'no-cache',
+  });
+
+  if (!response.ok) {
+    throw new Error('Failed to fetch data');
+  }
+
+  return response.json();
+}
