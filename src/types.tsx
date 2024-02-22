@@ -1,7 +1,3 @@
-// import { ReactNode } from "react";
-
-import { number } from 'yup';
-
 export interface ICoin {
   id: string;
   icon: string;

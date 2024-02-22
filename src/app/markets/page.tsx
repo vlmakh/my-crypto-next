@@ -8,7 +8,7 @@ export default async function MarketDataPage() {
   return (
     <div className="py-4 text-center">
       <h2>
-        Total Cryptomarket Cap: {result.marketCap.toLocaleString()}${' '}
+        Total Cryptomarket Cap: <b>{result.marketCap.toLocaleString()}$</b>{' '}
         {result.marketCapChange.toFixed(1)}%
       </h2>
       <Image
@@ -19,10 +19,17 @@ export default async function MarketDataPage() {
         className="mx-auto"
       />
 
-      <h3>
-        Bitcoin dominance: {result.btcDominance.toFixed(1)}%{' '}
+      <h2 className='mt-4'>
+        Bitcoin dominance: <b>{result.btcDominance.toFixed(1)}%</b>{' '}
         {result.btcDominanceChange.toFixed(1)}%
-      </h3>
+      </h2>
+      <Image
+        src="/images/bitcoin_dom.webp"
+        alt=""
+        width={568}
+        height={320}
+        className="mx-auto"
+      />
     </div>
   );
 }
