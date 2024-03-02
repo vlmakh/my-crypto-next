@@ -10,7 +10,7 @@ export const CoinListItem = ({ coin }: { coin: ICoin }) => {
     <li className="mx-auto max-w-min border-b-2">
       <Link
         href={`/coins/${coin.id}`}
-        className="group flex items-center gap-4 px-2 py-1 w-full"
+        className="group flex w-full items-center gap-4 px-2 py-1"
       >
         <div className="h-12 w-12">
           <Image
@@ -31,7 +31,7 @@ export const CoinListItem = ({ coin }: { coin: ICoin }) => {
           </p>
         </div>
 
-        <p className="text-right w-28">{formatPrice(coin.price)}</p>
+        <p className="w-28 text-right">{formatPrice(coin.price)}</p>
 
         <p
           className={`flex w-16 items-center justify-end text-right text-sm ${coin.priceChange1d >= 0 ? 'text-green-500' : 'text-red-500'}`}
@@ -44,7 +44,7 @@ export const CoinListItem = ({ coin }: { coin: ICoin }) => {
           {Math.abs(coin.priceChange1d).toFixed(1)}%{' '}
         </p>
 
-        {/* <p className="text-right text-xs w-10">{coin.rank}</p> */}
+        <p className="hidden w-10 text-right text-xs md:block">{coin.rank}</p>
       </Link>
     </li>
   );
