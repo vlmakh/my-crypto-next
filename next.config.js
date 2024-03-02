@@ -49,6 +49,7 @@ const nextConfig = {
       'dlnews-dlnews-prod.web.arc-cdn.net',
       'app.chainwire.org',
       'res.coinpaper.com',
+      'cryptobenelux.com',
     ],
   },
 };
