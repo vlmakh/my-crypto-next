@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { formatPrice } from '@/utils/formatPrice';
+import { ChevronUpIcon, ChevronDownIcon } from '@heroicons/react/16/solid';
 
 import type { ICoin } from '@/types';
 
@@ -9,7 +10,7 @@ export const CoinListItem = ({ coin }: { coin: ICoin }) => {
     <li className="mx-auto max-w-min border-b-2">
       <Link
         href={`/coins/${coin.id}`}
-        className="group flex items-center gap-4 px-2 py-1"
+        className="group flex items-center gap-4 px-2 py-1 w-full"
       >
         <div className="h-12 w-12">
           <Image
@@ -21,7 +22,7 @@ export const CoinListItem = ({ coin }: { coin: ICoin }) => {
           />
         </div>
         <div className="w-44 text-left">
-          <p className="text-xl font-bold transition-colors group-hover:text-yellow-500">
+          <p className="text-lg font-bold transition-colors group-hover:text-yellow-500">
             {coin.symbol}
           </p>
 
@@ -30,16 +31,20 @@ export const CoinListItem = ({ coin }: { coin: ICoin }) => {
           </p>
         </div>
 
+        <p className="text-right w-28">{formatPrice(coin.price)}</p>
+
         <p
-          className={`w-32 text-right font-bold ${coin.priceChange1d >= 0 ? 'text-green-500' : 'text-red-500'}`}
+          className={`flex w-16 items-center justify-end text-right text-sm ${coin.priceChange1d >= 0 ? 'text-green-500' : 'text-red-500'}`}
         >
-          {formatPrice(coin.price)}
+          {coin.priceChange1d >= 0 ? (
+            <ChevronUpIcon className="h-4 w-4" />
+          ) : (
+            <ChevronDownIcon className="h-4 w-4" />
+          )}
+          {Math.abs(coin.priceChange1d).toFixed(1)}%{' '}
         </p>
 
-        <p className="w-20 text-right text-sm">
-          {(+coin.priceChange1d).toFixed(1)}%{' '}
-          <span className="text-opacity-50">1D</span>
-        </p>
+        {/* <p className="text-right text-xs w-10">{coin.rank}</p> */}
       </Link>
     </li>
   );
