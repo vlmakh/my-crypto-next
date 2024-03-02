@@ -79,7 +79,10 @@ export const searchCoin = async (query: string) => {
 export async function fetchNewsList(page: number) {
   const response = await fetch(
     `${MAIN_URL}/news/type/latest?page=${page}&limit=6`,
-    options
+    {
+      ...options,
+      cache: 'no-cache',
+    }
   );
 
   if (!response.ok) {
