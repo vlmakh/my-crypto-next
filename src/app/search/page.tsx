@@ -11,7 +11,7 @@ export default async function SearchPage({
 
   let searchResultList = [];
 
-  if (query.trim().length > 2) {
+  if (query.trim().length >= 2) {
     const result = await searchCoin(query);
 
     searchResultList = result.coins;

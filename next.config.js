@@ -50,6 +50,7 @@ const nextConfig = {
       'app.chainwire.org',
       'res.coinpaper.com',
       'cryptobenelux.com',
+      'ambcrypto.com',
     ],
   },
 };
