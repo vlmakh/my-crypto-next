@@ -51,6 +51,7 @@ const nextConfig = {
       'res.coinpaper.com',
       'cryptobenelux.com',
       'ambcrypto.com',
+      'coincu.com',
     ],
   },
 };
