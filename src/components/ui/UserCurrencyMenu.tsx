@@ -55,25 +55,32 @@ export const UserCurrencyMenu = ({ showDropDown, setShowDropDown }: Props) => {
 
   return (
     <div
-      className="absolute left-0 top-10 z-20 w-full  bg-slate-200 p-4 dark:bg-slate-800"
+      className="absolute left-0 top-16 z-20 w-full  bg-slate-200 p-4 dark:bg-slate-800"
       ref={dropdown}
     >
-      UserCurrencyMenu
       <ul className="flex flex-wrap gap-2">
         {currencies.map(item => (
-          <li
-            key={item.name}
-            className="flex w-24 gap-2 rounded-md px-2 py-4 transition-colors hover:bg-slate-800"
-            onClick={() => {
-              setCurrency(item);
+          <li key={item.name}>
+            <button
+              className="flex w-24 gap-2 rounded-md px-2 py-4 transition-colors hover:bg-slate-600"
+              onClick={() => {
+                setCurrency(item);
 
-              setShowDropDown(false);
+                setShowDropDown(false);
 
-              router.push(`/coins/?page=${currentPage}&currency=${item.name}`);
-            }}
-          >
-            <Image src={item.imageUrl} alt={item.name} width={24} height={24} />
-            {item.name}
+                router.push(
+                  `/coins/?page=${currentPage}&currency=${item.name}`
+                );
+              }}
+            >
+              <Image
+                src={item.imageUrl}
+                alt={item.name}
+                width={24}
+                height={24}
+              />
+              {item.name}
+            </button>
           </li>
         ))}
       </ul>
