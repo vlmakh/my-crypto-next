@@ -30,7 +30,7 @@ export async function fetchCoinItem(id: string, currency: string) {
   });
 
   if (!response.ok) {
-    // throw new Error("Failed to fetch data");
+    throw new Error("Failed to fetch data");
     return null;
   }
 
