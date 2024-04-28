@@ -1,0 +1,356 @@
+[
+  {
+    "name": "AUD",
+    "rate": 1.5313941819853456,
+    "symbol": "AU$",
+    "imageUrl": "https://static.coinstats.app/flags/AUD_r.png"
+  },
+  {
+    "name": "BGN",
+    "rate": 1.8281504902537882,
+    "symbol": "лв.",
+    "imageUrl": "https://static.coinstats.app/flags/BGN_r.png"
+  },
+  {
+    "name": "BRL",
+    "rate": 5.116296757242619,
+    "symbol": "R$",
+    "imageUrl": "https://static.coinstats.app/flags/BRL_r.png"
+  },
+  {
+    "name": "CAD",
+    "rate": 1.3680510005961155,
+    "symbol": "C$",
+    "imageUrl": "https://static.coinstats.app/flags/CAD_r.png"
+  },
+  {
+    "name": "CHF",
+    "rate": 0.904056203060559,
+    "symbol": "SFr",
+    "imageUrl": "https://static.coinstats.app/flags/CHF_r.png"
+  },
+  {
+    "name": "CNY",
+    "rate": 7.246104224946788,
+    "symbol": "CN¥",
+    "imageUrl": "https://static.coinstats.app/flags/CNY_r.png"
+  },
+  {
+    "name": "CZK",
+    "rate": 23.49471250964717,
+    "symbol": "Kč",
+    "imageUrl": "https://static.coinstats.app/flags/CZK_r.png"
+  },
+  {
+    "name": "DKK",
+    "rate": 6.970800607701665,
+    "symbol": "DKr",
+    "imageUrl": "https://static.coinstats.app/flags/DKK_r.png"
+  },
+  {
+    "name": "EUR",
+    "rate": 0.9343506543257631,
+    "symbol": "€",
+    "imageUrl": "https://static.coinstats.app/flags/EUR_r.png"
+  },
+  {
+    "name": "GBP",
+    "rate": 0.791295963044563,
+    "symbol": "£",
+    "imageUrl": "https://static.coinstats.app/flags/GBP_r.png"
+  },
+  {
+    "name": "HKD",
+    "rate": 7.828353244345777,
+    "symbol": "HK$",
+    "imageUrl": "https://static.coinstats.app/flags/HKD_r.png"
+  },
+  {
+    "name": "HRK",
+    "rate": 7.080163548738533,
+    "symbol": "kn",
+    "imageUrl": "https://static.coinstats.app/flags/HRK_r.png"
+  },
+  {
+    "name": "HUF",
+    "rate": 367.5602039500608,
+    "symbol": "Ft",
+    "imageUrl": "https://static.coinstats.app/flags/HUF_r.png"
+  },
+  {
+    "name": "IDR",
+    "rate": 16241.307329420273,
+    "symbol": "Rp",
+    "imageUrl": "https://static.coinstats.app/flags/IDR_r.png"
+  },
+  {
+    "name": "ILS",
+    "rate": 3.8278963468758116,
+    "symbol": "₪",
+    "imageUrl": "https://static.coinstats.app/flags/ILS_r.png"
+  },
+  {
+    "name": "INR",
+    "rate": 83.402987305912,
+    "symbol": "₹",
+    "imageUrl": "https://static.coinstats.app/flags/INR_r.png"
+  },
+  {
+    "name": "ISK",
+    "rate": 140.5601310707098,
+    "symbol": "IKr",
+    "imageUrl": "https://static.coinstats.app/flags/ISK_r.png"
+  },
+  {
+    "name": "JPY",
+    "rate": 158.09509073479205,
+    "symbol": "￥",
+    "imageUrl": "https://static.coinstats.app/flags/JPY_r.png"
+  },
+  {
+    "name": "KRW",
+    "rate": 1378.0907861813275,
+    "symbol": "₩",
+    "imageUrl": "https://static.coinstats.app/flags/KRW_r.png"
+  },
+  {
+    "name": "MXN",
+    "rate": 17.16010565637199,
+    "symbol": "Mex$",
+    "imageUrl": "https://static.coinstats.app/flags/MXN_r.png"
+  },
+  {
+    "name": "MYR",
+    "rate": 4.767500854930849,
+    "symbol": "RM",
+    "imageUrl": "https://static.coinstats.app/flags/MYR_r.png"
+  },
+  {
+    "name": "NOK",
+    "rate": 11.038801713972841,
+    "symbol": "NKr",
+    "imageUrl": "https://static.coinstats.app/flags/NOK_r.png"
+  },
+  {
+    "name": "NZD",
+    "rate": 1.68364475240642,
+    "symbol": "$NZ",
+    "imageUrl": "https://static.coinstats.app/flags/NZD_r.png"
+  },
+  {
+    "name": "PHP",
+    "rate": 57.63852309060772,
+    "symbol": "₱",
+    "imageUrl": "https://static.coinstats.app/flags/PHP_r.png"
+  },
+  {
+    "name": "PLN",
+    "rate": 4.030276698602772,
+    "symbol": "zł",
+    "imageUrl": "https://static.coinstats.app/flags/PLN_r.png"
+  },
+  {
+    "name": "RON",
+    "rate": 4.656990531290469,
+    "symbol": "RON",
+    "imageUrl": "https://static.coinstats.app/flags/RON_r.png"
+  },
+  {
+    "name": "RUB",
+    "rate": 92.28021923603752,
+    "symbol": "₽",
+    "imageUrl": "https://static.coinstats.app/flags/RUB_r.png"
+  },
+  {
+    "name": "SEK",
+    "rate": 10.889285053566324,
+    "symbol": "SKr",
+    "imageUrl": "https://static.coinstats.app/flags/SEK_r.png"
+  },
+  {
+    "name": "SGD",
+    "rate": 1.3625999988787791,
+    "symbol": "S$",
+    "imageUrl": "https://static.coinstats.app/flags/SGD_r.png"
+  },
+  {
+    "name": "THB",
+    "rate": 37.01500754020978,
+    "symbol": "฿",
+    "imageUrl": "https://static.coinstats.app/flags/THB_r.png"
+  },
+  {
+    "name": "TRY",
+    "rate": 32.50800925380888,
+    "symbol": "TL",
+    "imageUrl": "https://static.coinstats.app/flags/TRY_r.png"
+  },
+  {
+    "name": "ZAR",
+    "rate": 18.78012860402406,
+    "symbol": "R",
+    "imageUrl": "https://static.coinstats.app/flags/ZAR_r.png"
+  },
+  {
+    "name": "USD",
+    "rate": 1,
+    "symbol": "$",
+    "imageUrl": "https://static.coinstats.app/flags/USD_r.png"
+  },
+  {
+    "name": "AMD",
+    "rate": 389.57173103408326,
+    "symbol": "֏",
+    "imageUrl": "https://static.coinstats.app/flags/AMD_r.png"
+  },
+  {
+    "name": "IRR",
+    "rate": 42075.01876549854,
+    "symbol": "﷼",
+    "imageUrl": "https://static.coinstats.app/flags/IRR_r.png"
+  },
+  {
+    "name": "NGN",
+    "rate": 1306.2208449893578,
+    "symbol": "₦",
+    "imageUrl": "https://static.coinstats.app/flags/NGN_r.png"
+  },
+  {
+    "name": "SAR",
+    "rate": 3.750450824190712,
+    "symbol": "ر.س",
+    "imageUrl": "https://static.coinstats.app/flags/SAR_r.png"
+  },
+  {
+    "name": "PKR",
+    "rate": 279.0862349592904,
+    "symbol": "PRs",
+    "imageUrl": "https://static.coinstats.app/flags/PKR_r.png"
+  },
+  {
+    "name": "HTG",
+    "rate": 132.8225612046396,
+    "symbol": "G",
+    "imageUrl": "https://static.coinstats.app/flags/HTG_r.png"
+  },
+  {
+    "name": "TWD",
+    "rate": 32.60302150314595,
+    "symbol": "NT$",
+    "imageUrl": "https://static.coinstats.app/flags/TWD_r.png"
+  },
+  {
+    "name": "PAB",
+    "rate": 1.0024769635846176,
+    "symbol": "B /.",
+    "imageUrl": "https://static.coinstats.app/flags/PAB_r.png"
+  },
+  {
+    "name": "LKR",
+    "rate": 296.73423703728616,
+    "symbol": "SL Rs",
+    "imageUrl": "https://static.coinstats.app/flags/LKR_r.png"
+  },
+  {
+    "name": "UAH",
+    "rate": 39.69594828182258,
+    "symbol": "₴",
+    "imageUrl": "https://static.coinstats.app/flags/UAH_r.png"
+  },
+  {
+    "name": "PEN",
+    "rate": 3.765922736675692,
+    "symbol": "S/",
+    "imageUrl": "https://static.coinstats.app/flags/PEN_r.png"
+  },
+  {
+    "name": "MAD",
+    "rate": 10.12615509099641,
+    "symbol": "MAD",
+    "imageUrl": "https://static.coinstats.app/flags/MAD_r.png"
+  },
+  {
+    "name": "BOB",
+    "rate": 6.9522995303953605,
+    "symbol": "Bs",
+    "imageUrl": "https://static.coinstats.app/flags/BOB_r.png"
+  },
+  {
+    "name": "AOA",
+    "rate": 834.0600310951897,
+    "symbol": "Kz",
+    "imageUrl": "https://static.coinstats.app/flags/AOA_r.png"
+  },
+  {
+    "name": "MDL",
+    "rate": 17.81339896212329,
+    "symbol": "L",
+    "imageUrl": "https://static.coinstats.app/flags/MDL_r.png"
+  },
+  {
+    "name": "SDG",
+    "rate": 586.0004634379245,
+    "symbol": "ج.س.",
+    "imageUrl": "https://static.coinstats.app/flags/SDG_r.png"
+  },
+  {
+    "name": "COP",
+    "rate": 3965.240307513487,
+    "symbol": "Col$",
+    "imageUrl": "https://static.coinstats.app/flags/COP_r.png"
+  },
+  {
+    "name": "CRC",
+    "rate": 509.3680752937131,
+    "symbol": "₡",
+    "imageUrl": "https://static.coinstats.app/flags/CRC_r.png"
+  },
+  {
+    "name": "DOP",
+    "rate": 58.76748870837234,
+    "symbol": "RD$",
+    "imageUrl": "https://static.coinstats.app/flags/DOP_r.png"
+  },
+  {
+    "name": "BDT",
+    "rate": 110.02200956401329,
+    "symbol": "৳",
+    "imageUrl": "https://static.coinstats.app/flags/BDT_r.png"
+  },
+  {
+    "name": "GEL",
+    "rate": 2.679776540697511,
+    "symbol": "ლ",
+    "imageUrl": "https://static.coinstats.app/flags/GEL_r.png"
+  },
+  {
+    "name": "ETB",
+    "rate": 57.531773528351,
+    "symbol": "ብር",
+    "imageUrl": "https://static.coinstats.app/flags/ETB_r.png"
+  },
+  {
+    "name": "VND",
+    "rate": 25345.011437386358,
+    "symbol": "₫",
+    "imageUrl": "https://static.coinstats.app/flags/VND.png"
+  },
+  {
+    "name": "BHD",
+    "rate": 0.3778915816874746,
+    "symbol": "BHD",
+    "imageUrl": "https://static.coinstats.app/flags/BHD.png"
+  },
+  {
+    "name": "AED",
+    "rate": 3.6729025229336365,
+    "symbol": "AED",
+    "imageUrl": "https://static.coinstats.app/flags/AED.png"
+  },
+  {
+    "name": "ARS",
+    "rate": 875.9038665298777,
+    "symbol": "ARS",
+    "imageUrl": "https://static.coinstats.app/flags/ARS.png"
+  }
+]

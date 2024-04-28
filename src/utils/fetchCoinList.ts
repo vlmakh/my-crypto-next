@@ -23,8 +23,8 @@ export async function fetchCoinList(page: number, currency: string) {
   return response.json();
 }
 
-export async function fetchCoinItem(id: string) {
-  const response = await fetch(`${MAIN_URL}/coins/${id}`, {
+export async function fetchCoinItem(id: string, currency: string) {
+  const response = await fetch(`${MAIN_URL}/coins/${id}?currency=${currency}`, {
     ...options,
     cache: 'no-cache',
   });

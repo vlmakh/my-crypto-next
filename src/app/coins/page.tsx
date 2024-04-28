@@ -14,7 +14,7 @@ export default async function CoinsPage({
 
   return (
     <div className="w-full text-center sm:mx-auto sm:max-w-lg">
-      <CoinList coinList={totalCoinList.result} />
+      <CoinList coinList={totalCoinList.result} currency={currency} />
 
       <Pagination metaInfo={totalCoinList.meta} />
     </div>

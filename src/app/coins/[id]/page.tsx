@@ -7,29 +7,35 @@ import { ICoin } from '@/types';
 import { BackLink } from '@/components/ui/BackLink';
 import { AddRemoveButton } from '@/components/ui/AddRemoveButton';
 import { notFound } from 'next/navigation';
+import { formatCurrency } from '@/utils/formatCurrency';
 
 type Props = {
   params: {
     id: string;
   };
+  searchParams: { currency: string };
 };
 
 export async function generateMetadata({
   params: { id },
+  searchParams: { currency },
 }: Props): Promise<Metadata> {
-  const coin = await fetchCoinItem(id);
+  const coin = await fetchCoinItem(id, currency);
 
   if (!coin) {
     return notFound();
   }
 
   return {
-    title: coin.symbol + ' | My Crypto',
+    title: coin.symbol + '/' + currency + ' | My Crypto',
   };
 }
 
-export default async function CoinPage({ params: { id } }: Props) {
-  const coin: ICoin = await fetchCoinItem(id);
+export default async function CoinPage({
+  params: { id },
+  searchParams: { currency },
+}: Props) {
+  const coin: ICoin = await fetchCoinItem(id, currency);
 
   return (
     <div className="mx-auto px-2 pt-5 text-center sm:px-4 lg:w-1/2 lg:px-0">
@@ -56,7 +62,9 @@ export default async function CoinPage({ params: { id } }: Props) {
       </div>
 
       <div className="flex items-center justify-between py-5">
-        <p className="text-2xl font-bold">{formatPrice(coin.price)}$</p>
+        <p className="text-2xl font-bold">
+          {formatCurrency(currency) + ' ' + formatPrice(coin.price)}
+        </p>
 
         <div className="text-right">
           <p>{coin.priceChange1h.toFixed(1)}% 1H</p>
@@ -75,11 +83,19 @@ export default async function CoinPage({ params: { id } }: Props) {
 
         <p className="flex justify-between border-b-2 py-2">
           <span className="font-bold">Market cap</span>
-          <span>{Math.round(coin.marketCap).toLocaleString()} $</span>
+          <span>
+            {formatCurrency(currency) +
+              ' ' +
+              Math.round(coin.marketCap).toLocaleString()}
+          </span>
         </p>
         <p className="flex justify-between border-b-2 py-2">
           <span className="font-bold">Volume 24h</span>
-          <span>{Math.round(coin.volume).toLocaleString()} $</span>
+          <span>
+            {formatCurrency(currency) +
+              ' ' +
+              Math.round(coin.volume).toLocaleString()}
+          </span>
         </p>
         <p className="flex justify-between py-2">
           <span className="font-bold">Supply</span>
