@@ -1,11 +1,12 @@
 'use client';
 
-import { useRef, useEffect, useState } from 'react';
-import { fetchFiats } from '@/utils/fetchCoinList';
-import { ICurrency } from '@/types';
+import { useRef, useEffect } from 'react';
+// import { fetchFiats } from '@/utils/fetchCoinList';
+// import { ICurrency } from '@/types';
 import Image from 'next/image';
 import { useCurrencyStore } from '@/configs/store';
 import { useRouter, useSearchParams } from 'next/navigation';
+import currencies from '@/data/fiats.json';
 
 type Props = {
   showDropDown: boolean;
@@ -14,7 +15,7 @@ type Props = {
 
 export const UserCurrencyMenu = ({ showDropDown, setShowDropDown }: Props) => {
   const dropdown = useRef<HTMLDivElement>(null);
-  const [currencies, setCurrencies] = useState<ICurrency[]>([]);
+  // const [currencies, setCurrencies] = useState<ICurrency[]>(currencies);
   const setCurrency = useCurrencyStore(state => state.setCurrency);
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -23,9 +24,9 @@ export const UserCurrencyMenu = ({ showDropDown, setShowDropDown }: Props) => {
       ? 1
       : Number(searchParams.get('page'));
 
-  useEffect(() => {
-    fetchFiats().then((data: ICurrency[]) => setCurrencies(data));
-  }, []);
+  // useEffect(() => {
+  //   fetchFiats().then((data: ICurrency[]) => setCurrencies(data));
+  // }, []);
 
   useEffect(() => {
     const handleEscape = (event: KeyboardEvent) => {
@@ -59,30 +60,32 @@ export const UserCurrencyMenu = ({ showDropDown, setShowDropDown }: Props) => {
       ref={dropdown}
     >
       <ul className="flex flex-wrap gap-2">
-        {currencies.map(item => (
-          <li key={item.name}>
-            <button
-              className="flex w-24 gap-2 rounded-md px-2 py-4 transition-colors hover:bg-slate-600"
-              onClick={() => {
-                setCurrency(item);
+        {currencies
+          .sort((a, b) => (a.name > b.name ? 1 : -1))
+          .map(item => (
+            <li key={item.name}>
+              <button
+                className="flex w-24 gap-2 rounded-md px-2 py-4 transition-colors hover:bg-slate-600"
+                onClick={() => {
+                  setCurrency(item);
 
-                setShowDropDown(false);
+                  setShowDropDown(false);
 
-                router.push(
-                  `/coins/?page=${currentPage}&currency=${item.name}`
-                );
-              }}
-            >
-              <Image
-                src={item.imageUrl}
-                alt={item.name}
-                width={24}
-                height={24}
-              />
-              {item.name}
-            </button>
-          </li>
-        ))}
+                  router.push(
+                    `/coins/?page=${currentPage}&currency=${item.name}`
+                  );
+                }}
+              >
+                <Image
+                  src={item.imageUrl}
+                  alt={item.name}
+                  width={24}
+                  height={24}
+                />
+                {item.name}
+              </button>
+            </li>
+          ))}
       </ul>
     </div>
   );
