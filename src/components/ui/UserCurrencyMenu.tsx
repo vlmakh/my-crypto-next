@@ -52,7 +52,7 @@ export const UserCurrencyMenu = ({ showDropDown, setShowDropDown }: Props) => {
       UserCurrencyMenu
       <ul className="flex flex-wrap gap-2">
         {currencies.map(item => (
-          <li>
+          <li key={item.name}>
             <Image src={item.imageUrl} alt={item.name} width={40} height={40} />
             {item.name}
           </li>
