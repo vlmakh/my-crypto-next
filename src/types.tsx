@@ -70,6 +70,11 @@ export interface IWatchlistState {
   removeCoinToWatchlistState: (x: string) => void;
 }
 
+export interface ICurrencyState {
+  currency: string;
+  setCurrency: (x: string) => void;
+}
+
 export interface INewsItem {
   id: string;
   searchKeyWords: string[];

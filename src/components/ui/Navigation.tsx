@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { navlinks } from '@/data/navlinks';
 import { usePathname } from 'next/navigation';
+import { UserCurrencyBtn } from './UserCurrencyBtn';
 import { UserMenuBtn } from './UserMenuBtn';
 
 export const Navigation = () => {
@@ -30,6 +31,8 @@ export const Navigation = () => {
           </Link>
         );
       })}
+
+      <UserCurrencyBtn />
 
       <UserMenuBtn />
     </div>

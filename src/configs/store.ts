@@ -1,6 +1,11 @@
 import { create } from 'zustand';
 import { devtools, persist } from 'zustand/middleware';
-import type { IUserState, IWatchlistState, ICredentials } from '@/types';
+import type {
+  IUserState,
+  IWatchlistState,
+  ICurrencyState,
+  ICredentials,
+} from '@/types';
 import {
   operSigninGoogle,
   operSigninFacebook,
@@ -83,7 +88,7 @@ export const useUserStore = create<IUserState>()(
 
         signout: () => {
           operSignOut()
-            .then(() => { })
+            .then(() => {})
             .catch(e => console.log(e))
             .finally(() => {
               set(initialUserState);
@@ -117,3 +122,11 @@ export const useWatchListStore = create<IWatchlistState>()(
     { name: 'watchlist' }
   )
 );
+
+export const useCurrencyStore = create<ICurrencyState>()(set => ({
+  currency: 'USD',
+
+  setCurrency: newCurrency => {
+    set({ currency: newCurrency });
+  },
+}));
