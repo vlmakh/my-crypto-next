@@ -130,10 +130,15 @@ const initialCurrency = {
   imageUrl: 'https://static.coinstats.app/flags/USD_r.png',
 };
 
-export const useCurrencyStore = create<ICurrencyState>()(set => ({
-  currency: initialCurrency,
+export const useCurrencyStore = create<ICurrencyState>()(
+  persist(
+    set => ({
+      currency: initialCurrency,
 
-  setCurrency: newCurrency => {
-    set({ currency: newCurrency });
-  },
-}));
+      setCurrency: newCurrency => {
+        set({ currency: newCurrency });
+      },
+    }),
+    { name: 'currency' }
+  )
+);

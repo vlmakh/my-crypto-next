@@ -10,8 +10,8 @@ const options: RequestInit = {
   },
 };
 
-export async function fetchCoinList(page: number) {
-  const response = await fetch(`${MAIN_URL}/coins/?page=${page}`, {
+export async function fetchCoinList(page: number, currency: string) {
+  const response = await fetch(`${MAIN_URL}/coins/?page=${page}&currency=${currency}`, {
     ...options,
     cache: 'no-cache',
   });

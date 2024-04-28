@@ -18,6 +18,7 @@ type Props = {
 export const Pagination = ({ metaInfo }: Props) => {
   const searchParams = useSearchParams();
   const router = useRouter();
+  const currentCurrency = searchParams.get("currency") ?? 'USD'
 
   const [currentPage, setCurrentPage] = useState(
     Number(searchParams.get("page")) === 0 ? 1 : Number(searchParams.get("page"))
@@ -26,7 +27,7 @@ export const Pagination = ({ metaInfo }: Props) => {
   const handlePageClick = (e: { selected: number }) => {
     setCurrentPage(e.selected + 1);
 
-    router.push(`/coins/?page=${Number(e.selected) + 1}`);
+    router.push(`/coins/?page=${Number(e.selected) + 1}&currency=${currentCurrency}`);
   };
 
   return (

@@ -4,6 +4,8 @@ import { useRef, useEffect, useState } from 'react';
 import { fetchFiats } from '@/utils/fetchCoinList';
 import { ICurrency } from '@/types';
 import Image from 'next/image';
+import { useCurrencyStore } from '@/configs/store';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 type Props = {
   showDropDown: boolean;
@@ -13,6 +15,13 @@ type Props = {
 export const UserCurrencyMenu = ({ showDropDown, setShowDropDown }: Props) => {
   const dropdown = useRef<HTMLDivElement>(null);
   const [currencies, setCurrencies] = useState<ICurrency[]>([]);
+  const setCurrency = useCurrencyStore(state => state.setCurrency);
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const currentPage =
+    Number(searchParams.get('page')) === 0
+      ? 1
+      : Number(searchParams.get('page'));
 
   useEffect(() => {
     fetchFiats().then((data: ICurrency[]) => setCurrencies(data));
@@ -52,8 +61,18 @@ export const UserCurrencyMenu = ({ showDropDown, setShowDropDown }: Props) => {
       UserCurrencyMenu
       <ul className="flex flex-wrap gap-2">
         {currencies.map(item => (
-          <li key={item.name}>
-            <Image src={item.imageUrl} alt={item.name} width={40} height={40} />
+          <li
+            key={item.name}
+            className="flex w-24 gap-2 rounded-md px-2 py-4 transition-colors hover:bg-slate-800"
+            onClick={() => {
+              setCurrency(item);
+
+              setShowDropDown(false);
+
+              router.push(`/coins/?page=${currentPage}&currency=${item.name}`);
+            }}
+          >
+            <Image src={item.imageUrl} alt={item.name} width={24} height={24} />
             {item.name}
           </li>
         ))}
