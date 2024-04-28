@@ -123,8 +123,15 @@ export const useWatchListStore = create<IWatchlistState>()(
   )
 );
 
+const initialCurrency = {
+  name: 'USD',
+  rate: 1,
+  symbol: '$',
+  imageUrl: 'https://static.coinstats.app/flags/USD_r.png',
+};
+
 export const useCurrencyStore = create<ICurrencyState>()(set => ({
-  currency: 'USD',
+  currency: initialCurrency,
 
   setCurrency: newCurrency => {
     set({ currency: newCurrency });

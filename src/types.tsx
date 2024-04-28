@@ -70,11 +70,6 @@ export interface IWatchlistState {
   removeCoinToWatchlistState: (x: string) => void;
 }
 
-export interface ICurrencyState {
-  currency: string;
-  setCurrency: (x: string) => void;
-}
-
 export interface INewsItem {
   id: string;
   searchKeyWords: string[];
@@ -112,4 +107,16 @@ export interface IMarketData {
   marketCapChange: number;
   volumeChange: number;
   btcDominanceChange: number;
+}
+
+export interface ICurrency {
+  name: string;
+  rate: number;
+  symbol: string;
+  imageUrl: string;
+}
+
+export interface ICurrencyState {
+  currency: ICurrency;
+  setCurrency: (x: ICurrency) => void;
 }

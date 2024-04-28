@@ -114,3 +114,15 @@ export async function fetchMarkets() {
 
   return response.json();
 }
+
+export async function fetchFiats() {
+  const response = await fetch(`${MAIN_URL}/fiats`, {
+    ...options,
+  });
+
+  if (!response.ok) {
+    throw new Error('Failed to fetch data');
+  }
+
+  return response.json();
+}
