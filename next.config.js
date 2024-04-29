@@ -53,6 +53,7 @@ const nextConfig = {
       'ambcrypto.com',
       'coincu.com',
       'invezz.com',
+      'cdn.bankless.com',
     ],
   },
 };

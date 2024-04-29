@@ -58,7 +58,7 @@ export const UserCurrencyMenu = ({ showDropDown, setShowDropDown }: Props) => {
           .map(item => (
             <li key={item.name}>
               <button
-                className="flex w-24 gap-2 rounded-md px-2 py-4 transition-colors hover:bg-slate-600"
+                className="flex w-36 gap-2 rounded-md px-2 py-4 transition-colors hover:bg-slate-600"
                 onClick={() => {
                   setCurrency(item);
 
@@ -75,7 +75,7 @@ export const UserCurrencyMenu = ({ showDropDown, setShowDropDown }: Props) => {
                   width={24}
                   height={24}
                 />
-                {item.name}
+                {item.name} - {item.symbol}
               </button>
             </li>
           ))}
