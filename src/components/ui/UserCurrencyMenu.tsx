@@ -1,8 +1,6 @@
 'use client';
 
 import { useRef, useEffect } from 'react';
-// import { fetchFiats } from '@/utils/fetchCoinList';
-// import { ICurrency } from '@/types';
 import Image from 'next/image';
 import { useCurrencyStore } from '@/configs/store';
 import { useRouter, useSearchParams } from 'next/navigation';
@@ -15,7 +13,6 @@ type Props = {
 
 export const UserCurrencyMenu = ({ showDropDown, setShowDropDown }: Props) => {
   const dropdown = useRef<HTMLDivElement>(null);
-  // const [currencies, setCurrencies] = useState<ICurrency[]>(currencies);
   const setCurrency = useCurrencyStore(state => state.setCurrency);
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -23,10 +20,6 @@ export const UserCurrencyMenu = ({ showDropDown, setShowDropDown }: Props) => {
     Number(searchParams.get('page')) === 0
       ? 1
       : Number(searchParams.get('page'));
-
-  // useEffect(() => {
-  //   fetchFiats().then((data: ICurrency[]) => setCurrencies(data));
-  // }, []);
 
   useEffect(() => {
     const handleEscape = (event: KeyboardEvent) => {

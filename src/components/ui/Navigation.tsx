@@ -14,12 +14,12 @@ export const Navigation = () => {
   const spanClass =
     'inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none group-hover:text-yellow-500';
 
-  const currency = useCurrencyStore(state => state.currency);
+  const currencyName = useCurrencyStore(state => state.currency.name);
 
   return (
     <div className="hidden w-full md:flex md:items-center md:gap-2">
       <Link
-        href={`/coins?currency=${currency.name}`}
+        href={`/coins?currency=${currencyName}`}
         className={`${linkClass} ${pathname === '/coins' ? 'text-yellow-500' : ''}`}
       >
         <p>

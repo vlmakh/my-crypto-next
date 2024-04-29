@@ -3,10 +3,10 @@ import type { ICoin } from '@/types';
 
 type Props = {
   coinList: ICoin[];
-  currency: string;
+  currencyName: string;
 };
 
-export const CoinList = ({ coinList, currency }: Props) => {
+export const CoinList = ({ coinList, currencyName }: Props) => {
   return (
     <ul>
       {coinList
@@ -14,7 +14,7 @@ export const CoinList = ({ coinList, currency }: Props) => {
         .map(
           coin =>
             coin && (
-              <CoinListItem key={coin.id} coin={coin} currency={currency} />
+              <CoinListItem key={coin.id} coin={coin} currencyName={currencyName} />
             )
         )}
     </ul>

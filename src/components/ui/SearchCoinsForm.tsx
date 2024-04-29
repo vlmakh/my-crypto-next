@@ -8,7 +8,7 @@ export const SearchCoinsForm = () => {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
-  const currency = useCurrencyStore(state => state.currency);
+  const currencyName = useCurrencyStore(state => state.currency.name);
 
   const params = new URLSearchParams(searchParams);
 
@@ -21,7 +21,7 @@ export const SearchCoinsForm = () => {
       } else {
         params.delete('query');
       }
-      replace(`${pathname}?${params.toString()}&currency=${currency.name}`);
+      replace(`${pathname}?${params.toString()}&currency=${currencyName}`);
     },
     400
   );

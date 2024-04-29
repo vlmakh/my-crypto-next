@@ -52,10 +52,11 @@ export const historicalChart = async (id: string, period: string) => {
 
 export const fetchInfoByUserWatchList = async (
   array: string[],
+  currencyName: string,
   abortSignal: AbortSignal
 ) => {
   const arrayOfCoins = array.map(async coinId => {
-    return await fetch(`${MAIN_URL}/coins/${coinId}?currency=USD`, {
+    return await fetch(`${MAIN_URL}/coins/${coinId}?currency=${currencyName}`, {
       ...options,
       cache: 'no-cache',
       signal: abortSignal,

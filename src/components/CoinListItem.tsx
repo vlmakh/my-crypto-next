@@ -7,14 +7,14 @@ import type { ICoin } from '@/types';
 
 type Props = {
   coin: ICoin;
-  currency: string;
+  currencyName: string;
 };
 
-export const CoinListItem = ({ coin, currency }: Props) => {
+export const CoinListItem = ({ coin, currencyName }: Props) => {
   return (
     <li className="mx-auto max-w-min border-b-2">
       <Link
-        href={`/coins/${coin.id}?currency=${currency}`}
+        href={`/coins/${coin.id}?currency=${currencyName}`}
         className="group flex w-full items-center gap-4 px-2 py-1"
       >
         <div className="h-12 w-12">
