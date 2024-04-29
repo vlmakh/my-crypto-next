@@ -10,8 +10,8 @@ const options: RequestInit = {
   },
 };
 
-export async function fetchCoinList(page: number) {
-  const response = await fetch(`${MAIN_URL}/coins/?page=${page}`, {
+export async function fetchCoinList(page: number, currency: string) {
+  const response = await fetch(`${MAIN_URL}/coins/?page=${page}&currency=${currency}`, {
     ...options,
     cache: 'no-cache',
   });
@@ -23,14 +23,14 @@ export async function fetchCoinList(page: number) {
   return response.json();
 }
 
-export async function fetchCoinItem(id: string) {
-  const response = await fetch(`${MAIN_URL}/coins/${id}`, {
+export async function fetchCoinItem(id: string, currency: string) {
+  const response = await fetch(`${MAIN_URL}/coins/${id}?currency=${currency}`, {
     ...options,
     cache: 'no-cache',
   });
 
   if (!response.ok) {
-    // throw new Error("Failed to fetch data");
+    throw new Error("Failed to fetch data");
     return null;
   }
 
@@ -52,10 +52,11 @@ export const historicalChart = async (id: string, period: string) => {
 
 export const fetchInfoByUserWatchList = async (
   array: string[],
+  currencyName: string,
   abortSignal: AbortSignal
 ) => {
   const arrayOfCoins = array.map(async coinId => {
-    return await fetch(`${MAIN_URL}/coins/${coinId}`, {
+    return await fetch(`${MAIN_URL}/coins/${coinId}?currency=${currencyName}`, {
       ...options,
       cache: 'no-cache',
       signal: abortSignal,
@@ -106,6 +107,18 @@ export async function fetchMarkets() {
   const response = await fetch(`${MAIN_URL}/markets`, {
     ...options,
     cache: 'no-cache',
+  });
+
+  if (!response.ok) {
+    throw new Error('Failed to fetch data');
+  }
+
+  return response.json();
+}
+
+export async function fetchFiats() {
+  const response = await fetch(`${MAIN_URL}/fiats`, {
+    ...options,
   });
 
   if (!response.ok) {

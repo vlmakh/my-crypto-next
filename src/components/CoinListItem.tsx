@@ -5,11 +5,16 @@ import { ChevronUpIcon, ChevronDownIcon } from '@heroicons/react/16/solid';
 
 import type { ICoin } from '@/types';
 
-export const CoinListItem = ({ coin }: { coin: ICoin }) => {
+type Props = {
+  coin: ICoin;
+  currencyName: string;
+};
+
+export const CoinListItem = ({ coin, currencyName }: Props) => {
   return (
     <li className="mx-auto max-w-min border-b-2">
       <Link
-        href={`/coins/${coin.id}`}
+        href={`/coins/${coin.id}?currency=${currencyName}`}
         className="group flex w-full items-center gap-4 px-2 py-1"
       >
         <div className="h-12 w-12">

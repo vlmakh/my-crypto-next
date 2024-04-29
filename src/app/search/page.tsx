@@ -8,6 +8,7 @@ export default async function SearchPage({
   searchParams: { [key: string]: string | string[] | undefined };
 }) {
   const query = (searchParams?.query || '') as string;
+  const currencyName = (searchParams?.currency || 'USD') as string;
 
   let searchResultList = [];
 
@@ -21,7 +22,7 @@ export default async function SearchPage({
     <div className="mx-auto max-w-7xl text-center">
       <SearchCoinsForm />
 
-      <SearchResultList searchResultList={searchResultList} />
+      <SearchResultList searchResultList={searchResultList} currencyName={currencyName} />
     </div>
   );
 }

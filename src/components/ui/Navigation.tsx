@@ -3,7 +3,9 @@
 import Link from 'next/link';
 import { navlinks } from '@/data/navlinks';
 import { usePathname } from 'next/navigation';
+import { UserCurrencyBtn } from './UserCurrencyBtn';
 import { UserMenuBtn } from './UserMenuBtn';
+import { useCurrencyStore } from '@/configs/store';
 
 export const Navigation = () => {
   const pathname = usePathname();
@@ -12,8 +14,20 @@ export const Navigation = () => {
   const spanClass =
     'inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none group-hover:text-yellow-500';
 
+  const currencyName = useCurrencyStore(state => state.currency.name);
+
   return (
     <div className="hidden w-full md:flex md:items-center md:gap-2">
+      <Link
+        href={`/coins?currency=${currencyName}`}
+        className={`${linkClass} ${pathname === '/coins' ? 'text-yellow-500' : ''}`}
+      >
+        <p>
+          Coins
+          <span className={spanClass}>-&gt;</span>
+        </p>
+      </Link>
+
       {navlinks.map(link => {
         const isActive = pathname === link.href;
 
@@ -30,6 +44,8 @@ export const Navigation = () => {
           </Link>
         );
       })}
+
+      <UserCurrencyBtn />
 
       <UserMenuBtn />
     </div>

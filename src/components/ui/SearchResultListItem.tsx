@@ -4,9 +4,10 @@ import type { ICoinFound } from '@/types';
 
 type Props = {
   coin: ICoinFound;
+  currencyName: string;
 };
 
-export const SearchResultListItem = ({ coin }: Props) => {
+export const SearchResultListItem = ({ coin, currencyName }: Props) => {
   const isImageURL = (urlString: string) => {
     if (urlString.split(':')[0] !== 'https') return false;
     else return true;
@@ -14,7 +15,7 @@ export const SearchResultListItem = ({ coin }: Props) => {
 
   return (
     <li className="w-40 rounded-md border-2" key={coin.id}>
-      <Link href={`/coins/${coin.id}`} className="group px-2 py-1">
+      <Link href={`/coins/${coin.id}?currency=${currencyName}`} className="group px-2 py-1">
         <div className="mx-auto min-h-24  w-24">
           {isImageURL(coin.large) && (
             <Image

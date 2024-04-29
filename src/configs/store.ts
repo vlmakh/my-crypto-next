@@ -1,6 +1,11 @@
 import { create } from 'zustand';
 import { devtools, persist } from 'zustand/middleware';
-import type { IUserState, IWatchlistState, ICredentials } from '@/types';
+import type {
+  IUserState,
+  IWatchlistState,
+  ICurrencyState,
+  ICredentials,
+} from '@/types';
 import {
   operSigninGoogle,
   operSigninFacebook,
@@ -83,7 +88,7 @@ export const useUserStore = create<IUserState>()(
 
         signout: () => {
           operSignOut()
-            .then(() => { })
+            .then(() => {})
             .catch(e => console.log(e))
             .finally(() => {
               set(initialUserState);
@@ -115,5 +120,25 @@ export const useWatchListStore = create<IWatchlistState>()(
       },
     }),
     { name: 'watchlist' }
+  )
+);
+
+const initialCurrency = {
+  name: 'USD',
+  rate: 1,
+  symbol: '$',
+  imageUrl: 'https://static.coinstats.app/flags/USD_r.png',
+};
+
+export const useCurrencyStore = create<ICurrencyState>()(
+  persist(
+    set => ({
+      currency: initialCurrency,
+
+      setCurrency: newCurrency => {
+        set({ currency: newCurrency });
+      },
+    }),
+    { name: 'currency' }
   )
 );

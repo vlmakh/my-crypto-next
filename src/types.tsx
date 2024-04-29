@@ -108,3 +108,15 @@ export interface IMarketData {
   volumeChange: number;
   btcDominanceChange: number;
 }
+
+export interface ICurrency {
+  name: string;
+  rate: number;
+  symbol: string;
+  imageUrl: string;
+}
+
+export interface ICurrencyState {
+  currency: ICurrency;
+  setCurrency: (x: ICurrency) => void;
+}

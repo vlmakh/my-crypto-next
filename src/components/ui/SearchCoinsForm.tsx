@@ -2,11 +2,13 @@
 
 import { useSearchParams, usePathname, useRouter } from 'next/navigation';
 import { useDebouncedCallback } from 'use-debounce';
+import { useCurrencyStore } from '@/configs/store';
 
 export const SearchCoinsForm = () => {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
+  const currencyName = useCurrencyStore(state => state.currency.name);
 
   const params = new URLSearchParams(searchParams);
 
@@ -19,7 +21,7 @@ export const SearchCoinsForm = () => {
       } else {
         params.delete('query');
       }
-      replace(`${pathname}?${params.toString()}`);
+      replace(`${pathname}?${params.toString()}&currency=${currencyName}`);
     },
     400
   );
@@ -37,7 +39,7 @@ export const SearchCoinsForm = () => {
           placeholder="Search by coin name or symbol"
           defaultValue={searchParams.get('query')?.toString()}
           autoComplete="off"
-          className="w-full rounded-md border-0 bg-white/5 px-2 py-1.5 text-black dark:invert shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-yellow-500 sm:text-sm sm:leading-6"
+          className="w-full rounded-md border-2 bg-white/5 px-2 py-1.5 text-black dark:invert shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-yellow-500 sm:text-sm sm:leading-6"
         />
 
         <button

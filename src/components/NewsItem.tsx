@@ -4,9 +4,7 @@ import type { INewsItem } from '@/types';
 
 export const NewsItem = ({ item }: { item: INewsItem }) => {
   return (
-    <li
-      className="relative max-h-[324px] w-full overflow-hidden sm:h-[324px] sm:w-[600px]"
-    >
+    <li className="relative max-h-[324px] w-full overflow-hidden sm:h-[324px] sm:w-[600px]">
       <a
         href={item.link}
         target="_blank"
@@ -21,7 +19,7 @@ export const NewsItem = ({ item }: { item: INewsItem }) => {
           priority
         />
 
-        <div className="w-full absolute bottom-2 z-10 px-2 text-white duration-200 ease-in group-hover:-translate-y-2">
+        <div className="absolute bottom-2 z-10 w-full px-2 text-white duration-200 ease-in group-hover:-translate-y-2">
           <p className="font-bold"> {item.title}</p>
 
           <p className="hidden text-justify text-sm sm:block">

@@ -3,7 +3,11 @@
 import { redirect } from 'next/navigation';
 import { fetchInfoByUserWatchList } from '@/utils/fetchCoinList';
 import { CoinList } from '@/components/CoinList';
-import { useUserStore, useWatchListStore } from '@/configs/store';
+import {
+  useUserStore,
+  useWatchListStore,
+  useCurrencyStore,
+} from '@/configs/store';
 import { db } from '@/configs/firebase';
 import { doc, onSnapshot } from 'firebase/firestore';
 import { useState, useEffect } from 'react';
@@ -13,6 +17,7 @@ export const Watchlist = () => {
   const uid = useUserStore(state => state.uid);
   const setWatchlistState = useWatchListStore(state => state.setWatchlistState);
   const watchlist = useWatchListStore(state => state.watchlist);
+  const currencyName = useCurrencyStore(state => state.currency.name);
 
   {
     !uid && redirect(`/signin`);
@@ -39,7 +44,7 @@ export const Watchlist = () => {
   }, []);
 
   useEffect(() => {
-    fetchInfoByUserWatchList(watchlist, controller.signal)
+    fetchInfoByUserWatchList(watchlist, currencyName, controller.signal)
       .then((data: any) => setUserCoinList(data))
       .finally(() => setIsLoading(false));
   }, [watchlist]);
@@ -48,7 +53,9 @@ export const Watchlist = () => {
     <>
       {isLoading && <LoaderSpinner />}
 
-      {userCoinList.length > 0 && <CoinList coinList={userCoinList} />}
+      {userCoinList.length > 0 && (
+        <CoinList coinList={userCoinList} currencyName={currencyName} />
+      )}
     </>
   );
 };
