@@ -55,7 +55,7 @@ export const fetchInfoByUserWatchList = async (
   abortSignal: AbortSignal
 ) => {
   const arrayOfCoins = array.map(async coinId => {
-    return await fetch(`${MAIN_URL}/coins/${coinId}`, {
+    return await fetch(`${MAIN_URL}/coins/${coinId}?currency=USD`, {
       ...options,
       cache: 'no-cache',
       signal: abortSignal,

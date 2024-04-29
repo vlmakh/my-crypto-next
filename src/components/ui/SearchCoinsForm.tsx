@@ -2,11 +2,13 @@
 
 import { useSearchParams, usePathname, useRouter } from 'next/navigation';
 import { useDebouncedCallback } from 'use-debounce';
+import { useCurrencyStore } from '@/configs/store';
 
 export const SearchCoinsForm = () => {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
+  const currency = useCurrencyStore(state => state.currency);
 
   const params = new URLSearchParams(searchParams);
 
@@ -19,7 +21,7 @@ export const SearchCoinsForm = () => {
       } else {
         params.delete('query');
       }
-      replace(`${pathname}?${params.toString()}`);
+      replace(`${pathname}?${params.toString()}&currency=${currency.name}`);
     },
     400
   );
