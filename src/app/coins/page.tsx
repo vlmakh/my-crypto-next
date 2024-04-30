@@ -14,7 +14,7 @@ export default async function CoinsPage({
   const totalCoinList = await fetchCoinList(page, currency);
 
   return (
-    <div className="w-full text-center sm:mx-auto sm:max-w-lg">
+    <div className="text-center mx-auto max-w-max">
       {/* <CoinList coinList={totalCoinList.result} currencyName={currency} /> */}
 
       <CoinTable coinList={totalCoinList.result} currencyName={currency} />
