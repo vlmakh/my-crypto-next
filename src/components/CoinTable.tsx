@@ -1,22 +1,26 @@
-import { CoinListItem } from './CoinListItem';
 import type { ICoin } from '@/types';
+import { CoinTableItem } from './CoinTableItem';
 
 type Props = {
   coinList: ICoin[];
   currencyName: string;
 };
 
-export const CoinList = ({ coinList, currencyName }: Props) => {
+export const CoinTable = ({ coinList, currencyName }: Props) => {
   return (
-    <ul className=''>
+    <table>
       {coinList
         .sort((a: { rank: number }, b: { rank: number }) => a.rank - b.rank)
         .map(
           coin =>
             coin && (
-              <CoinListItem key={coin.id} coin={coin} currencyName={currencyName} />
+              <CoinTableItem
+                key={coin.id}
+                coin={coin}
+                currencyName={currencyName}
+              />
             )
         )}
-    </ul>
+    </table>
   );
 };
