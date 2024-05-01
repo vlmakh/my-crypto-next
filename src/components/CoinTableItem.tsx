@@ -14,7 +14,6 @@ export const CoinTableItem = ({ coin, currencyName }: Props) => {
   return (
     <tr
       className="group border-b-2 transition-colors hover:bg-slate-800"
-      data-href={`/coins/${coin.id}?currency=${currencyName}`}
     >
       <td className="px-2 text-right text-xs">{coin.rank}</td>
 

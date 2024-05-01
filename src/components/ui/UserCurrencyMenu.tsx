@@ -65,7 +65,7 @@ export const UserCurrencyMenu = ({ showDropDown, setShowDropDown }: Props) => {
                   setShowDropDown(false);
 
                   router.push(
-                    `/coins/?page=${currentPage}&currency=${item.name}`
+                    `/?page=${currentPage}&currency=${item.name}`
                   );
                 }}
               >
