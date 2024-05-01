@@ -2,7 +2,7 @@
 
 import { redirect } from 'next/navigation';
 import { fetchInfoByUserWatchList } from '@/utils/fetchCoinList';
-import { CoinList } from '@/components/CoinList';
+import { CoinTable } from "@/components/CoinTable";
 import {
   useUserStore,
   useWatchListStore,
@@ -54,7 +54,7 @@ export const Watchlist = () => {
       {isLoading && <LoaderSpinner />}
 
       {userCoinList.length > 0 && (
-        <CoinList coinList={userCoinList} currencyName={currencyName} />
+        <CoinTable coinList={userCoinList} currencyName={currencyName} />
       )}
     </>
   );

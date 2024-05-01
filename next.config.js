@@ -54,6 +54,8 @@ const nextConfig = {
       'coincu.com',
       'invezz.com',
       'cdn.bankless.com',
+      '150601093.v2.pressablecdn.com',
+      'cryptoticker-strapi-media.s3.eu-central-1.amazonaws.com',
     ],
   },
 };

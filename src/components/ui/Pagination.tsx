@@ -27,7 +27,7 @@ export const Pagination = ({ metaInfo }: Props) => {
   const handlePageClick = (e: { selected: number }) => {
     setCurrentPage(e.selected + 1);
 
-    router.push(`/coins/?page=${Number(e.selected) + 1}&currency=${currentCurrency}`);
+    router.push(`/?page=${Number(e.selected) + 1}&currency=${currentCurrency}`);
   };
 
   return (

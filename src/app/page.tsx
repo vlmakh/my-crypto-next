@@ -1,15 +1,22 @@
-import { fetchNewsList } from '@/utils/fetchCoinList';
-import type { INewsItem } from '@/types';
-import { NewsItem } from '@/components/NewsItem';
+import { fetchCoinList } from "@/utils/fetchCoinList";
+import { Pagination } from "@/components/ui/Pagination";
+import { CoinTable } from "@/components/CoinTable";
 
-export default async function HomePage() {
-  const totalNewsList: INewsItem[] = await fetchNewsList(1);
+export default async function HomePage({
+  searchParams,
+}: {
+  searchParams: { page: number, currency: string };
+}) {
+  const page = searchParams["page"] ?? "1";
+  const currency = searchParams["currency"] ?? "USD";
+
+  const totalCoinList = await fetchCoinList(page, currency);
 
   return (
-    <ul className="flex w-full flex-col items-center gap-4 px-5 py-4 xl:flex-row xl:flex-wrap xl:justify-center">
-      {totalNewsList.map(item => (
-        <NewsItem key={item.id} item={item} />
-      ))}
-    </ul>
+    <>
+      <CoinTable coinList={totalCoinList.result} currencyName={currency} />
+
+      <Pagination metaInfo={totalCoinList.meta} />
+    </>
   );
 }
