@@ -13,10 +13,10 @@ export default async function HomePage({
   const totalCoinList = await fetchCoinList(page, currency);
 
   return (
-    <div className="text-center mx-auto max-w-max">
+    <>
       <CoinTable coinList={totalCoinList.result} currencyName={currency} />
 
       <Pagination metaInfo={totalCoinList.meta} />
-    </div>
+    </>
   );
 }

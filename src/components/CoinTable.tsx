@@ -8,7 +8,7 @@ type Props = {
 
 export const CoinTable = ({ coinList, currencyName }: Props) => {
   return (
-    <table>
+    <table className='mx-auto'>
       <thead>
         <tr className="border-b-2">
           <th>#</th>
