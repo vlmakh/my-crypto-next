@@ -18,16 +18,6 @@ export const Navigation = () => {
 
   return (
     <div className="hidden w-full md:flex md:items-center md:gap-2">
-      <Link
-        href={`/coins?currency=${currencyName}`}
-        className={`${linkClass} ${pathname === '/coins' ? 'text-yellow-500' : ''}`}
-      >
-        <p>
-          Coins
-          <span className={spanClass}>-&gt;</span>
-        </p>
-      </Link>
-
       {navlinks.map(link => {
         const isActive = pathname === link.href;
 

@@ -31,7 +31,7 @@ export const CoinTableItem = ({ coin, currencyName }: Props) => {
             className="transition-transform group-hover:scale-110"
           />
           <span className="font-bold">{coin.symbol}</span>
-          <span>{coin.name}</span>
+          <span className="hidden sm:block">{coin.name}</span>
         </Link>
       </td>
 
@@ -39,7 +39,7 @@ export const CoinTableItem = ({ coin, currencyName }: Props) => {
         {formatCurrency(currencyName)} {formatPrice(coin.price)}
       </td>
 
-      <td>
+      <td className="hidden md:table-cell">
         <p
           className={`flex items-center justify-end px-2 text-right text-sm ${coin.priceChange1h >= 0 ? 'text-green-500' : 'text-red-500'}`}
         >
@@ -65,7 +65,7 @@ export const CoinTableItem = ({ coin, currencyName }: Props) => {
         </p>
       </td>
 
-      <td>
+      <td className="hidden md:table-cell">
         <p
           className={`flex items-center justify-end px-2 text-right text-sm ${coin.priceChange1w >= 0 ? 'text-green-500' : 'text-red-500'}`}
         >
@@ -78,7 +78,7 @@ export const CoinTableItem = ({ coin, currencyName }: Props) => {
         </p>
       </td>
 
-      <td className="px-2 text-right text-xs">
+      <td className="hidden px-2 text-right text-xs md:table-cell">
         {Math.round(coin.marketCap).toLocaleString()}
       </td>
     </tr>

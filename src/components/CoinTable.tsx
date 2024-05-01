@@ -14,10 +14,10 @@ export const CoinTable = ({ coinList, currencyName }: Props) => {
           <th>#</th>
           <th className="pl-2 text-left">Name</th>
           <th className="pr-2 text-right">Price</th>
-          <th className="pr-2 text-right">1h%</th>
+          <th className="hidden pr-2 text-right md:table-cell">1h%</th>
           <th className="pr-2 text-right">1d%</th>
-          <th className="pr-2 text-right">1w%</th>
-          <th>Market Cap $</th>
+          <th className="hidden pr-2 text-right md:table-cell">1w%</th>
+          <th className="hidden md:table-cell">Market Cap $</th>
         </tr>
       </thead>
 
