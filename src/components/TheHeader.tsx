@@ -5,11 +5,11 @@ import { Navigation } from './ui/Navigation';
 export const TheHeader = () => {
   return (
     <header className="flex items-center border-b-2 px-5">
-      <MainLogo />
+      <MainLogo />    
       
-      <BurgerMenu />
-
       <Navigation />
+
+      <BurgerMenu />
     </header>
   );
 };

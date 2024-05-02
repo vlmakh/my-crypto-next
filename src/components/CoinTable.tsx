@@ -12,7 +12,7 @@ export const CoinTable = ({ coinList, currencyName }: Props) => {
       <thead>
         <tr className="border-b-2">
           <th>#</th>
-          <th className="pl-2 text-left">Name</th>
+          <th className="pl-2 text-left py-2">Name</th>
           <th className="pr-2 text-right">Price</th>
           <th className="hidden pr-2 text-right md:table-cell">1h%</th>
           <th className="pr-2 text-right">1d%</th>

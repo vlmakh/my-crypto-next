@@ -17,7 +17,7 @@ export const Navigation = () => {
   const currencyName = useCurrencyStore(state => state.currency.name);
 
   return (
-    <div className="hidden w-full md:flex md:items-center md:gap-2">
+    <div className="hidden md:flex md:flex-grow md:items-center">
       {navlinks.map(link => {
         const isActive = pathname === link.href;
 
