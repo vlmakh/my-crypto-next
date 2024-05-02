@@ -20,7 +20,7 @@ export const MainLogo = () => {
         className="transition-transform group-hover:scale-110"
         priority
       />{' '}
-      <span className="hidden lg:block">MyCrypto</span>
+      <span className="main_logo hidden lg:block text-xl">MyCrypto</span>
     </Link>
   );
 };

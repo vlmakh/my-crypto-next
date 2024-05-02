@@ -25,3 +25,7 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+.main_logo {
+  @apply font-oswald leading-none;
+}
