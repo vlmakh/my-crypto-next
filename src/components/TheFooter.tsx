@@ -3,7 +3,7 @@ import LogoVM from "../../public/vm_logo.svg";
 export const TheFooter = () => {
   return (
     <footer className="flex gap-4 justify-center items-center py-2">
-      <p>2024</p>
+      <p>MyCrypto &#xa9; 2024</p>
       <span>By</span>
       <a
         className="pointer-events-none lg:pointer-events-auto lg:p-0 transition-colors hover:text-yellow-500 dark:invert-0"
