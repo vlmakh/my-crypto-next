@@ -26,6 +26,6 @@ body {
     rgb(var(--background-start-rgb));
 }
 
-.main_logo {
+.mainlogo {
   @apply font-oswald leading-none;
 }
