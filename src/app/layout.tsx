@@ -1,21 +1,22 @@
-import type { Metadata } from "next";
-import { Inter, Oswald } from "next/font/google";
-import "./globals.css";
-import { TheHeader } from "@/components/TheHeader";
-import { TheFooter } from "@/components/TheFooter";
+import type { Metadata } from 'next';
+import { Inter, Moon_Dance } from 'next/font/google';
+import './globals.css';
+import { TheHeader } from '@/components/TheHeader';
+import { TheFooter } from '@/components/TheFooter';
 import { Toaster } from 'react-hot-toast';
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ['latin'] });
 
-const oswald = Oswald({
+const moonDance = Moon_Dance({
   subsets: ['latin'],
-  variable: '--font-oswald',
+  weight: '400',
+  variable: '--font-moonDance',
   display: 'swap',
 });
 
 export const metadata: Metadata = {
-  title: "My Crypto",
-  description: "Cryptocurrencies tracking",
+  title: 'My Crypto',
+  description: 'Cryptocurrencies tracking',
 };
 
 export default function RootLayout({
@@ -25,7 +26,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} ${oswald.variable} flex flex-col h-screen`}>
+      <body
+        className={`${inter.className} ${moonDance.variable} flex h-screen flex-col`}
+      >
         <TheHeader />
 
         <main className="mb-auto">{children}</main>

@@ -11,8 +11,9 @@ export const UserCurrencyBtn = () => {
 
   return (
     <>
-      <button title="Select Currency"
-        className="flex gap-2 ml-auto font-bold transition-colors hover:text-yellow-500"
+      <button
+        title="Select Currency"
+        className="group ml-auto flex gap-2 p-2 font-bold transition-colors hover:text-yellow-500"
         onClick={() => setShowDropDown(!showDropDown)}
       >
         <Image
@@ -20,6 +21,7 @@ export const UserCurrencyBtn = () => {
           alt={currency.name}
           width={20}
           height={20}
+          className="transition-transform group-hover:scale-110"
         />
         {currency.name}
       </button>

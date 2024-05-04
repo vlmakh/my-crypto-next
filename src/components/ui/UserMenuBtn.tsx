@@ -11,7 +11,7 @@ export const UserMenuBtn = () => {
   const uid = useUserStore(state => state.uid);
 
   return (
-    <div className="ml-2">
+    <div>
       {!uid ? (
         <div className="flex gap-4">
           <Link
